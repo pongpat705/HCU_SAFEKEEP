@@ -1,0 +1,49 @@
+<div class="brand">
+  <a class="brand-logo">
+  
+    <img src="images/web_hi_res_512.png" height="96px">
+  </a>
+  <a href="#" class="small-menu-visible brand-logo">Mao</a>
+  <!-- /logo -->
+
+</div>
+<!-- navigation start! -->
+<div class="nav" style="padding-top: 70px; padding-left: 15px;">
+	<!-- line -->
+	<div class="row">
+		<hr/>
+	</div>	
+	<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.user')}" ng-if="checkPermission('ROLE_ADMIN')" >
+		<a ui-sref-active="active" ui-sref="app.user">
+			<i class="fa fa-tachometer fa-2x fa-fw"> </i>
+			<span>Users</span>
+		</a>	
+	</div>
+	<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.parameters')}" ng-if="checkPermission('ROLE_ADMIN')" >
+		<a ui-sref-active="active" ui-sref="app.parameters">
+			<i class="fa fa-tachometer fa-2x fa-fw"> </i>
+			<span>Parameters</span>
+		</a>	
+	</div>
+	<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.tray')}" ng-if="checkPermission('ROLE_USER')" >
+		<a ui-sref-active="active" ui-sref="app.tray">
+			<i class="fa fa-tachometer fa-2x fa-fw"> </i>
+			<span>Tray</span>
+		</a>	
+	</div>
+	<div class="row" style="margin-bottom:10px;" ng-if="!isAuthenticated()">
+      <a ui-sref="user.signin">
+	     	<i class="fa fa-tachometer fa-2x fa-fw"> </i>
+	        <span> Sign in</span>
+      </a>	
+	</div>
+	<div class="row" style="margin-bottom:10px;" ng-if="isAuthenticated()">
+      <a ui-sref="user.signout">
+      	<i class="fa fa-sign-out fa-2x fa-fw"> </i>
+        <span> Sign out</span>
+      </a>	
+	</div>	
+	<div class="row">
+		<hr/>
+	</div>	
+</div>
