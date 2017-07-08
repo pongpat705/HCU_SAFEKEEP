@@ -2,11 +2,11 @@
 'use strict';
 angular
 	.module('app')
-		.controller('landingCtrl', [	'$scope', '$http', '$localStorage', 
+		.controller('trayCtrl', [	'$scope', '$http', '$localStorage', 
 									'$timeout', '$translate', '$auth', 
 									'$state' , '$stateParams', 'Restangular', 
 									'toastr', '$rootScope',
-  function landingCtrl($scope, $http, $localStorage, 
+  function trayCtrl($scope, $http, $localStorage, 
 		  			$timeout, $translate, $auth, 
 		  			$state, $stateParams, Restangular, 
 		  			toastr, $rootScope) {
@@ -31,9 +31,9 @@ angular
 		});
 	};
 	
-//	$scope.openModal = function(userId){
-//		$state.go('app.user.role.config', {userId:userId});
-//	}
+	$scope.openModal = function(userId){
+		$state.go('app.user.role.config', {userId:userId});
+	}
 	
   }
 ]);

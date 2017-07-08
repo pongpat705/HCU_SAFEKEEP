@@ -1,6 +1,8 @@
 package th.ac.hcu.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import th.ac.hcu.constant.Role;
+
 @Entity
 @Table(name = "USER_ROLE")
 @TableGenerator(name="GEN_USER_ROLE", initialValue=0, allocationSize=50)
@@ -16,29 +20,31 @@ public class UserRole {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_USER_ROLE")
-    private Long id;
+    private Long roleId;
 	
-	private String role;
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 	private String enabled;
 	
 	@ManyToOne
-	@JoinColumn(name = "user", insertable = false, updatable = false)
+	@JoinColumn(name = "user_id")
 	private User user;
 
-	public Long getId() {
-		return id;
+
+	public Long getRoleId() {
+		return roleId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
 	}
 
-	public String getRole() {
+	public Role getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 

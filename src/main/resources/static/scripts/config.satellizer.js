@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app').config(function($authProvider) {
-	$authProvider.baseUrl 		= '/gw/dashboard';
+	$authProvider.baseUrl 		= '/safekeep';
 	$authProvider.loginUrl 		= '/login';
 	$authProvider.tokenName 	= 'token';
 	$authProvider.authHeader  	= 'maoz-token';

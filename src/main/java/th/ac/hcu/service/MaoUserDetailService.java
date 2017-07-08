@@ -37,7 +37,7 @@ public class MaoUserDetailService implements UserDetailsService {
 		}
 		
 		for (UserRole ur : user.getUserRole()) {
-			Authorities ga = new Authorities(ur.getRole());
+			Authorities ga = new Authorities(ur.getRole().name());
 			gant.add(ga);
 		}
 		

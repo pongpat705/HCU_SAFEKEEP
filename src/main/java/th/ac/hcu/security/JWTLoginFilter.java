@@ -11,14 +11,20 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.encrypt.Encryptors;
+import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import th.ac.hcu.config.JwtProperties;
+
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{ 
 	 
     private TokenAuthenticationService tokenAuthenticationService;
+    
+    private JwtProperties jwtProperties = new JwtProperties();
  
     public JWTLoginFilter(String url, AuthenticationManager authenticationManager)
     { 
@@ -32,6 +38,8 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
             throws AuthenticationException, IOException, ServletException {
     	//logingin
     	JwtTokenRequest credentials = new ObjectMapper().readValue(httpServletRequest.getInputStream(),JwtTokenRequest.class);
+    	TextEncryptor encrypted = Encryptors.queryableText(jwtProperties.getJwtSecret(), jwtProperties.getSalt());
+    	credentials.setPassword(encrypted.encrypt(credentials.getPassword()));
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(credentials.getUsername(), credentials.getPassword());
         return getAuthenticationManager().authenticate(token);
     } 

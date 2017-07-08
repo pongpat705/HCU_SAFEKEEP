@@ -26,7 +26,7 @@ function sessionCtrl(	$scope, $state, $auth,
 			  PermissionStore.definePermission('isAuthenticated', function(){
 				  return isTokenValid;
 			  });
-			  var parseService = Restangular.one('/dashboard/service/parse');
+			  var parseService = Restangular.one('/safekeep/service/parse');
 			  parseService.get().then(function(response){
 				  var roles = response.authorities;
 				  var roleList = [];

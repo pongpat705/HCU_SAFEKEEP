@@ -1,8 +1,10 @@
 package th.ac.hcu.entity;
 
-import java.util.Set;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,16 +13,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import th.ac.hcu.event.UserEntityListener;
+
 
 @Entity
 @Table(name = "USER")
 @TableGenerator(name="GEN_USER", initialValue=0, allocationSize=50)
+@EntityListeners(UserEntityListener.class)
 public class User {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_USER")
-    private Long id;
+    private Long userId;
 	
+	@Column(unique = true)
 	private String userName;
 	
 	private String password;
@@ -28,15 +34,18 @@ public class User {
 	private String enabled;
 	
 	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-	private Set<UserRole> userRole;
+	private List<UserRole> userRole;
 
-	public Long getId() {
-		return id;
+	
+
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
+
 
 	public String getUserName() {
 		return userName;
@@ -62,12 +71,13 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public Set<UserRole> getUserRole() {
+	public List<UserRole> getUserRole() {
 		return userRole;
 	}
 
-	public void setUsersRole(Set<UserRole> userRole) {
+	public void setUserRole(List<UserRole> userRole) {
 		this.userRole = userRole;
 	}
+
 	
 }
