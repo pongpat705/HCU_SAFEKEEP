@@ -1,4 +1,4 @@
-package th.ac.hcu.repository;
+package th.ac.hcu.repository.master;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 

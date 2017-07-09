@@ -29,14 +29,12 @@ public class ArticleIdGenerator implements IdentifierGenerator{
 			PreparedStatement ps = connection .prepareStatement("SELECT sequence_next_hi_value as value from hibernate_sequences where upper(sequence_name) = upper('master_article') ");
 			ResultSet rs = ps.executeQuery();
 			int initId = 1;
-			String initIdStr = new Integer(initId).toString();
-			initIdStr = ("0000"+initIdStr).substring(initIdStr.length());
+			String  initIdStr = String.format("%04d", initId);
 			String code = prefix + year + initIdStr;
 			if (rs.next()) {
 				int id = rs.getInt("value");
 				id++;
-				String idStr = new Integer(id).toString();
-				idStr = ("0000"+idStr).substring(idStr.length());
+				String idStr = String.format("%04d", id);
 	            code = prefix + year + idStr;
 	            System.out.println("Generated Stock Code: " + code);
 	            StringBuilder sb = new StringBuilder();
