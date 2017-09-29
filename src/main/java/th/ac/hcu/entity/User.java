@@ -1,5 +1,6 @@
 package th.ac.hcu.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -34,7 +35,7 @@ public class User {
 	private String enabled;
 	
 	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-	private List<UserRole> userRole;
+	private List<UserRole> userRole = new ArrayList<UserRole>();
 
 	
 

@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>th.ac.hcu</groupId>
-	<artifactId>hcu_keep</artifactId>
+	<artifactId>ipe.ict.hcu</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>demo</name>
-	<description>Project for hcu about keeping research document</description>
+	<description>IPE-ICT_HCU</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -40,15 +40,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-hateoas</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-rest-hal-browser</artifactId>
 		</dependency>
 
 		<dependency>

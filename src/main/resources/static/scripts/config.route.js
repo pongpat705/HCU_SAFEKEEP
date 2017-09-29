@@ -40,6 +40,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                   return $ocLazyLoad.load([{
                       files: [
+                    	  	  './scripts/services/user/userService.js',
                               './scripts/controllers/user/userCtrl.js'
                               ]
                     }]);
@@ -79,13 +80,14 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 		      	}
 		      }).state('app.parameters',{
 			    	url: '/parameters',
-			        templateUrl: './views/app/parameters/all.html',
+			        templateUrl: './views/app/parameter/parameter.html',
 			        controller: 'paramCtrl',
 			    	resolve: {
 			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
 			              return $ocLazyLoad.load([{
 			                  files: [
-			                          './scripts/controllers/parameters/paramCtrl.js'
+			                	  		'./scripts/services/parameter/paramService.js',
+			                	  		'./scripts/controllers/parameter/paramCtrl.js'
 			                          ]
 			                }]);
 			            }]

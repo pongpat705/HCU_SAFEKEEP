@@ -29,7 +29,8 @@ angular
     'restangular', 
     'toastr',
     'ngSnakeCamel',
-    'valdr'
+    'valdr',
+    'smart-table'
   ])
   .constant('COLORS', {
     font: 'Arial, "Helvetica Neue", Helvetica, sans-serif',

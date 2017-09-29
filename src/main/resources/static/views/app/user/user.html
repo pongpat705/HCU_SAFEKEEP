@@ -3,13 +3,48 @@
   	
   </div>
   <br>
+<!--   <div class="row"> -->
+<!--  	<h2 class="page-header">User List</h2> -->
+<!--     <table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped"> -->
+<!--       <tr ng-repeat="row in users"> -->
+<!--         <td title="'Username'" filter="{userName: 'text'}" sortable="'userName'">{{row.userName}}</td> -->
+<!--         <td title="'Password'" sortable="'password'">{{row.password}}</td> -->
+<!--       </tr> -->
+<!--     </table> -->
+<!--   </div> -->
+  
+  
   <div class="row">
- 	<h2 class="page-header">Angular ngTable: server-side list</h2>
-    <table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped">
-      <tr ng-repeat="row in $data">
-        <td title="'Username'" filter="{userName: 'text'}" sortable="'userName'">{{row.userName}}</td>
-        <td title="'Password'" sortable="'password'">{{row.password}}</td>
-      </tr>
+ 	<h2 class="page-header">User List</h2>
+    <table class="table">
+	     <thead>
+			<tr>
+				<th>User Name</th>
+				<th>Password</th>
+			</tr>
+			<tr>
+				<th><input ngModel="userName"/></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody ng-show="!isLoading">
+			<tr ng-repeat="row in users">
+				<td>{{row.userName}}</td>
+				<td>{{row.password}}</td>
+			</tr>
+		</tbody>
+		<tbody ng-show="isLoading">
+			<tr>
+				<td colspan="4" class="text-center">Loading ... </td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td class="text-center" st-pagination="" st-items-by-page="10" colspan="4">
+				</td>
+			</tr>
+		</tfoot>
     </table>
   </div>
+  
 </div>
