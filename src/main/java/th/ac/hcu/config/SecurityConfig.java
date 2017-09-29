@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/views/**").permitAll()
 			.antMatchers("/webjars/**").permitAll()
 			.antMatchers(HttpMethod.POST, "/login").permitAll()
-			.antMatchers("/service/xxx").hasRole("ADMIN")
+			.antMatchers("/service/isAuthen").authenticated()
 			.antMatchers("/api/**").permitAll()
 //			.anyRequest().authenticated()
 			.and()

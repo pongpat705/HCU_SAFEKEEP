@@ -28,5 +28,53 @@ public class IpeFamilyMember {
 	private String job;
 	private String income;
 	private String remark;
+	public Long getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(Long memberId) {
+		this.memberId = memberId;
+	}
+	public IpePatientProfile getPatient() {
+		return patient;
+	}
+	public void setPatient(IpePatientProfile patient) {
+		this.patient = patient;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
+	}
+	public String getRelation() {
+		return relation;
+	}
+	public void setRelation(String relation) {
+		this.relation = relation;
+	}
+	public String getJob() {
+		return job;
+	}
+	public void setJob(String job) {
+		this.job = job;
+	}
+	public String getIncome() {
+		return income;
+	}
+	public void setIncome(String income) {
+		this.income = income;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 	
 }

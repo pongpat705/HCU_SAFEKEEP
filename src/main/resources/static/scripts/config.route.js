@@ -33,7 +33,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
                 }]
               }
       }).state('app.user', {
-            url: '/node',
+            url: '/user',
             templateUrl: './views/app/user/user.html',
             controller: 'userCtrl',
         	resolve: {
@@ -86,7 +86,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
 			              return $ocLazyLoad.load([{
 			                  files: [
-			                	  		'./scripts/services/parameter/paramService.js',
+			                	  		'./scripts/services/parameter/parameterService.js',
 			                	  		'./scripts/controllers/parameter/paramCtrl.js'
 			                          ]
 			                }]);
@@ -98,15 +98,15 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 			                redirectTo: 'user.signin'
 			              }
 			            }
-			    }).state('app.tray',{
-			    	url: '/tray',
-			    	templateUrl: './views/app/tray/tray.html',
-			        controller: 'trayCtrl',
+			    }).state('app.patient',{
+			    	url: '/patient',
+			    	templateUrl: './views/app/patient/patient.html',
+			        controller: 'patientCtrl',
 			        resolve: {
 			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
 			              return $ocLazyLoad.load([{
 			                  files: [
-			                          './scripts/controllers/tray/trayCtrl.js'
+			                          './scripts/controllers/patient/patientCtrl.js'
 			                          ]
 			                }]);
 			            }]

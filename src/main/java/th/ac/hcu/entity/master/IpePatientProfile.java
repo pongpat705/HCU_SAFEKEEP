@@ -1,18 +1,15 @@
 package th.ac.hcu.entity.master;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-
-import th.ac.hcu.entity.UserRole;
 
 @Entity
 @Table(name = "IPE_PATIENT_PROFILE")
@@ -38,7 +35,7 @@ public class IpePatientProfile {
 	private String curator;
 	private String curatorRelation;
 	private String supervisor;
-	@OneToMany(mappedBy="patient", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="patient")
 	private List<IpeVisitLog> visits;
 	
 	//nurse
@@ -72,7 +69,7 @@ public class IpePatientProfile {
 	
 	private String sResidenceDescription;//3
 
-	@OneToMany(mappedBy="patient", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="patient")
 	private List<IpeFamilyMember> members;//4
 	
 	private String sGenogramImg; //4.2
@@ -85,7 +82,499 @@ public class IpePatientProfile {
 	private String sPatientMapImg;//7
 	
 	//pharma
+	@OneToMany(mappedBy="patient")
+	private List<IpeUseDrug> useDrugs;
 	
+	//gerneral health
+	private String gAnswer1;
+	private String gAnswer2;
+	private String gAnswer3;
+	private String gAnswer4;
+	private String gAnswer5;
+	private String gAnswer6;
+	private String gAnswer7;
+	private String gAnswer8;
+	private String gAnswer9;
+	
+	@OneToMany(mappedBy="patient")
+	private List<IpePatientTransaction> transactions;
+	
+	private Date createdDate;
+	private String createdBy;
+	private Date updatedDate;
+	private String updatedBy;
+
+	public Long getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(Long patientId) {
+		this.patientId = patientId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Long getAge() {
+		return age;
+	}
+
+	public void setAge(Long age) {
+		this.age = age;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getHouseNo() {
+		return houseNo;
+	}
+
+	public void setHouseNo(String houseNo) {
+		this.houseNo = houseNo;
+	}
+
+	public String getGroupNo() {
+		return groupNo;
+	}
+
+	public void setGroupNo(String groupNo) {
+		this.groupNo = groupNo;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
+	public String getPrefecture() {
+		return prefecture;
+	}
+
+	public void setPrefecture(String prefecture) {
+		this.prefecture = prefecture;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getDiagnose() {
+		return diagnose;
+	}
+
+	public void setDiagnose(String diagnose) {
+		this.diagnose = diagnose;
+	}
+
+	public String getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+
+	public String getCurator() {
+		return curator;
+	}
+
+	public void setCurator(String curator) {
+		this.curator = curator;
+	}
+
+	public String getCuratorRelation() {
+		return curatorRelation;
+	}
+
+	public void setCuratorRelation(String curatorRelation) {
+		this.curatorRelation = curatorRelation;
+	}
+
+	public String getSupervisor() {
+		return supervisor;
+	}
+
+	public void setSupervisor(String supervisor) {
+		this.supervisor = supervisor;
+	}
+
+	public List<IpeVisitLog> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(List<IpeVisitLog> visits) {
+		this.visits = visits;
+	}
+
+	public String getnSickness() {
+		return nSickness;
+	}
+
+	public void setnSickness(String nSickness) {
+		this.nSickness = nSickness;
+	}
+
+	public String getnGeneralAppearance() {
+		return nGeneralAppearance;
+	}
+
+	public void setnGeneralAppearance(String nGeneralAppearance) {
+		this.nGeneralAppearance = nGeneralAppearance;
+	}
+
+	public String getnBodyTemp() {
+		return nBodyTemp;
+	}
+
+	public void setnBodyTemp(String nBodyTemp) {
+		this.nBodyTemp = nBodyTemp;
+	}
+
+	public String getnPulseRate() {
+		return nPulseRate;
+	}
+
+	public void setnPulseRate(String nPulseRate) {
+		this.nPulseRate = nPulseRate;
+	}
+
+	public String getnRespiratoryRate() {
+		return nRespiratoryRate;
+	}
+
+	public void setnRespiratoryRate(String nRespiratoryRate) {
+		this.nRespiratoryRate = nRespiratoryRate;
+	}
+
+	public String getnBloodPressure() {
+		return nBloodPressure;
+	}
+
+	public void setnBloodPressure(String nBloodPressure) {
+		this.nBloodPressure = nBloodPressure;
+	}
+
+	public String getnSelfHelp() {
+		return nSelfHelp;
+	}
+
+	public void setnSelfHelp(String nSelfHelp) {
+		this.nSelfHelp = nSelfHelp;
+	}
+
+	public String getnFoodCondition() {
+		return nFoodCondition;
+	}
+
+	public void setnFoodCondition(String nFoodCondition) {
+		this.nFoodCondition = nFoodCondition;
+	}
+
+	public String getnMentalCondition() {
+		return nMentalCondition;
+	}
+
+	public void setnMentalCondition(String nMentalCondition) {
+		this.nMentalCondition = nMentalCondition;
+	}
+
+	public String getnHowSupTakeCare() {
+		return nHowSupTakeCare;
+	}
+
+	public void setnHowSupTakeCare(String nHowSupTakeCare) {
+		this.nHowSupTakeCare = nHowSupTakeCare;
+	}
+
+	public String getnCheckBySystem() {
+		return nCheckBySystem;
+	}
+
+	public void setnCheckBySystem(String nCheckBySystem) {
+		this.nCheckBySystem = nCheckBySystem;
+	}
+
+	public String getnCheckByTools() {
+		return nCheckByTools;
+	}
+
+	public void setnCheckByTools(String nCheckByTools) {
+		this.nCheckByTools = nCheckByTools;
+	}
+
+	public String getnDiagnosis() {
+		return nDiagnosis;
+	}
+
+	public void setnDiagnosis(String nDiagnosis) {
+		this.nDiagnosis = nDiagnosis;
+	}
+
+	public String getnCare() {
+		return nCare;
+	}
+
+	public void setnCare(String nCare) {
+		this.nCare = nCare;
+	}
+
+	public String getnEstimate() {
+		return nEstimate;
+	}
+
+	public void setnEstimate(String nEstimate) {
+		this.nEstimate = nEstimate;
+	}
+
+	public String getsFormerJob() {
+		return sFormerJob;
+	}
+
+	public void setsFormerJob(String sFormerJob) {
+		this.sFormerJob = sFormerJob;
+	}
+
+	public String getsWorkDuration() {
+		return sWorkDuration;
+	}
+
+	public void setsWorkDuration(String sWorkDuration) {
+		this.sWorkDuration = sWorkDuration;
+	}
+
+	public String getsIncome() {
+		return sIncome;
+	}
+
+	public void setsIncome(String sIncome) {
+		this.sIncome = sIncome;
+	}
+
+	public String getsResidence() {
+		return sResidence;
+	}
+
+	public void setsResidence(String sResidence) {
+		this.sResidence = sResidence;
+	}
+
+	public String getsResidenceDescription() {
+		return sResidenceDescription;
+	}
+
+	public void setsResidenceDescription(String sResidenceDescription) {
+		this.sResidenceDescription = sResidenceDescription;
+	}
+
+	public List<IpeFamilyMember> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<IpeFamilyMember> members) {
+		this.members = members;
+	}
+
+	public String getsGenogramImg() {
+		return sGenogramImg;
+	}
+
+	public void setsGenogramImg(String sGenogramImg) {
+		this.sGenogramImg = sGenogramImg;
+	}
+
+	public String getsEcoMapImg() {
+		return sEcoMapImg;
+	}
+
+	public void setsEcoMapImg(String sEcoMapImg) {
+		this.sEcoMapImg = sEcoMapImg;
+	}
+
+	public String getsMentalCondition() {
+		return sMentalCondition;
+	}
+
+	public void setsMentalCondition(String sMentalCondition) {
+		this.sMentalCondition = sMentalCondition;
+	}
+
+	public String getsFamilyCondition() {
+		return sFamilyCondition;
+	}
+
+	public void setsFamilyCondition(String sFamilyCondition) {
+		this.sFamilyCondition = sFamilyCondition;
+	}
+
+	public String getsRiskCondition() {
+		return sRiskCondition;
+	}
+
+	public void setsRiskCondition(String sRiskCondition) {
+		this.sRiskCondition = sRiskCondition;
+	}
+
+	public String getsNeedCondition() {
+		return sNeedCondition;
+	}
+
+	public void setsNeedCondition(String sNeedCondition) {
+		this.sNeedCondition = sNeedCondition;
+	}
+
+	public String getsHelpingGuid() {
+		return sHelpingGuid;
+	}
+
+	public void setsHelpingGuid(String sHelpingGuid) {
+		this.sHelpingGuid = sHelpingGuid;
+	}
+
+	public String getsPatientMapImg() {
+		return sPatientMapImg;
+	}
+
+	public void setsPatientMapImg(String sPatientMapImg) {
+		this.sPatientMapImg = sPatientMapImg;
+	}
+
+	public List<IpeUseDrug> getUseDrugs() {
+		return useDrugs;
+	}
+
+	public void setUseDrugs(List<IpeUseDrug> useDrugs) {
+		this.useDrugs = useDrugs;
+	}
+
+	public String getgAnswer1() {
+		return gAnswer1;
+	}
+
+	public void setgAnswer1(String gAnswer1) {
+		this.gAnswer1 = gAnswer1;
+	}
+
+	public String getgAnswer2() {
+		return gAnswer2;
+	}
+
+	public void setgAnswer2(String gAnswer2) {
+		this.gAnswer2 = gAnswer2;
+	}
+
+	public String getgAnswer3() {
+		return gAnswer3;
+	}
+
+	public void setgAnswer3(String gAnswer3) {
+		this.gAnswer3 = gAnswer3;
+	}
+
+	public String getgAnswer4() {
+		return gAnswer4;
+	}
+
+	public void setgAnswer4(String gAnswer4) {
+		this.gAnswer4 = gAnswer4;
+	}
+
+	public String getgAnswer5() {
+		return gAnswer5;
+	}
+
+	public void setgAnswer5(String gAnswer5) {
+		this.gAnswer5 = gAnswer5;
+	}
+
+	public String getgAnswer6() {
+		return gAnswer6;
+	}
+
+	public void setgAnswer6(String gAnswer6) {
+		this.gAnswer6 = gAnswer6;
+	}
+
+	public String getgAnswer7() {
+		return gAnswer7;
+	}
+
+	public void setgAnswer7(String gAnswer7) {
+		this.gAnswer7 = gAnswer7;
+	}
+
+	public String getgAnswer8() {
+		return gAnswer8;
+	}
+
+	public void setgAnswer8(String gAnswer8) {
+		this.gAnswer8 = gAnswer8;
+	}
+
+	public String getgAnswer9() {
+		return gAnswer9;
+	}
+
+	public void setgAnswer9(String gAnswer9) {
+		this.gAnswer9 = gAnswer9;
+	}
+
+	public List<IpePatientTransaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<IpePatientTransaction> transactions) {
+		this.transactions = transactions;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public String getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
+	}
 	
 	
 	

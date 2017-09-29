@@ -2,7 +2,8 @@ package th.ac.hcu.constant;
 
 public enum Role {
 	ROLE_ADMIN("ROLE_ADMIN"),
-	ROLE_USER("ROLE_USER");
+	ROLE_STUD("ROLE_STUD"),
+	ROLE_PROF("ROLE_PROF");
 	
 	private String roleName;
 

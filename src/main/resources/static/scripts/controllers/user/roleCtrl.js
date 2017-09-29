@@ -11,46 +11,8 @@ angular
 		  				toastr, $rootScope) {
 	
 	$scope.$watch("init", function(){
-//		$scope.loadStationDetail();
 	});
 	
-	$scope.station = {};
-	$scope.stationId = $stateParams.stationId;
-	$scope.extendType = [	{	label:	'Yes',
-						 		value:	1
-							},
-							{	label:	'No',
-						 		value:	0
-							},
-						];
-	
-	$scope.loadStationDetail = function(){
-		var stationServices = Restangular.one('/dashboard/api/stations', $scope.stationId);
-		
-		stationServices.get().then(function(response){
-			$scope.station = response;
-		}).catch(function(response) {
-			console.error('Error',response);
-			toastr.error(response.data.message, 'Error');
-			if (403 == response.status){
-				$rootScope.unAuthorized();
-			}
-		});
-	};
-	
-	$scope.saveStation = function() {
-		var stationServices = Restangular.one('/dashboard/api/stations', $scope.stationId);
-		stationServices.patch($scope.station).then(function(response){
-			toastr.success('Update success');
-			$scope.ok();
-		}).catch(function(response) {
-			console.error('Error',response);
-			toastr.error(response.data.message, 'Error');
-			if (403 == response.status){
-				$rootScope.unAuthorized();
-			}
-		});
-	};
 	
 	$scope.ok = function () {
 		$state.go('app.user',{},{reload:true});

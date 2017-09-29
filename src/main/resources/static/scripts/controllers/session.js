@@ -4,11 +4,11 @@ angular
 		.controller('sessionCtrl', [	'$scope', '$state', '$auth', 
 										'$http', 'PermissionStore', '$rootScope', 
 										'toastr', '$q', '$interval', 'Restangular', 
-										'$uibModalStack', 
+										'$uibModalStack', '$sessionStorage',
 function sessionCtrl(	$scope, $state, $auth, 
 						$http, PermissionStore, $rootScope, 
 						toastr, $q,  $interval, Restangular,
-						$uibModalStack) {
+						$uibModalStack, $sessionStorage) {
 	
 	$scope.login = function(){
 		toastr.clear();
@@ -16,12 +16,25 @@ function sessionCtrl(	$scope, $state, $auth,
 		
 		$auth.login($scope.user)
 		  .then(function(response) {
+			  PermissionStore.clearStore();
+			  
 			  var token = response.headers('maoz-token');
 			  $auth.setToken(token.replace('Bearer ', ''));
 		    // setting roles,objects after login success
-			  PermissionStore.clearStore();
 			  
 			  isTokenValid = true;
+			  
+			  $interval(function(){
+				  if(isTokenValid){
+					  var authenService = Restangular.one('/ipe/service/isAuthen');
+					  authenService.get().then(function(response){
+						  isTokenValid = true;
+					  }).catch(function(response){
+						  isTokenValid = false;
+						  $rootScope.unAuthorized();
+					  });
+				  }
+			  }, 10*1000);
 			  
 			  PermissionStore.definePermission('isAuthenticated', function(){
 				  return isTokenValid;
@@ -35,6 +48,8 @@ function sessionCtrl(	$scope, $state, $auth,
 					  this.push(value.authority);
 				  }, roleList);
 				  
+				  $sessionStorage.roleList = roleList;
+				  
 				  PermissionStore
 				  	.defineManyPermissions(roleList, function(permissionName, transitionProperties) {
 				  		//FIXME
@@ -47,8 +62,8 @@ function sessionCtrl(	$scope, $state, $auth,
 				  //if role = ADMIN
 				  if(roleList.indexOf('ROLE_ADMIN') > -1){
 					  $state.go('app.user');
-				  } else if(roleList.indexOf('ROLE_USER')> -1){
-					  $state.go('app.tray');
+				  } else if((roleList.indexOf('ROLE_STUD')> -1)||(roleList.indexOf('ROLE_PROF')> -1)){
+					  $state.go('app.patient');
 				  } else {
 					  $state.go('app.landing');
 				  }

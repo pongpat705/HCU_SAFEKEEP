@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import th.ac.hcu.security.AuthenticatedUsers;
 import th.ac.hcu.security.TokenAuthenticationService;
@@ -17,7 +19,7 @@ import th.ac.hcu.service.UserService;
 
 @Controller
 @RequestMapping(value = "/service")
-public class UserServiceController {
+public class ServiceController {
 	
 	  private final Logger log = LoggerFactory.getLogger(this.getClass());	
 	  
@@ -41,9 +43,15 @@ public class UserServiceController {
 	    }
 	  }
 	  
-	  @RequestMapping(value = "/xxx", method = RequestMethod.GET)
+	  @RequestMapping(value = "/isAuthen", method = RequestMethod.GET)
+	  public void isAuthen(HttpServletRequest request) throws Exception {
+		  log.info("calling from "+request.getRemoteAddr());
+	  }
+	  
+	  @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	  @ResponseBody
-	  public String xxx(HttpServletRequest request) throws Exception {
-		  return "dddd";
+	  public void uploadImage(HttpServletRequest request, 
+			  				@RequestParam(name="files") MultipartFile[] files) throws Exception {
+		  log.info("calling from "+request.getRemoteAddr());
 	  }
 }

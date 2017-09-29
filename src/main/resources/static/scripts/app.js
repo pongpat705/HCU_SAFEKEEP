@@ -46,12 +46,25 @@ angular
     bodyBg: $('body').css('background-color'),
     textColor: '#6B6B6B',
   })
-  .run(['$http', '$rootScope', '$q', '$uibModalStack', '$state', 'PermissionStore', 
-        function($http, $rootScope, $q, $uibModalStack, $state, PermissionStore) {
+  .run(['$http', '$rootScope', '$q', '$uibModalStack', '$state', 'PermissionStore', '$sessionStorage', 'Restangular',
+        function($http, $rootScope, $q, $uibModalStack, $state, PermissionStore, $sessionStorage, Restangular) {
+	  
+	  
+	  $rootScope.$on('$stateChangeStart',  function(event, toState, toParams, fromState, fromParams, options){
+		  $uibModalStack.dismissAll();
+		  $rootScope.currentState = toState.name;
+		  if(undefined != $sessionStorage.roleList){
+			  PermissionStore
+				.defineManyPermissions($sessionStorage.roleList, function(permissionName, transitionProperties) {
+					//FIXME
+					return true;
+			  });  
+		  }
+		  
+	  });
 	  
 	  $rootScope.checkPermission = function(permission){
 		  var permissions = PermissionStore.getStore();
-		  
 		  if (null == permissions[permission]) {
 			  return false;
 		  }

@@ -2,11 +2,11 @@
 'use strict';
 angular
 	.module('app')
-		.controller('trayCtrl', [	'$scope', '$http', '$localStorage', 
+		.controller('patientCtrl', [	'$scope', '$http', '$localStorage', 
 									'$timeout', '$translate', '$auth', 
 									'$state' , '$stateParams', 'Restangular', 
 									'toastr', '$rootScope',
-  function trayCtrl($scope, $http, $localStorage, 
+  function patientCtrl($scope, $http, $localStorage, 
 		  			$timeout, $translate, $auth, 
 		  			$state, $stateParams, Restangular, 
 		  			toastr, $rootScope) {

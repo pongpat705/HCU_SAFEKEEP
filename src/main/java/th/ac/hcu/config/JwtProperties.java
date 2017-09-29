@@ -1,14 +1,13 @@
 package th.ac.hcu.config;
 
 import org.springframework.core.annotation.Order;
-import org.springframework.security.crypto.keygen.KeyGenerators;
 import org.springframework.stereotype.Component;
 
 @Component
 @Order(1)
 public class JwtProperties {
 	
-	private final long jwtExpirationTime = 1000*60*5;
+	private final long jwtExpirationTime = 1000*60*10;
 	
 	private final String jwtSecret = "MaozcaptionitSuperSecret";
 	

@@ -28,36 +28,53 @@ public class StartUp {
 
 	 @PostConstruct
 	 public void settingData(){
-		
+		initialRole();
+	 }
+	 
+	 public void initialRole(){
+		 log.info("inserting admin");
+			User adminUser = new User();
+			adminUser.setEnabled("1");
+			adminUser.setUserName("pongpat705");
+			adminUser.setPassword("password");
 			
-		log.info("inserting admin");
-		User adminUser = new User();
-		adminUser.setEnabled("1");
-		adminUser.setUserName("pongpat705");
-		adminUser.setPassword("password");
-		
-		userRepository.save(adminUser);
-		
-		UserRole adminRole = new UserRole();
-		adminRole.setEnabled("1");
-		adminRole.setRole(Role.ROLE_ADMIN);
-		adminRole.setUser(adminUser);
-		
-		userRoleRepository.save(adminRole);
-		
-		log.info("inserting user");
-		User userUser = new User();
-		userUser.setEnabled("1");
-		userUser.setUserName("pongpat706");
-		userUser.setPassword("password");
-		
-		userRepository.save(userUser);
-		
-		UserRole userRole = new UserRole();
-		userRole.setEnabled("1");
-		userRole.setRole(Role.ROLE_USER);
-		userRole.setUser(userUser);
-		
-		userRoleRepository.save(userRole);
+			userRepository.save(adminUser);
+			
+			UserRole adminRole = new UserRole();
+			adminRole.setEnabled("1");
+			adminRole.setRole(Role.ROLE_ADMIN);
+			adminRole.setUser(adminUser);
+			
+			userRoleRepository.save(adminRole);
+			
+			log.info("inserting prof");
+			User profUser = new User();
+			profUser.setEnabled("1");
+			profUser.setUserName("pongpat706");
+			profUser.setPassword("password");
+			
+			userRepository.save(profUser);
+			
+			UserRole profRole = new UserRole();
+			profRole.setEnabled("1");
+			profRole.setRole(Role.ROLE_PROF);
+			profRole.setUser(profUser);
+			
+			userRoleRepository.save(profRole);
+			
+			log.info("inserting stud");
+			User stud = new User();
+			stud.setEnabled("1");
+			stud.setUserName("pongpat706");
+			stud.setPassword("password");
+			
+			userRepository.save(stud);
+			
+			UserRole studRole = new UserRole();
+			studRole.setEnabled("1");
+			studRole.setRole(Role.ROLE_STUD);
+			studRole.setUser(stud);
+			
+			userRoleRepository.save(studRole);
 	 }
 }
