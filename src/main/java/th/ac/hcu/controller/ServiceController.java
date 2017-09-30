@@ -5,11 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import th.ac.hcu.security.AuthenticatedUsers;
@@ -17,7 +17,7 @@ import th.ac.hcu.security.TokenAuthenticationService;
 import th.ac.hcu.service.MaoUserDetailService;
 import th.ac.hcu.service.UserService;
 
-@Controller
+@RestController
 @RequestMapping(value = "/service")
 public class ServiceController {
 	
@@ -44,8 +44,10 @@ public class ServiceController {
 	  }
 	  
 	  @RequestMapping(value = "/isAuthen", method = RequestMethod.GET)
-	  public void isAuthen(HttpServletRequest request) throws Exception {
+	  @ResponseBody
+	  public String isAuthen(HttpServletRequest request) {
 		  log.info("calling from "+request.getRemoteAddr());
+		  return "{\"ipAddress\":\""+request.getRemoteAddr()+"\"}";
 	  }
 	  
 	  @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)

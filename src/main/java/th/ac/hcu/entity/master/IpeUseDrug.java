@@ -1,5 +1,6 @@
 package th.ac.hcu.entity.master;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,6 +21,8 @@ public class IpeUseDrug {
 	@Id
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_USE_DRUG")
     private Long drugId;
+	
+	private Date date;
 	
 	@ManyToOne
 	@JoinColumn(name = "patient_id")
@@ -102,6 +105,22 @@ public class IpeUseDrug {
 
 	public void setProblemDescription(String problemDescription) {
 		this.problemDescription = problemDescription;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public IpePatientProfile getPatient() {
+		return patient;
+	}
+
+	public void setPatient(IpePatientProfile patient) {
+		this.patient = patient;
 	}
 	
 	

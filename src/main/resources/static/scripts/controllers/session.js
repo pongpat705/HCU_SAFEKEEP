@@ -62,7 +62,9 @@ function sessionCtrl(	$scope, $state, $auth,
 				  //if role = ADMIN
 				  if(roleList.indexOf('ROLE_ADMIN') > -1){
 					  $state.go('app.user');
-				  } else if((roleList.indexOf('ROLE_STUD')> -1)||(roleList.indexOf('ROLE_PROF')> -1)){
+				  } else if((roleList.indexOf('ROLE_STUD')> -1)){
+					  $state.go('app.patient');
+				  } else if((roleList.indexOf('ROLE_PROF')> -1)){
 					  $state.go('app.patient');
 				  } else {
 					  $state.go('app.landing');

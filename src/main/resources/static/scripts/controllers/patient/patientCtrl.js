@@ -5,31 +5,78 @@ angular
 		.controller('patientCtrl', [	'$scope', '$http', '$localStorage', 
 									'$timeout', '$translate', '$auth', 
 									'$state' , '$stateParams', 'Restangular', 
-									'toastr', '$rootScope',
+									'toastr', '$rootScope', 'patientServices',
   function patientCtrl($scope, $http, $localStorage, 
 		  			$timeout, $translate, $auth, 
 		  			$state, $stateParams, Restangular, 
-		  			toastr, $rootScope) {
+		  			toastr, $rootScope, patientServices) {
 	
 	$scope.$watch("init", function(){
-//		$scope.loadStations();
+		$scope.getPatientProfileList();
 	});
+	var paginationOptions = {
+	        pageNumber: 0,
+	        pageSize: 20,
+	        sort: null
+    };
 	
-	$scope.stations = {};
-	
-	$scope.loadStations = function(){
-		var stationServices = Restangular.all('/dashboard/api/stations');
-		
-		stationServices.getList({size:1000}).then(function(response){
-			$scope.stations = response;
+	$scope.getPatientProfileList = function(page, size){
+		patientServices.getPatients(page, size).then(function(response){
+			console.log(response.data);
+			$scope.patientGridOptions.data = response.data._embedded.ipePatientProfiles;
+			$scope.patientGridOptions.totalItems = response.data.page.totalElements;
 		}).catch(function(response) {
 			console.error('Error',response);
 			toastr.error(response.data.message, 'Error');
-			if (403 == response.status){
-				$rootScope.unAuthorized();
-			}
-		});
-	};
+	    });
+	}
+
+	$scope.patientGridOptions = {
+            paginationPageSizes: [5, 10, 20],
+            paginationPageSize: paginationOptions.pageSize,
+            enableColumnMenus:false,
+            enableAutoFitColumns: true,
+            useExternalPagination: true,
+            columnDefs: [
+                { name: 'name'},
+    			{ name: 'age'},
+    			{ name: 'mobile'},
+    			{ name: 'houseNo'},
+    			{ name: 'groupNo'},
+    			{ name: 'district'},
+    			{ name: 'prefecture'},
+    			{ name: 'province'},
+    			{ name: 'diagnose'},
+    			{ name: 'createdDate'},
+    			{ name: 'createdBy'},
+    			{
+                    name : 'Action',
+                    cellTemplate : '<div class="ui-grid-cell-contents">' +
+                                        '<button class="btn btn-xs btn-info" title="view transaction" ui-sref="app.transaction({patient: row.entity})" ><i class="fa fa-list-alt" aria-hidden="true"></i></button>' +
+                                        '&nbsp;<button class="btn btn-xs btn-primary" title="view profile" ui-sref="app.profile({patient: row.entity})" ><i class="fa fa-info-circle" aria-hidden="true"></i></button>' +
+                                   '</div>',
+                    enableCellEdit : false
+                }
+    			
+            ],
+            onRegisterApi: function(gridApi) {
+               $scope.gridApi = gridApi;
+               gridApi.pagination.on.paginationChanged(
+                 $scope, 
+                 function (newPage, pageSize) {
+                   paginationOptions.pageNumber = newPage;
+                   paginationOptions.pageSize = pageSize;
+                   
+                   patientServices.getPatients(newPage-1, pageSize).then(function(response){
+           			$scope.patientGridOptions.data = response.data._embedded.ipePatientProfiles;
+           			$scope.patientGridOptions.totalItems = response.data.page.totalElements;
+    	       		}).catch(function(response) {
+    	       			console.error('Error',response);
+    	       			toastr.error(response.data.message, 'Error');
+    	       	    });
+                });
+            }
+        };
 	
 	$scope.openModal = function(userId){
 		$state.go('app.user.role.config', {userId:userId});

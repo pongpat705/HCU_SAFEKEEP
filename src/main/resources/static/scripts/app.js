@@ -30,7 +30,10 @@ angular
     'toastr',
     'ngSnakeCamel',
     'valdr',
-    'smart-table'
+    'ui.grid',
+    'ui.grid.pagination',
+    'ui.grid.resizeColumns',
+    'ui.grid.autoFitColumns'
   ])
   .constant('COLORS', {
     font: 'Arial, "Helvetica Neue", Helvetica, sans-serif',

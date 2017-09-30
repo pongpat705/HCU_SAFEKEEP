@@ -32,6 +32,9 @@ public class IpePatientTransaction {
 	
 	@OneToMany(mappedBy="transaction")
 	private List<IpeNurseImg> imgs;
+	
+	@OneToMany(mappedBy="transaction")
+	private List<IpeStudentEstimate> estimates;
 
 	public Long getTransactionId() {
 		return transactionId;

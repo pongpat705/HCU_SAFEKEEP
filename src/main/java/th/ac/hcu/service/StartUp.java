@@ -65,7 +65,7 @@ public class StartUp {
 			log.info("inserting stud");
 			User stud = new User();
 			stud.setEnabled("1");
-			stud.setUserName("pongpat706");
+			stud.setUserName("pongpat707");
 			stud.setPassword("password");
 			
 			userRepository.save(stud);

@@ -31,7 +31,7 @@
 			<span>Patient</span>
 		</a>	
 	</div>
-		<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.user')}" ng-if="checkPermission('ROLE_PROF')" >
+		<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.user')}" ng-if="checkPermission('ROLE_ADMIN')" >
 		<a ui-sref-active="active" ui-sref="app.user">
 			<i class="fa fa-tachometer fa-2x fa-fw"> </i>
 			<span>Users</span>

@@ -35,6 +35,7 @@ public class IpePatientProfile {
 	private String curator;
 	private String curatorRelation;
 	private String supervisor;
+	private String supervisorMobile;
 	@OneToMany(mappedBy="patient")
 	private List<IpeVisitLog> visits;
 	
@@ -214,6 +215,14 @@ public class IpePatientProfile {
 
 	public void setSupervisor(String supervisor) {
 		this.supervisor = supervisor;
+	}
+
+	public String getSupervisorMobile() {
+		return supervisorMobile;
+	}
+
+	public void setSupervisorMobile(String supervisorMobile) {
+		this.supervisorMobile = supervisorMobile;
 	}
 
 	public List<IpeVisitLog> getVisits() {
