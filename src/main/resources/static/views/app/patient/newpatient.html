@@ -122,63 +122,75 @@
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">อาการเจ็บป่วยปัจจุบัน</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="nSickness" ng-model="patient.nSickness">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="nSickness" ng-model="patient.nSickness"> -->
+	          		<text-angular ng-model="patient.nSickness"></text-angular>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">General Appearance</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="nGeneralAppearance" ng-model="patient.nGeneralAppearance">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="nGeneralAppearance" ng-model="patient.nGeneralAppearance"> -->
+	          		<text-angular ng-model="patient.nGeneralAppearance"></text-angular>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label"><b>สัญญาณชีพ</b></label>
           				<div class="col-sm-12"></div>
 			         	<label class="col-sm-2 text-uppercase control-label">อุณหภูมิร่างกาย(BT)</label>
-			          	<div class="col-sm-8">
+			          	<div class="col-sm-6">
 			          		<input type="text" class="form-control" placeholder="" name="nBodyTemp" ng-model="patient.nBodyTemp">
 			          	</div>
+			          	<label class="col-sm-2 text-uppercase center">องศาเซลเซียส</label>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">สัญญาณชีพ(PR)</label>
-			          	<div class="col-sm-8">
+			          	<div class="col-sm-6">
 			          		<input type="text" class="form-control" placeholder="" name="nPulseRate" ng-model="patient.nPulseRate">
 			          	</div>
+			          	<label class="col-sm-2 text-uppercase center">ครั้งต่อนาที</label>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">(RR)</label>
-			          	<div class="col-sm-8">
+			          	<div class="col-sm-6">
 			          		<input type="text" class="form-control" placeholder="" name="nRespiratoryRate" ng-model="patient.nRespiratoryRate">
 			          	</div>
+			          	<label class="col-sm-2 text-uppercase center">ครั้งต่อนาที</label>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">แรงดันเลือด(BP)</label>
-			          	<div class="col-sm-8">
+			          	<div class="col-sm-6">
 			          		<input type="text" class="form-control" placeholder="" name="nBloodPressure" ng-model="patient.nBloodPressure">
 			          	</div>
+			          	<label class="col-sm-2 text-uppercase center">มม.ปรอท</label>
 	         </div>
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">การช่วยเหลือตนเองของผู้ป่วย</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="nSelfHelp" ng-model="patient.nSelfHelp">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="nSelfHelp" ng-model="patient.nSelfHelp"> -->
+	          		<select class="form-control" ng-model="patient.nSelfHelp">
+	          			<option>--select--</option>
+	          		</select>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ประเมินภาวะโภชนาการอาหาร(ทางที่ได้รับ, ชนิด, ปริมาณ)</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="nFoodCondition" ng-model="patient.nFoodCondition">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="nFoodCondition" ng-model="patient.nFoodCondition"> -->
+	          		<text-angular ng-model="patient.nFoodCondition"></text-angular>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ประเมินสภาพจิตใจและสังคม</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="nMentalCondition" ng-model="patient.nMentalCondition">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="nMentalCondition" ng-model="patient.nMentalCondition"> -->
+	          		<text-angular ng-model="patient.nMentalCondition"></text-angular>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">การดูแลผู้ป่วยของผู้ดูแล</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="nHowSupTakeCare" ng-model="patient.nHowSupTakeCare">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="nHowSupTakeCare" ng-model="patient.nHowSupTakeCare"> -->
+	          		<text-angular ng-model="patient.nHowSupTakeCare"></text-angular>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
@@ -186,31 +198,38 @@
 	          			<div class="col-sm-12"></div>
 			         	<label class="col-sm-2 text-uppercase control-label">ตามระบบ(เน้นระบบที่มีปัญหา)</label>
 			          	<div class="col-sm-8">
-			          		<input type="text" class="form-control" placeholder="" name="nCheckBySystem" ng-model="patient.nCheckBySystem">
+<!-- 			          		<input type="text" class="form-control" placeholder="" name="nCheckBySystem" ng-model="patient.nCheckBySystem"> -->
+			          		<text-angular ng-model="patient.nCheckBySystem"></text-angular>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">อุปกรณ์พิเศษที่ใช้</label>
 			          	<div class="col-sm-8">
-			          		<input type="text" class="form-control" placeholder="" name="nCheckByTools" ng-model="patient.nCheckByTools">
+<!-- 			          		<input type="text" class="form-control" placeholder="" name="nCheckByTools" ng-model="patient.nCheckByTools"> -->
+			          		<select class="form-control" ng-model="patient.nCheckByTools">
+			          			<option>--select--</option>
+			          		</select>
 			          	</div>
 	         </div>
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">วินิจฉัยปัญหา</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="nDiagnosis" ng-model="patient.nDiagnosis">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="nDiagnosis" ng-model="patient.nDiagnosis"> -->
+	          		<text-angular ng-model="patient.nDiagnosis"></text-angular>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">การดูแล</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="nCare" ng-model="patient.nCare">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="nCare" ng-model="patient.nCare"> -->
+	          		<text-angular ng-model="patient.nCare"></text-angular>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ประเมินผล</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="nEstimate" ng-model="patient.nEstimate">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="nEstimate" ng-model="patient.nEstimate"> -->
+	          		<text-angular ng-model="patient.nEstimate"></text-angular>
 	          	</div>
 	          </div> 
   		</div>
