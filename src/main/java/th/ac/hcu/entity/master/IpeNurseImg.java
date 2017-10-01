@@ -20,10 +20,6 @@ public class IpeNurseImg {
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_NURSE_IMG")
     private Long imgId;
 	
-	@ManyToOne
-	@JoinColumn(name = "transaction_id")
-	private IpePatientTransaction transaction;
-	
 	private String type;
 	private String description;
 	private Date cleanDate;
@@ -32,12 +28,6 @@ public class IpeNurseImg {
 	}
 	public void setImgId(Long imgId) {
 		this.imgId = imgId;
-	}
-	public IpePatientTransaction getTransaction() {
-		return transaction;
-	}
-	public void setTransaction(IpePatientTransaction transaction) {
-		this.transaction = transaction;
 	}
 	public String getType() {
 		return type;

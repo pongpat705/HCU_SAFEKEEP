@@ -3,6 +3,7 @@ package th.ac.hcu.entity.master;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +37,7 @@ public class IpePatientProfile {
 	private String curatorRelation;
 	private String supervisor;
 	private String supervisorMobile;
-	@OneToMany(mappedBy="patient")
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeVisitLog> visits;
 	
 	//nurse
@@ -70,7 +71,7 @@ public class IpePatientProfile {
 	
 	private String sResidenceDescription;//3
 
-	@OneToMany(mappedBy="patient")
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeFamilyMember> members;//4
 	
 	private String sGenogramImg; //4.2
@@ -83,7 +84,7 @@ public class IpePatientProfile {
 	private String sPatientMapImg;//7
 	
 	//pharma
-	@OneToMany(mappedBy="patient")
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeUseDrug> useDrugs;
 	
 	//gerneral health
@@ -97,7 +98,7 @@ public class IpePatientProfile {
 	private String gAnswer8;
 	private String gAnswer9;
 	
-	@OneToMany(mappedBy="patient")
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpePatientTransaction> transactions;
 	
 	private Date createdDate;

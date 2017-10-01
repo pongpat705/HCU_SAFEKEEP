@@ -20,10 +20,6 @@ public class IpeVisitLog {
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_VISIT_LOG")
     private Long logId;
 	
-	@ManyToOne
-	@JoinColumn(name = "patient_id")
-	private IpePatientProfile patient;
-	
 	private Date date;
 
 	public Long getLogId() {
@@ -32,14 +28,6 @@ public class IpeVisitLog {
 
 	public void setLogId(Long logId) {
 		this.logId = logId;
-	}
-
-	public IpePatientProfile getPatient() {
-		return patient;
-	}
-
-	public void setPatient(IpePatientProfile patient) {
-		this.patient = patient;
 	}
 
 	public Date getDate() {

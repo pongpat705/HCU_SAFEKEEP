@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import th.ac.hcu.entity.master.IpePatientProfile;
 import th.ac.hcu.repository.master.DrugListRepository;
 import th.ac.hcu.repository.master.FamilyMemberRepository;
 import th.ac.hcu.repository.master.PatientProfileRepository;
@@ -37,7 +38,7 @@ public class PatientController {
 	@RequestMapping(value = "/addPatientProfile", method = RequestMethod.POST)
 	@ResponseBody
 	public void addPatientProfile(HttpServletRequest request, 
-			  				@RequestBody Object obj) throws Exception {
+			  				@RequestBody IpePatientProfile patientProfile) throws Exception {
 		  log.info("calling from "+request.getRemoteAddr());
 	}
 }

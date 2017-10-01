@@ -18,10 +18,6 @@ public class IpeMedicalTechnical {
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_MEDICAL_TECHNICAL")
     private Long medicalId;
 	
-	@ManyToOne
-	@JoinColumn(name = "transaction_id")
-	private IpePatientTransaction transaction;
-	
 	private String record;
 	private String nomalValue;
 	private String result;
@@ -31,12 +27,6 @@ public class IpeMedicalTechnical {
 	}
 	public void setMedicalId(Long medicalId) {
 		this.medicalId = medicalId;
-	}
-	public IpePatientTransaction getTransaction() {
-		return transaction;
-	}
-	public void setTransaction(IpePatientTransaction transaction) {
-		this.transaction = transaction;
 	}
 	public String getRecord() {
 		return record;

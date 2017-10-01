@@ -3,6 +3,7 @@ package th.ac.hcu.entity.master;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,18 +23,14 @@ public class IpePatientTransaction {
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_PATIENT_TRANSACTION")
     private Long transactionId;
 	
-	@ManyToOne
-	@JoinColumn(name = "patient_id")
-	private IpePatientProfile patient;
-	
-	@OneToMany(mappedBy="transaction")
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeMedicalTechnical> medical;
 	private String medicalAdvice;
 	
-	@OneToMany(mappedBy="transaction")
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeNurseImg> imgs;
 	
-	@OneToMany(mappedBy="transaction")
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeStudentEstimate> estimates;
 
 	public Long getTransactionId() {

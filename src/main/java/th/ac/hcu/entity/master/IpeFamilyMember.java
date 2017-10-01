@@ -18,10 +18,6 @@ public class IpeFamilyMember {
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_FAMILY_MEMBER")
     private Long memberId;
 	
-	@ManyToOne
-	@JoinColumn(name = "patient_id")
-	private IpePatientProfile patient;
-	
 	private String name;
 	private String age;
 	private String relation;
@@ -33,12 +29,6 @@ public class IpeFamilyMember {
 	}
 	public void setMemberId(Long memberId) {
 		this.memberId = memberId;
-	}
-	public IpePatientProfile getPatient() {
-		return patient;
-	}
-	public void setPatient(IpePatientProfile patient) {
-		this.patient = patient;
 	}
 	public String getName() {
 		return name;

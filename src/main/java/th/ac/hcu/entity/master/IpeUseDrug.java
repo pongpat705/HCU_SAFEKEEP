@@ -3,6 +3,7 @@ package th.ac.hcu.entity.master;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +25,7 @@ public class IpeUseDrug {
 	
 	private Date date;
 	
-	@ManyToOne
-	@JoinColumn(name = "patient_id")
-	private IpePatientProfile patient;
-	
-	@OneToMany(mappedBy="useDrug")
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeDrugList> drugList;//4
 	
 	private String isAllergy;
@@ -114,15 +111,5 @@ public class IpeUseDrug {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-	public IpePatientProfile getPatient() {
-		return patient;
-	}
-
-	public void setPatient(IpePatientProfile patient) {
-		this.patient = patient;
-	}
-	
-	
 	
 }

@@ -20,10 +20,6 @@ public class IpeStudentEstimate {
 	
 	private String desctiption;
 	
-	@ManyToOne
-	@JoinColumn(name = "transaction_id")
-	private IpePatientTransaction transaction;
-
 	public Long getEstimateId() {
 		return estimateId;
 	}

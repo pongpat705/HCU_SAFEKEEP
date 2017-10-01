@@ -22,10 +22,6 @@ public class IpeDrugList {
 	private String managing;
 	private String qty;
 	
-	@ManyToOne
-	@JoinColumn(name = "drug_id")
-	private IpeUseDrug useDrug;
-	
 	public Long getListId() {
 		return listId;
 	}
@@ -50,11 +46,4 @@ public class IpeDrugList {
 	public void setQty(String qty) {
 		this.qty = qty;
 	}
-	public IpeUseDrug getUseDrug() {
-		return useDrug;
-	}
-	public void setUseDrug(IpeUseDrug useDrug) {
-		this.useDrug = useDrug;
-	}
-
 }
