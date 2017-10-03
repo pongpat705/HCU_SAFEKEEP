@@ -1,10 +1,15 @@
 package th.ac.hcu.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,9 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import th.ac.hcu.entity.common.ParameterInfo;
 import th.ac.hcu.security.AuthenticatedUsers;
 import th.ac.hcu.security.TokenAuthenticationService;
 import th.ac.hcu.service.MaoUserDetailService;
+import th.ac.hcu.service.StartUp;
 import th.ac.hcu.service.UserService;
 
 @RestController
@@ -29,6 +36,8 @@ public class ServiceController {
 	  
 	  @Autowired TokenAuthenticationService tokenService;
 	  
+	  @Autowired StartUp startUp;
+	  
 	  @RequestMapping(value = "/parse", method = RequestMethod.GET)
 	  @ResponseBody
 	  public AuthenticatedUsers parse(HttpServletRequest request) throws Exception {
@@ -41,6 +50,18 @@ public class ServiceController {
 	    catch (Exception ex) {
 	      throw new Exception("Error parsing the token: " + ex.toString());
 	    }
+	  }
+	  
+	  @RequestMapping(value = "/getCombos", method = RequestMethod.GET)
+	  @ResponseBody
+	  public ResponseEntity<Map<String, List<ParameterInfo>>> getCombos(){
+		return new ResponseEntity<Map<String,List<ParameterInfo>>>(startUp.getCombos(), HttpStatus.OK);
+	  }
+	  
+	  @RequestMapping(value = "/getParams", method = RequestMethod.GET)
+	  @ResponseBody
+	  public ResponseEntity<Map<String, Map<String,ParameterInfo>>> getParams(){
+		return new ResponseEntity<Map<String, Map<String,ParameterInfo>>>(startUp.getParameterConfig(), HttpStatus.OK);
 	  }
 	  
 	  @RequestMapping(value = "/isAuthen", method = RequestMethod.GET)

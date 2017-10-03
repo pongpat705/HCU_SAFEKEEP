@@ -52,6 +52,12 @@ angular
   .run(['$http', '$rootScope', '$q', '$uibModalStack', '$state', 'PermissionStore', '$sessionStorage', 'Restangular',
         function($http, $rootScope, $q, $uibModalStack, $state, PermissionStore, $sessionStorage, Restangular) {
 	  
+	  $http.get(CONTEXT+'/service/getCombos').then(function(response){
+		  $rootScope.comboBox = response.data;
+	  });
+	  $http.get(CONTEXT+'/service/getParams').then(function(response){
+		  $rootScope.param = response.data;
+	  });
 	  
 	  $rootScope.$on('$stateChangeStart',  function(event, toState, toParams, fromState, fromParams, options){
 		  $uibModalStack.dismissAll();
@@ -89,7 +95,6 @@ angular
 	  
 	  $rootScope.initParams = function(){
 		  var promises = [];
-		  
 //		  promises.push( $http.get(_params.global.contextPath + '/api/data/pricing?size=100&sort=maxUser,asc' ).then(function(response){
 //			  $rootScope.priceList = response.data._embedded.pricing;
 //			  window.console && console.log('$rootScope.priceList  >>> ');

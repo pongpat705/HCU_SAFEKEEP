@@ -57,6 +57,7 @@ public class IpePatientProfile {
 	private String nCheckBySystem;//8
 	//paramconfig
 	private String nCheckByTools;//8
+	private String nCheckByToolsDesc;
 	
 	private String nDiagnosis;//8
 	private String nCare;//9
@@ -68,6 +69,8 @@ public class IpePatientProfile {
 	private String sIncome; //2
 	//paramconfig
 	private String sResidence; //3
+	private String sResidenceCost;
+	private String sResidenceRelation;
 	
 	private String sResidenceDescription;//3
 
@@ -584,6 +587,30 @@ public class IpePatientProfile {
 
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
+	}
+
+	public String getsResidenceCost() {
+		return sResidenceCost;
+	}
+
+	public void setsResidenceCost(String sResidenceCost) {
+		this.sResidenceCost = sResidenceCost;
+	}
+
+	public String getnCheckByToolsDesc() {
+		return nCheckByToolsDesc;
+	}
+
+	public void setnCheckByToolsDesc(String nCheckByToolsDesc) {
+		this.nCheckByToolsDesc = nCheckByToolsDesc;
+	}
+
+	public String getsResidenceRelation() {
+		return sResidenceRelation;
+	}
+
+	public void setsResidenceRelation(String sResidenceRelation) {
+		this.sResidenceRelation = sResidenceRelation;
 	}
 	
 	

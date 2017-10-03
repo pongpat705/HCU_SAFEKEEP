@@ -58,7 +58,6 @@ angular.module('app').controller('AppCtrl', ['$scope', '$http', '$localStorage',
         $scope.searchFocus = false;
       }, 100);
     };
-    
     //fluke
 	$scope.isAuthenticated = function() {
 		return $auth.isAuthenticated();

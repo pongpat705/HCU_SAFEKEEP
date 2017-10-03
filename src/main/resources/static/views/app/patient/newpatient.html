@@ -123,14 +123,14 @@
 	          	<label class="col-sm-2 text-uppercase control-label">อาการเจ็บป่วยปัจจุบัน</label>
 	          	<div class="col-sm-8">
 <!-- 	          		<input type="text" class="form-control" placeholder="" name="nSickness" ng-model="patient.nSickness"> -->
-	          		<text-angular ng-model="patient.nSickness"></text-angular>
+	          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.nSickness"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">General Appearance</label>
 	          	<div class="col-sm-8">
 <!-- 	          		<input type="text" class="form-control" placeholder="" name="nGeneralAppearance" ng-model="patient.nGeneralAppearance"> -->
-	          		<text-angular ng-model="patient.nGeneralAppearance"></text-angular>
+	          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.nGeneralAppearance"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
@@ -166,31 +166,29 @@
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">การช่วยเหลือตนเองของผู้ป่วย</label>
 	          	<div class="col-sm-8">
-<!-- 	          		<input type="text" class="form-control" placeholder="" name="nSelfHelp" ng-model="patient.nSelfHelp"> -->
-	          		<select class="form-control" ng-model="patient.nSelfHelp">
-	          			<option>--select--</option>
+	          		<select class="form-control" ng-model="patient.nSelfHelp"
+						ng-options="r.infoCode as r.infoTh for r in combo.COMBO_SELF_HELP">
 	          		</select>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ประเมินภาวะโภชนาการอาหาร(ทางที่ได้รับ, ชนิด, ปริมาณ)</label>
 	          	<div class="col-sm-8">
-<!-- 	          		<input type="text" class="form-control" placeholder="" name="nFoodCondition" ng-model="patient.nFoodCondition"> -->
-	          		<text-angular ng-model="patient.nFoodCondition"></text-angular>
+	          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.nFoodCondition"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ประเมินสภาพจิตใจและสังคม</label>
 	          	<div class="col-sm-8">
 <!-- 	          		<input type="text" class="form-control" placeholder="" name="nMentalCondition" ng-model="patient.nMentalCondition"> -->
-	          		<text-angular ng-model="patient.nMentalCondition"></text-angular>
+	          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.nMentalCondition"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">การดูแลผู้ป่วยของผู้ดูแล</label>
 	          	<div class="col-sm-8">
 <!-- 	          		<input type="text" class="form-control" placeholder="" name="nHowSupTakeCare" ng-model="patient.nHowSupTakeCare"> -->
-	          		<text-angular ng-model="patient.nHowSupTakeCare"></text-angular>
+	          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.nHowSupTakeCare"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
@@ -199,37 +197,36 @@
 			         	<label class="col-sm-2 text-uppercase control-label">ตามระบบ(เน้นระบบที่มีปัญหา)</label>
 			          	<div class="col-sm-8">
 <!-- 			          		<input type="text" class="form-control" placeholder="" name="nCheckBySystem" ng-model="patient.nCheckBySystem"> -->
-			          		<text-angular ng-model="patient.nCheckBySystem"></text-angular>
+			          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.nCheckBySystem"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">อุปกรณ์พิเศษที่ใช้</label>
 			          	<div class="col-sm-8">
-<!-- 			          		<input type="text" class="form-control" placeholder="" name="nCheckByTools" ng-model="patient.nCheckByTools"> -->
-			          		<select class="form-control" ng-model="patient.nCheckByTools">
-			          			<option>--select--</option>
-			          		</select>
+			          		<div class="input-group">
+								<select class="form-control" ng-model="patient.nCheckByTools"
+									ng-options="r.infoCode as r.infoTh for r in combo.COMBO_SPECIAL_TOOL">
+				          		</select>
+				          		<input type="text" ng-show="'99'==patient.nCheckByTools" class="form-control" placeholder="" name="nCheckByToolsDesc" ng-model="patient.nCheckByToolsDesc">
+			          		</div>
 			          	</div>
 	         </div>
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">วินิจฉัยปัญหา</label>
 	          	<div class="col-sm-8">
-<!-- 	          		<input type="text" class="form-control" placeholder="" name="nDiagnosis" ng-model="patient.nDiagnosis"> -->
-	          		<text-angular ng-model="patient.nDiagnosis"></text-angular>
+	          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.nDiagnosis"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">การดูแล</label>
 	          	<div class="col-sm-8">
-<!-- 	          		<input type="text" class="form-control" placeholder="" name="nCare" ng-model="patient.nCare"> -->
-	          		<text-angular ng-model="patient.nCare"></text-angular>
+	          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.nCare"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ประเมินผล</label>
 	          	<div class="col-sm-8">
-<!-- 	          		<input type="text" class="form-control" placeholder="" name="nEstimate" ng-model="patient.nEstimate"> -->
-	          		<text-angular ng-model="patient.nEstimate"></text-angular>
+	          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.nEstimate"></textarea>
 	          	</div>
 	          </div> 
   		</div>
@@ -243,9 +240,10 @@
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ระยะเวลาการทำงาน</label>
-	          	<div class="col-sm-8">
+	          	<div class="col-sm-6">
 	          		<input type="text" class="form-control" placeholder="" name="sWorkDuration" ng-model="patient.sWorkDuration">
 	          	</div>
+	          	<label class="col-sm-2 text-uppercase center">ปี</label>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ก่อนป่วยผู้ป่วยมีรายได้ต่อเดือน / ต่อสัปดาห์</label>
@@ -256,7 +254,13 @@
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ลักษณะที่อยู่อาศัย</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="sResidence" ng-model="patient.sResidence">
+	          		<div class="input-group">
+		          		<select class="form-control" ng-model="patient.sResidence"
+							ng-options="r.infoCode as r.infoTh for r in combo.COMBO_RESIDENCE">
+		          		</select>
+						<input type="text" ng-show="'02'==patient.sResidence" class="form-control" placeholder="" name="sResidenceCost" ng-model="patient.sResidenceCost">
+		          		<input type="text" ng-show="'03'==patient.sResidence" class="form-control" placeholder="" name="sResidenceRelation" ng-model="patient.sResidenceRelation">
+	          		</div>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
@@ -302,13 +306,15 @@
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">เขียนสาแหรกครอบครัว (Genogram) หรือต้นไม้ครอบครัว (Family tree)</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="sGenogramImg" ng-model="patient.sGenogramImg">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="sGenogramImg" ng-model="patient.sGenogramImg"> -->
+	          		<text-angular ng-model="patient.sGenogramImg"></text-angular>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">เขียนผังนิเวศ(Eco map)ของผู้รับบริการ</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="sEcoMapImg" ng-model="patient.sEcoMapImg">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="sEcoMapImg" ng-model="patient.sEcoMapImg"> -->
+	          		<text-angular ng-model="patient.sEcoMapImg"></text-angular>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
@@ -316,37 +322,37 @@
 	          			<div class="col-sm-12"></div>
 			         	<label class="col-sm-2 text-uppercase control-label">การประเมินสภาวะกาย จิต สังคม</label>
 			          	<div class="col-sm-8">
-			          		<input type="text" class="form-control" placeholder="" name="sMentalCondition" ng-model="patient.sMentalCondition">
+			          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.sMentalCondition"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">การประเมินสภาวะครอบครัว</label>
 			          	<div class="col-sm-8">
-			          		<input type="text" class="form-control" placeholder="" name="sFamilyCondition" ng-model="patient.sFamilyCondition">
+			          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.sFamilyCondition"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">การประเมินความเสี่ยง</label>
 			          	<div class="col-sm-8">
-			          		<input type="text" class="form-control" placeholder="" name="sRiskCondition" ng-model="patient.sRiskCondition">
+			          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.sRiskCondition"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">การประเมินตวามต้องการ</label>
 			          	<div class="col-sm-8">
-			          		<input type="text" class="form-control" placeholder="" name="sNeedCondition" ng-model="patient.sNeedCondition">
+			          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.sNeedCondition"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">แนวทางการวางแผนให้ความช่วยเหลือ</label>
 			          	<div class="col-sm-8">
-			          		<input type="text" class="form-control" placeholder="" name="sHelpingGuid" ng-model="patient.sHelpingGuid">
+			          		<textarea class="form-control" rows="3" cols="105" ng-model="patient.sHelpingGuid"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">แผนที่บ้านผู้รับบริการ</label>
 			          	<div class="col-sm-8">
-			          		<input type="text" class="form-control" placeholder="" name="sPatientMapImg" ng-model="patient.sPatientMapImg">
+			          		<text-angular ng-model="patient.sPatientMapImg"></text-angular>
 			          	</div>
 	         </div>
   		</div>
@@ -354,118 +360,328 @@
   		<div ng-show="hiddenDrug">
   		 	<div class="form-group">
 	          	<label class="col-sm-2 left text-uppercase control-label">ข้อมูลการใช้ยา</label>
-	          		<div class="col-sm-8">
-	          			<table class="table">
-	          				<tr>
-	          					<th>วันที่</th>
-	          					<th>การใช้ยา / วิตามิน /อาหารเสริม</th>
-	          					<th>การแพ้ยา</th>
-	          					<th>การติดตามใช้ยา</th>
-	          					<th>คำแนะนำใช้ยา</th>
-	          					<th>ปัญหาการใข้ยา</th>
-	          					<th>note</th>
-	          					<th></th>
-	          				</tr>
-	          				<tr ng-repeat="d in useDrugs">
-	          					<td>{{d.date}}</td>
-	          					<td>
-	          						<table>
-	          							<tr>
-	          								<th>รายการยา</th>
-	          								<th>วิธีการบริหาร</th>
-	          								<th>จำนวน</th>
-	          								<th></th>
-	          							</tr>
-	          							<tr ng-repeat="d in drugList">
-	          								<td>{{d.drugName}}</td>
-	          								<td>{{d.managing}}</td>
-	          								<td>{{d.qty}}</td>
-	          								<td></td>
-	          							</tr>
-	          							<tr>
-	          								<td><input type="text" class="form-control" placeholder="" name="drugName" ng-model="drugList.drugName"></td>
-	          								<td><input type="text" class="form-control" placeholder="" name="managing" ng-model="drugList.managing"></td>
-	          								<td><input type="text" class="form-control" placeholder="" name="qty" ng-model="drugList.qty"></td>
-	          								<td><button class="btn btn-md btn-info" ng-click="addDrugList()" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
-	          							</tr>
-	          						</table>
-	          					</td>
-	          					<td>{{d.isAllergy}}</td>
-	          					<td>{{d.allergyDescription}}</td>
-	          					<td>{{d.usingDrug}}</td>
-	          					<td>{{d.drugAdvice}}</td>
-	          					<td>{{d.drugProblem}}</td>
-	          					<td>{{d.problemDescription}}</td>
-	          				</tr>
-	          				<tr>
-	          					<td><input type="text" class="form-control" placeholder="" name="date" ng-model="drug.date"></td>
-	          					<td><input type="text" class="form-control" placeholder="" name="age" ng-model="drug.age"></td>
-	          					<td><input type="text" class="form-control" placeholder="" name="isAllergy" ng-model="drug.isAllergy"></td>
-	          					<td><input type="text" class="form-control" placeholder="" name="allergyDescription" ng-model="drug.allergyDescription"></td>
-	          					<td><input type="text" class="form-control" placeholder="" name="usingDrug" ng-model="drug.usingDrug"></td>
-	          					<td><input type="text" class="form-control" placeholder="" name="drugAdvice" ng-model="drug.drugAdvice"></td>
-	          					<td><input type="text" class="form-control" placeholder="" name="drugProblem" ng-model="drug.drugProblem"></td>
-	          					<td><input type="text" class="form-control" placeholder="" name="problemDescription" ng-model="drug.problemDescription"></td>
-	          					<td><button class="btn btn-md btn-info" ng-click="addDrug()" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
-	          				</tr>
-	          			</table>
+	          		<div class="col-sm-10">
+		          		<table class="table">
+						    <tbody ng-repeat="d in useDrugs">
+						        <tr>
+						          <th>วันที่</th>
+					          		<td>{{d.date}}</td>
+						        </tr>
+						        <tr>
+						          <th>การใช้ยา / วิตามิน /อาหารเสริม</th>
+							          <td>
+		          						<table>
+		          							<tr>
+		          								<th>รายการยา</th>
+		          								<th>วิธีการบริหาร</th>
+		          								<th>จำนวน</th>
+		          							</tr>
+		          							<tr ng-repeat="d in drugList">
+		          								<td>{{d.drugName}}</td>
+		          								<td>{{d.managing}}</td>
+		          								<td>{{d.qty}}</td>
+		          							</tr>
+		          						</table>
+		          					  </td>
+						        </tr>
+						        <tr>
+						          <th>การแพ้ยา</th>
+						            <td>{{d.isAllergy}}</td>
+						            <td>{{d.allergyDescription}}</td>
+						        </tr>
+						      	<tr>
+						          <th>การติดตามใช้ยา</th>
+						          	<td>{{d.usingDrug}}</td>
+						        </tr>
+   						      	<tr>
+						          <th>คำแนะนำใช้ยา</th>
+						          	<td>{{d.drugAdvice}}</td>
+						        </tr>
+   						      	<tr>
+						          <th>ปัญหาการใข้ยา</th>
+						          	<td>{{d.drugProblem}}</td>
+						        </tr>
+   						      	<tr>
+						          <th>note</th>
+						          	<td>{{d.problemDescription}}</td>
+						        </tr>
+						    </tbody>
+						</table>
+						<table class="table">
+						    <tbody>
+						        <tr>
+						          <th>วันที่</th>
+					          		<td>
+					          			<div class="col-sm-8">
+					          			<input type="text" class="form-control" placeholder="" name="date" ng-model="drug.date">
+					          			</div>
+					          		</td>
+						        </tr>
+						        <tr>
+						          <th>การใช้ยา / วิตามิน /อาหารเสริม</th>
+							          <td>
+							          	<div class="col-sm-8">
+				    						<table>
+			          							<tr>
+			          								<th>รายการยา</th>
+			          								<th>วิธีการบริหาร</th>
+			          								<th>จำนวน</th>
+			          								<th></th>
+			          							</tr>
+			          							<tr ng-repeat="d in drugList">
+			          								<td>{{d.drugName}}</td>
+			          								<td>{{d.managing}}</td>
+			          								<td>{{d.qty}}</td>
+			          								<td></td>
+			          							</tr>
+			          							<tr>
+			          								<td rowspan="3"><input type="text" class="form-control" placeholder="" name="drugName" ng-model="drugList.drugName"></td>
+			          								<td rowspan="3"><input type="text" class="form-control" placeholder="" name="managing" ng-model="drugList.managing"></td>
+			          								<td rowspan="3"><input type="text" class="form-control" placeholder="" name="qty" ng-model="drugList.qty"></td>
+			          								<td rowspan="3"><button class="btn btn-md btn-info" ng-click="addDrugList()" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+			          							</tr>
+			          						</table>
+							          	</div>
+		          					  </td>
+						        </tr>
+						        <tr>
+						          <th>การแพ้ยา</th>
+						            <td>
+						            	<div class="col-sm-8">
+							            	<select class="form-control" ng-model="drug.isAllergy"
+												ng-options="r.infoCode as r.infoTh for r in combo.COMBO_DRUG_ALLERGY">
+							          		</select>
+							          		<textarea class="form-control" rows="3" cols="30" ng-model="drug.allergyDescription"></textarea>
+						            	</div>
+						            </td>
+						        </tr>
+						      	<tr>
+						          <th>การติดตามใช้ยา</th>
+						          	<td>
+						          		<div class="col-sm-8">
+			          						<select class="form-control" ng-model="drug.usingDrug"
+												ng-options="r.infoCode as r.infoTh for r in combo.COMBO_DRUG_USING">
+							          		</select>						          		
+						          		</div>
+						          	</td>
+						        </tr>
+   						      	<tr>
+						          <th>คำแนะนำใช้ยา</th>
+						          	<td>
+						          		<div class="col-sm-8">
+											<textarea class="form-control" rows="3" cols="30" ng-model="drug.drugAdvice"></textarea>
+						          		</div>
+						          	</td>
+						        </tr>
+   						      	<tr>
+						          <th>ปัญหาการใข้ยา</th>
+						          	<td>
+						          		<div class="col-sm-8">
+			          						<select class="form-control" ng-model="drug.drugProblem"
+												ng-options="r.infoCode as r.infoTh for r in combo.COMBO_DRUG_PROBLEM">
+							          		</select>
+						          		</div>
+						          	</td>
+						        </tr>
+   						      	<tr>
+						          <th>note</th>
+						          	<td>
+						          		<div class="col-sm-8">
+						          			<textarea class="form-control" rows="3" cols="30" ng-model="drug.problemDescription"></textarea>
+						          		</div>
+						          	</td>
+						        </tr>
+						        <tr>
+						        	<th></th>
+						        	<td><div class="col-sm-8"><button class="btn btn-md btn-info" ng-click="addDrug()" ><i class="fa fa-plus" aria-hidden="true"></i></button></div></td>
+						        </tr>
+						    </tbody>
+						</table>
 		          	</div>
 	          </div> 
   		</div>
 		<button class="btn btn-md btn-info" ng-click="hiddenGeneral=!hiddenGeneral" ><span>กรอกข้อมูลสุขภาพเบื้องต้น</span></button>
   		<div ng-show="hiddenGeneral">
 			  <div class="form-group">
-	          	<label class="col-sm-2 text-uppercase control-label">{{q1}}</label>
+	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_01.infoTh}}</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="gAnswer1" ng-model="patient.gAnswer1">
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer1" ng-value="param.Q_01.A_01.infoCode">
+					    {{param.Q_01.A_01.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer1" ng-value="param.Q_01.A_02.infoCode">
+					    {{param.Q_01.A_02.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer1" ng-value="param.Q_01.A_03.infoCode">
+					    {{param.Q_01.A_03.infoTh}}
+					  </label>
+	          	</div>
+	          	
+	          </div> 
+			  <div class="form-group">
+	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_02.infoTh}}</label>
+	          	<div class="col-sm-8">
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer2" ng-value="param.Q_02.A_01.infoTh">
+					    {{param.Q_02.A_01.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer2" ng-value="param.Q_02.A_02.infoTh">
+					    {{param.Q_02.A_02.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer2" ng-value="param.Q_02.A_03.infoTh">
+					    {{param.Q_02.A_03.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer2" ng-value="param.Q_02.A_04.infoTh">
+					    {{param.Q_02.A_04.infoTh}}
+					  </label>
+					   <input type="text" placeholder="" name="gAnswer2" ng-model="patient.gAnswer2">
 	          	</div>
 	          </div> 
 			  <div class="form-group">
-	          	<label class="col-sm-2 text-uppercase control-label">{{q2}}</label>
+	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_03.infoTh}}</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="gAnswer2" ng-model="patient.gAnswer2">
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer3" ng-value="param.Q_03.A_01.infoTh">
+					    {{param.Q_03.A_01.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer3" ng-value="param.Q_03.A_02.infoTh">
+					    {{param.Q_03.A_02.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer3" ng-value="param.Q_03.A_03.infoTh">
+					    {{param.Q_03.A_03.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer3" ng-value="param.Q_03.A_04.infoTh">
+					    {{param.Q_03.A_04.infoTh}}
+					  </label>
+					   <input type="text" placeholder="" name="gAnswer3" ng-model="patient.gAnswer3">
 	          	</div>
 	          </div> 
 			  <div class="form-group">
-	          	<label class="col-sm-2 text-uppercase control-label">{{q3}}</label>
+	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_04.infoTh}}</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="gAnswer3" ng-model="patient.gAnswer3">
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer4" ng-value="param.Q_04.A_01.infoTh">
+					    {{param.Q_04.A_01.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer4" ng-value="param.Q_04.A_02.infoTh">
+					    {{param.Q_04.A_02.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer4" ng-value="param.Q_04.A_03.infoTh">
+					    {{param.Q_04.A_03.infoTh}}
+					  </label>
+					   <input type="text" placeholder="" name="gAnswer4" ng-model="patient.gAnswer4">
 	          	</div>
 	          </div> 
 			  <div class="form-group">
-	          	<label class="col-sm-2 text-uppercase control-label">{{q4}}</label>
+	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_05.infoTh}}</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="gAnswer4" ng-model="patient.gAnswer4">
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer5" ng-value="param.Q_05.A_01.infoTh">
+					    {{param.Q_05.A_01.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer5" ng-value="param.Q_05.A_02.infoTh">
+					    {{param.Q_05.A_02.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer5" ng-value="param.Q_05.A_03.infoTh">
+					    {{param.Q_05.A_03.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer5" ng-value="param.Q_05.A_04.infoTh">
+					    {{param.Q_05.A_04.infoTh}}
+					  </label>
+					   <input type="text" placeholder="" name="gAnswer5" ng-model="patient.gAnswer5">
 	          	</div>
 	          </div> 
 			  <div class="form-group">
-	          	<label class="col-sm-2 text-uppercase control-label">{{q5}}</label>
+	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_06.infoTh}}</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="gAnswer5" ng-model="patient.gAnswer5">
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_06.A_01.infoTh">
+					    {{param.Q_06.A_01.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_06.A_02.infoTh">
+					    {{param.Q_06.A_02.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_06.A_03.infoTh">
+					    {{param.Q_06.A_03.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_06.A_04.infoTh">
+					    {{param.Q_06.A_04.infoTh}}
+					  </label>
+					   <input type="text" placeholder="" name="gAnswer6" ng-model="patient.gAnswer6">
 	          	</div>
 	          </div> 
 			  <div class="form-group">
-	          	<label class="col-sm-2 text-uppercase control-label">{{q6}}</label>
+	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_07.infoTh}}</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="gAnswer6" ng-model="patient.gAnswer6">
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer7" ng-value="param.Q_07.A_01.infoTh">
+					    {{param.Q_07.A_01.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer7" ng-value="param.Q_07.A_02.infoTh">
+					    {{param.Q_07.A_02.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer7" ng-value="param.Q_07.A_03.infoTh">
+					    {{param.Q_07.A_03.infoTh}}
+					  </label>
+					   <input type="text" placeholder="" name="gAnswer7" ng-model="patient.gAnswer7">
 	          	</div>
 	          </div> 
 			  <div class="form-group">
-	          	<label class="col-sm-2 text-uppercase control-label">{{q7}}</label>
+	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_08.infoTh}}</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="gAnswer7" ng-model="patient.gAnswer7">
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_08.A_01.infoTh">
+					    {{param.Q_08.A_01.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_08.A_02.infoTh">
+					    {{param.Q_08.A_02.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_08.A_03.infoTh">
+					    {{param.Q_08.A_03.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_08.A_04.infoTh">
+					    {{param.Q_08.A_04.infoTh}}
+					  </label>
+					   <input type="text" placeholder="" name="gAnswer8" ng-model="patient.gAnswer8">
 	          	</div>
 	          </div> 
 			  <div class="form-group">
-	          	<label class="col-sm-2 text-uppercase control-label">{{q8}}</label>
+	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_09.infoTh}}</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="gAnswer8" ng-model="patient.gAnswer8">
-	          	</div>
-	          </div> 
-			  <div class="form-group">
-	          	<label class="col-sm-2 text-uppercase control-label">{{q9}}</label>
-	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="gAnswer9" ng-model="patient.gAnswer9">
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer7" ng-value="param.Q_09.A_01.infoTh">
+					    {{param.Q_09.A_01.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer7" ng-value="param.Q_09.A_02.infoTh">
+					    {{param.Q_09.A_02.infoTh}}
+					  </label>
+	          		  <label>
+					    <input type="radio" ng-model="patient.gAnswer7" ng-value="param.Q_09.A_03.infoTh">
+					    {{param.Q_09.A_03.infoTh}}
+					  </label>
+					   <input type="text" placeholder="" name="gAnswer9" ng-model="patient.gAnswer9">
 	          	</div>
 	          </div> 
   		</div>

@@ -20,6 +20,9 @@ angular
 	        sort: null
     };
 	
+	$scope.combo = $rootScope.comboBox;
+	$scope.param = $rootScope.param;
+	
 	$scope.getPatientProfileList = function(page, size){
 		patientServices.getPatients(page, size).then(function(response){
 			console.log(response.data);

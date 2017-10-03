@@ -1,18 +1,29 @@
 package th.ac.hcu.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
+import th.ac.hcu.constant.Constants.PARAMETER_GROUP_NAME;
 import th.ac.hcu.constant.Role;
 import th.ac.hcu.entity.User;
 import th.ac.hcu.entity.UserRole;
+import th.ac.hcu.entity.common.ParameterInfo;
 import th.ac.hcu.repository.UserRepository;
 import th.ac.hcu.repository.UserRoleRepository;
+import th.ac.hcu.repository.common.ParameterInfoRepository;
 
 @Component
 @Order(2)
@@ -26,9 +37,18 @@ public class StartUp {
 	@Autowired
 	private UserRoleRepository userRoleRepository;
 
+	@Autowired
+	private ParameterInfoRepository paramInfoRepository;
+	
+	private Map<String, Map<String,ParameterInfo>> parameterConfig;
+	
+	private Map<String, List<ParameterInfo>> combos;
+	
 	 @PostConstruct
 	 public void settingData(){
-		initialRole();
+//		initialRole();
+		 loadParams();
+		 loadCombos();
 	 }
 	 
 	 public void initialRole(){
@@ -77,4 +97,48 @@ public class StartUp {
 			
 			userRoleRepository.save(studRole);
 	 }
+	 
+	 public void loadParams(){
+		 	log.info("loading parameter");
+			Sort sort = new Sort("groupCode");
+			Pageable pageable = new PageRequest(0, 10000, sort);
+			
+			parameterConfig = new HashMap<>();
+			
+			for (String groupName : PARAMETER_GROUP_NAME.GROUPS()) {
+				log.info("load group : "+groupName);
+				Page<ParameterInfo> paramPage =  paramInfoRepository.findByGroupCode(pageable, groupName);
+				
+				Map<String,ParameterInfo> group = new HashMap<>();
+				List<ParameterInfo> params = paramPage.getContent();
+				for (ParameterInfo sysParameter : params) {
+					log.info("load code : "+sysParameter.getInfoCode());
+					group.put(sysParameter.getInfoCode(), sysParameter);
+				}
+				parameterConfig.put(groupName, group);
+			}
+	 }
+	 
+	 public void loadCombos(){
+		 	log.info("loading combos");
+			Sort sort = new Sort("groupCode");
+			Pageable pageable = new PageRequest(0, 10000, sort);
+			
+			combos = new HashMap<>();
+			
+			for (String groupName : PARAMETER_GROUP_NAME.COMBOS()) {
+				log.info("load combo : "+groupName);
+				Page<ParameterInfo> paramPage =  paramInfoRepository.findByGroupCode(pageable, groupName);
+				combos.put(groupName, paramPage.getContent());
+			}
+	 }
+	 
+	 public Map<String, Map<String, ParameterInfo>> getParameterConfig() {
+			return parameterConfig;
+	 }
+
+	public Map<String, List<ParameterInfo>> getCombos() {
+		return combos;
+	}
+	 
 }
