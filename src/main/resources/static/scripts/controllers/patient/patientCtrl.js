@@ -32,8 +32,34 @@ angular
 			console.error('Error',response);
 			toastr.error(response.data.message, 'Error');
 	    });
-	}
+	};
+	
+	$scope.addNewPatient = function(){
+//		ui-sref="app.newpatient"
+		var patient = 	{
+							createdBy: $rootScope.currentUser,
+							createdDate: new Date(),
+							updatedBy: $rootScope.currentUser,
+							updatedDate: new Date()
+						};
 
+		patientServices.addNewPatients(patient).then(function(response){
+			$state.go('app.newpatient',{newPatient : response.data})
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+	};
+	
+	$scope.delPatient = function(id){
+		patientServices.genericDel(id).then(function(response){
+			$state.go('app.patient',{},{reload:true});
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+	}
+	
 	$scope.patientGridOptions = {
             paginationPageSizes: [5, 10, 20],
             paginationPageSize: paginationOptions.pageSize,
@@ -57,6 +83,7 @@ angular
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
                                         '<button class="btn btn-xs btn-info" title="view transaction" ui-sref="app.transaction({patient: row.entity})" ><i class="fa fa-list-alt" aria-hidden="true"></i></button>' +
                                         '&nbsp;<button class="btn btn-xs btn-primary" title="view profile" ui-sref="app.profile({patient: row.entity})" ><i class="fa fa-info-circle" aria-hidden="true"></i></button>' +
+                                        '&nbsp;<button class="btn btn-xs btn-danger" title="delete profile" ng-click="grid.appScope.delPatient(row.entity._links.self.href);" ><i class="fa fa-trash" aria-hidden="true"></i></button>' +
                                    '</div>',
                     enableCellEdit : false
                 }

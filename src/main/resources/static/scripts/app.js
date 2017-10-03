@@ -59,6 +59,8 @@ angular
 		  $rootScope.param = response.data;
 	  });
 	  
+	  $rootScope.currentUser = '';
+	  
 	  $rootScope.$on('$stateChangeStart',  function(event, toState, toParams, fromState, fromParams, options){
 		  $uibModalStack.dismissAll();
 		  $rootScope.currentState = toState.name;

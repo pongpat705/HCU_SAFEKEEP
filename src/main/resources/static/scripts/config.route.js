@@ -120,14 +120,36 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 			            }
 			    }).state('app.newpatient',{
 			    	url: '/newpatient',
+			    	params : {newPatient:null},
 			    	templateUrl: './views/app/patient/newpatient.html',
-			        controller: 'patientCtrl',
+			        controller: 'newPatientCtrl',
 			        resolve: {
 			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
 			              return $ocLazyLoad.load([{
 			                  files: [
 			                	  	  './scripts/services/patientServices.js',
-			                          './scripts/controllers/patient/patientCtrl.js'
+			                          './scripts/controllers/patient/newPatientCtrl.js'
+			                          ]
+			                }]);
+			            }]
+			          },
+			        data: {
+			            permissions: {
+			                only: ['ROLE_PROF'],
+			                redirectTo: 'user.signin'
+			              }
+			            }
+			    }).state('app.profile',{
+			    	url: '/patient-profile',
+			    	params : {patient:null},
+			    	templateUrl: './views/app/patient/newpatient.html',
+			        controller: 'profileCtrl',
+			        resolve: {
+			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+			              return $ocLazyLoad.load([{
+			                  files: [
+			                	  	  './scripts/services/patientServices.js',
+			                          './scripts/controllers/patient/profileCtrl.js'
 			                          ]
 			                }]);
 			            }]

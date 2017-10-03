@@ -1,6 +1,6 @@
 <div class="p-x">
   <div class="row">
-  		<button class="btn btn-md btn-info" ng-if="checkPermission('ROLE_PROF')" title="new patient profile" ui-sref="app.newpatient" ><i class="fa fa-plus" aria-hidden="true"></i></button>
+  		<button class="btn btn-md btn-info" ng-if="checkPermission('ROLE_PROF')" title="new patient profile" ng-click="addNewPatient()" ><i class="fa fa-plus" aria-hidden="true"></i></button>
   </div>
   <br>
   <div class="row">

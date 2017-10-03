@@ -44,6 +44,8 @@ function sessionCtrl(	$scope, $state, $auth,
 				  var roles = response.authorities;
 				  var roleList = [];
 				  
+				  $rootScope.currentUser = response.name;
+				  
 				  angular.forEach(roles, function(value, key) {
 					  this.push(value.authority);
 				  }, roleList);
