@@ -103,11 +103,11 @@
 	          				<tr ng-repeat="v in visits">
 	          					<td>{{$index+1}}</td>
 	          					<td>{{v.date}}</td>
-	          					<td><button class="btn btn-md btn-danger" ng-click="delVisit(v._links.self.href)" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+	          					<td><button class="btn btn-md btn-danger" ng-click="delVisit(patient.patientId, v.logId)" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
 	          				</tr>
 	          				<tr>
 	          					<td></td>
-	          					<td><input type="text" class="form-control" placeholder="" name="date" ng-model="visit.date"></td>
+	          					<td><input type="text" class="form-control datepicker" placeholder="" name="date" ng-model="visit.date"></td>
 	          					<td><button class="btn btn-md btn-info" ng-click="addVisit(visit,_links.visits.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
 	          				</tr>
 	          			</table>
@@ -263,7 +263,8 @@
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ลักษณะบ้าน / พื้นที่ใช้สอยมาพอสังเขป หากจะถ่ายรูปต้องขออนุญาตจากเจ้าของบ้านก่อน</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" class="form-control" placeholder="" name="sResidenceDescription" ng-model="patient.sResidenceDescription">
+<!-- 	          		<input type="text" class="form-control" placeholder="" name="sResidenceDescription" ng-model="patient.sResidenceDescription"> -->
+	          		<text-angular ng-model="patient.sResidenceDescription"></text-angular>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
@@ -286,7 +287,7 @@
 	          					<td>{{m.job}}</td>
 	          					<td>{{m.income}}</td>
 	          					<td>{{m.remark}}</td>
-	          					<td></td>
+	          					<td><button class="btn btn-md btn-danger" ng-click="delMember(patient.patientId, m.memberId)" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
 	          				</tr>
 	          				<tr>
 	          					<td><input type="text" class="form-control" placeholder="" name="name" ng-model="member.name"></td>
@@ -295,7 +296,7 @@
 	          					<td><input type="text" class="form-control" placeholder="" name="job" ng-model="member.job"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="income" ng-model="member.income"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="remark" ng-model="member.remark"></td>
-	          					<td><button class="btn btn-md btn-info" ng-click="addMember()" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+	          					<td><button class="btn btn-md btn-info" ng-click="addMember(member,_links.members.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
 	          				</tr>
 	          			</table>
 		          	</div>
@@ -315,7 +316,7 @@
 	          	</div>
 	          </div> 
 			  <div class="form-group">
-	          	<label class="col-sm-2 text-uppercase control-label"><b>การประมเินสภาวะของผู้รับบริการในประเด็นต่อไปนี้</b></label>
+	          	<label class="col-sm-2 text-uppercase control-label"><b>การประเมินสภาวะของผู้รับบริการในประเด็นต่อไปนี้</b></label>
 	          			<div class="col-sm-12"></div>
 			         	<label class="col-sm-2 text-uppercase control-label">การประเมินสภาวะกาย จิต สังคม</label>
 			          	<div class="col-sm-8">
@@ -358,59 +359,14 @@
   		 	<div class="form-group">
 	          	<label class="col-sm-2 left text-uppercase control-label">ข้อมูลการใช้ยา</label>
 	          		<div class="col-sm-10">
-		          		<table class="table">
-						    <tbody ng-repeat="d in useDrugs">
-						        <tr>
-						          <th>วันที่</th>
-					          		<td>{{d.date}}</td>
-						        </tr>
-						        <tr>
-						          <th>การใช้ยา / วิตามิน /อาหารเสริม</th>
-							          <td>
-		          						<table>
-		          							<tr>
-		          								<th>รายการยา</th>
-		          								<th>วิธีการบริหาร</th>
-		          								<th>จำนวน</th>
-		          							</tr>
-		          							<tr ng-repeat="d in drugList">
-		          								<td>{{d.drugName}}</td>
-		          								<td>{{d.managing}}</td>
-		          								<td>{{d.qty}}</td>
-		          							</tr>
-		          						</table>
-		          					  </td>
-						        </tr>
-						        <tr>
-						          <th>การแพ้ยา</th>
-						            <td>{{d.isAllergy}}</td>
-						            <td>{{d.allergyDescription}}</td>
-						        </tr>
-						      	<tr>
-						          <th>การติดตามใช้ยา</th>
-						          	<td>{{d.usingDrug}}</td>
-						        </tr>
-   						      	<tr>
-						          <th>คำแนะนำใช้ยา</th>
-						          	<td>{{d.drugAdvice}}</td>
-						        </tr>
-   						      	<tr>
-						          <th>ปัญหาการใข้ยา</th>
-						          	<td>{{d.drugProblem}}</td>
-						        </tr>
-   						      	<tr>
-						          <th>note</th>
-						          	<td>{{d.problemDescription}}</td>
-						        </tr>
-						    </tbody>
-						</table>
+		          		
 						<table class="table">
-						    <tbody>
+						    <tbody ng-repeat="d in useDrugs" ng-init="getDrugList(d)" style="margin-bottom: 20px;">
 						        <tr>
 						          <th>วันที่</th>
 					          		<td>
 					          			<div class="col-sm-8">
-					          			<input type="text" class="form-control" placeholder="" name="date" ng-model="drug.date">
+					          			{{d.date | date:"dd/MM/yyyy"}}
 					          			</div>
 					          		</td>
 						        </tr>
@@ -425,7 +381,101 @@
 			          								<th>จำนวน</th>
 			          								<th></th>
 			          							</tr>
-			          							<tr ng-repeat="d in drugList">
+			          							<tr ng-repeat="l in drugList[d.drugId]">
+			          								<td>{{l.drugName}}</td>
+			          								<td>{{l.managing}}</td>
+			          								<td>{{l.qty}}</td>
+			          								<td><td><button class="btn btn-md btn-danger" ng-click="delXDurgList(d.drugId, l.listId)" ><i class="fa fa-trash" aria-hidden="true"></i></button></td></td>
+			          							</tr>
+			          							<tr>
+			          								<td rowspan="3"><input type="text" class="form-control" placeholder="" name="drugName" ng-model="nl.drugName"></td>
+			          								<td rowspan="3"><input type="text" class="form-control" placeholder="" name="managing" ng-model="nl.managing"></td>
+			          								<td rowspan="3"><input type="text" class="form-control" placeholder="" name="qty" ng-model="nl.qty"></td>
+			          								<td rowspan="3"><button class="btn btn-md btn-info" ng-click="addXDrugList(nl, d._links.drugList.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+			          							</tr>
+			          						</table>
+							          	</div>
+		          					  </td>
+						        </tr>
+						        <tr>
+						          <th>การแพ้ยา</th>
+						            <td>
+						            	<div class="col-sm-8">
+							            	<select class="form-control" ng-model="d.isAllergy"
+												ng-options="r.infoTh as r.infoTh for r in combo.COMBO_DRUG_ALLERGY">
+							          		</select>
+							          		<textarea class="form-control" rows="3" cols="30" ng-model="d.allergyDescription"></textarea>
+						            	</div>
+						            </td>
+						        </tr>
+						      	<tr>
+						          <th>การติดตามใช้ยา</th>
+						          	<td>
+						          		<div class="col-sm-8">
+			          						<select class="form-control" ng-model="d.usingDrug"
+												ng-options="r.infoTh as r.infoTh for r in combo.COMBO_DRUG_USING">
+							          		</select>						          		
+						          		</div>
+						          	</td>
+						        </tr>
+   						      	<tr>
+						          <th>คำแนะนำใช้ยา</th>
+						          	<td>
+						          		<div class="col-sm-8">
+											<textarea class="form-control" rows="3" cols="30" ng-model="d.drugAdvice"></textarea>
+						          		</div>
+						          	</td>
+						        </tr>
+   						      	<tr>
+						          <th>ปัญหาการใข้ยา</th>
+						          	<td>
+						          		<div class="col-sm-8">
+			          						<select class="form-control" ng-model="d.drugProblem"
+												ng-options="r.infoTh as r.infoTh for r in combo.COMBO_DRUG_PROBLEM">
+							          		</select>
+						          		</div>
+						          	</td>
+						        </tr>
+   						      	<tr>
+						          <th>note</th>
+						          	<td>
+						          		<div class="col-sm-8">
+						          			<textarea class="form-control" rows="3" cols="30" ng-model="d.problemDescription"></textarea>
+						          		</div>
+						          	</td>
+						        </tr>
+						        <tr>
+						        	<th></th>
+						        	<td><div class="col-sm-8">
+						        			<button class="btn btn-md btn-info" ng-click="saveXDrug(d, d._links.self.href)" >Save</button>
+						        			<button class="btn btn-md btn-danger" ng-click="delXDrug(patient.patientId, d.drugId)" ><i class="fa fa-trash" aria-hidden="true"></i></button>
+						        		</div>
+						        	</td>
+						        </tr>
+						    </tbody>
+						</table>
+						<table class="table">
+						    <tbody>
+						        <tr>
+						          <th>วันที่</th>
+					          		<td>
+					          			<div class="col-sm-8">
+					          			<input type="text" class="form-control datepicker" placeholder="" name="date" ng-model="drug.date">
+					          			</div>
+					          		</td>
+						        </tr>
+						        <tr>
+						          <th>การใช้ยา / วิตามิน /อาหารเสริม</th>
+							          <td>
+							          	<div class="col-sm-8">
+				    						<table>
+			          							<tr>
+			          								<th>รายการยา</th>
+			          								<th>วิธีการบริหาร</th>
+			          								<th>จำนวน</th>
+			          								<th></th>
+			          							</tr>
+			          							<tr ng-repeat="d in drugListTmp">
 			          								<td>{{d.drugName}}</td>
 			          								<td>{{d.managing}}</td>
 			          								<td>{{d.qty}}</td>
@@ -435,7 +485,7 @@
 			          								<td rowspan="3"><input type="text" class="form-control" placeholder="" name="drugName" ng-model="drugList.drugName"></td>
 			          								<td rowspan="3"><input type="text" class="form-control" placeholder="" name="managing" ng-model="drugList.managing"></td>
 			          								<td rowspan="3"><input type="text" class="form-control" placeholder="" name="qty" ng-model="drugList.qty"></td>
-			          								<td rowspan="3"><button class="btn btn-md btn-info" ng-click="addDrugList()" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+			          								<td rowspan="3"><button class="btn btn-md btn-info" ng-click="addDrugList(drugList)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
 			          							</tr>
 			          						</table>
 							          	</div>
@@ -446,7 +496,7 @@
 						            <td>
 						            	<div class="col-sm-8">
 							            	<select class="form-control" ng-model="drug.isAllergy"
-												ng-options="r.infoCode as r.infoTh for r in combo.COMBO_DRUG_ALLERGY">
+												ng-options="r.infoTh as r.infoTh for r in combo.COMBO_DRUG_ALLERGY">
 							          		</select>
 							          		<textarea class="form-control" rows="3" cols="30" ng-model="drug.allergyDescription"></textarea>
 						            	</div>
@@ -457,7 +507,7 @@
 						          	<td>
 						          		<div class="col-sm-8">
 			          						<select class="form-control" ng-model="drug.usingDrug"
-												ng-options="r.infoCode as r.infoTh for r in combo.COMBO_DRUG_USING">
+												ng-options="r.infoTh as r.infoTh for r in combo.COMBO_DRUG_USING">
 							          		</select>						          		
 						          		</div>
 						          	</td>
@@ -475,7 +525,7 @@
 						          	<td>
 						          		<div class="col-sm-8">
 			          						<select class="form-control" ng-model="drug.drugProblem"
-												ng-options="r.infoCode as r.infoTh for r in combo.COMBO_DRUG_PROBLEM">
+												ng-options="r.infoTh as r.infoTh for r in combo.COMBO_DRUG_PROBLEM">
 							          		</select>
 						          		</div>
 						          	</td>
@@ -490,7 +540,7 @@
 						        </tr>
 						        <tr>
 						        	<th></th>
-						        	<td><div class="col-sm-8"><button class="btn btn-md btn-info" ng-click="addDrug()" ><i class="fa fa-plus" aria-hidden="true"></i></button></div></td>
+						        	<td><div class="col-sm-8"><button class="btn btn-md btn-info" ng-click="addDrug(drug, _links.useDrugs.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></div></td>
 						        </tr>
 						    </tbody>
 						</table>
@@ -645,19 +695,19 @@
 	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_08.infoTh}}</label>
 	          	<div class="col-sm-8">
 	          		  <label>
-					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_08.A_01.infoTh">
+					    <input type="radio" ng-model="patient.gAnswer8" ng-value="param.Q_08.A_01.infoTh">
 					    {{param.Q_08.A_01.infoTh}}
 					  </label>
 	          		  <label>
-					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_08.A_02.infoTh">
+					    <input type="radio" ng-model="patient.gAnswer8" ng-value="param.Q_08.A_02.infoTh">
 					    {{param.Q_08.A_02.infoTh}}
 					  </label>
 	          		  <label>
-					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_08.A_03.infoTh">
+					    <input type="radio" ng-model="patient.gAnswer8" ng-value="param.Q_08.A_03.infoTh">
 					    {{param.Q_08.A_03.infoTh}}
 					  </label>
 	          		  <label>
-					    <input type="radio" ng-model="patient.gAnswer6" ng-value="param.Q_08.A_04.infoTh">
+					    <input type="radio" ng-model="patient.gAnswer8" ng-value="param.Q_08.A_04.infoTh">
 					    {{param.Q_08.A_04.infoTh}}
 					  </label>
 					   <input type="text" placeholder="" name="gAnswer8" ng-model="patient.gAnswer8">
@@ -667,15 +717,15 @@
 	          	<label class="col-sm-2 text-uppercase control-label">{{param.GE_QUESTION.Q_09.infoTh}}</label>
 	          	<div class="col-sm-8">
 	          		  <label>
-					    <input type="radio" ng-model="patient.gAnswer7" ng-value="param.Q_09.A_01.infoTh">
+					    <input type="radio" ng-model="patient.gAnswer9" ng-value="param.Q_09.A_01.infoTh">
 					    {{param.Q_09.A_01.infoTh}}
 					  </label>
 	          		  <label>
-					    <input type="radio" ng-model="patient.gAnswer7" ng-value="param.Q_09.A_02.infoTh">
+					    <input type="radio" ng-model="patient.gAnswer9" ng-value="param.Q_09.A_02.infoTh">
 					    {{param.Q_09.A_02.infoTh}}
 					  </label>
 	          		  <label>
-					    <input type="radio" ng-model="patient.gAnswer7" ng-value="param.Q_09.A_03.infoTh">
+					    <input type="radio" ng-model="patient.gAnswer9" ng-value="param.Q_09.A_03.infoTh">
 					    {{param.Q_09.A_03.infoTh}}
 					  </label>
 					   <input type="text" placeholder="" name="gAnswer9" ng-model="patient.gAnswer9">

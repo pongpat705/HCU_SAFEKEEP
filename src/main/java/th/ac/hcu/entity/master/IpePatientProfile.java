@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
@@ -71,13 +72,15 @@ public class IpePatientProfile {
 	private String sResidence; //3
 	private String sResidenceCost;
 	private String sResidenceRelation;
-	
+	@Lob
 	private String sResidenceDescription;//3
 
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeFamilyMember> members;//4
 	
+	@Lob
 	private String sGenogramImg; //4.2
+	@Lob
 	private String sEcoMapImg; //4.3
 	private String sMentalCondition;//5.1
 	private String sFamilyCondition;//5.2

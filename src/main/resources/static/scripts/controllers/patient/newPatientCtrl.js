@@ -17,6 +17,9 @@ angular
 		}
 		console.log($stateParams.newPatient);
 		$scope._links = $stateParams.newPatient._links;
+		
+		$scope.combo = $rootScope.comboBox;
+		$scope.param = $rootScope.param;
 	});
 	
 	$scope.patchPatient = function(patient, link){

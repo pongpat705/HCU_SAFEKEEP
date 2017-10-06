@@ -4,14 +4,17 @@ angular.module('app').factory('patientServices',
 		 function patientServices
 		 ($http, $filter,$rootScope) {
     return { 
-      getPatients: function(page, size){
+	  genericGet : function(link){
+	  	  return $http.get(link);
+	  },
+	  genericPatch : function(generic,link){
+    	  return $http.patch(link,generic);
+      },
+	  getPatients: function(page, size){
           return $http.get(CONTEXT+'/api/ipePatientProfiles',{params:{'page':page, 'size':size}});
       },
       addNewPatients: function(patients){
     	  return $http.post(CONTEXT+'/api/ipePatientProfiles',patients);
-      },
-      patchPatient : function(patient,link){
-    	  return $http.patch(link,patient);
       },
       patchPatientParent : function(patient,link){
     	  return $http.patch(link,patient, {headers:{'Content-Type': 'text/uri-list'}});
@@ -19,18 +22,30 @@ angular.module('app').factory('patientServices',
       addVisitLog : function(visit){
     	  return $http.post(CONTEXT+'/api/ipeVisitLogs',visit);
       },
-      genericGet : function(link){
-    	  return $http.get(link);
+      patientDeleteVisits : function(patientId, visitId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientProfiles/'+patientId+'/visits/'+visitId);
       },
-      genericDel : function(id){
-    	  return $http.delete(id);
+      addFamilyMember : function(member){
+    	  return $http.post(CONTEXT+'/api/ipeFamilyMembers',member);
+      },
+      patientDeleteMembers : function(patientId, memberId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientProfiles/'+patientId+'/members/'+memberId);
+      },
+      addUseDrug : function(drug){
+    	  return $http.post(CONTEXT+'/api/ipeUseDrugs',drug);
+      },
+      addDrugList : function(drugList){
+    	  return $http.post(CONTEXT+'/api/ipeDrugLists',drugList);
+      },
+      drugDeleteList : function(drugId, listId){
+    	  return $http.delete(CONTEXT+'/api/ipeUseDrugs/'+drugId+'/drugList/'+listId);
+      },
+      patchDrugParent : function(drugList,link){
+    	  return $http.patch(link,drugList, {headers:{'Content-Type': 'text/uri-list'}});
+      },
+      patientDeleteDrug : function(patientId, drugId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientProfiles/'+patientId+'/useDrugs/'+drugId);
       }
-//      getRtpTransactionByRequesterProxyId: function(requesterProxyId, instructionDate, page, size){
-//    	  return $http.get(CONTEXT+'/api/rtpInstructions/search/findByRequesterProxyIdAndInstructionDate',{params:{requesterProxyId:requesterProxyId, instructionDate:instructionDate, page:page, size:size}});
-//      },
-//      getRtpTransactionByReceiverProxyId: function(receiverProxyId, instructionDate, page, size){
-//    	  return $http.get(CONTEXT+'/api/rtpInstructions/search/findByReceiverProxyIdAndInstructionDate',{params:{receiverProxyId:receiverProxyId, instructionDate:instructionDate, page:page, size:size}});
-//      }
     
     };
   }]);
