@@ -33,7 +33,8 @@ angular
     'ui.grid',
     'ui.grid.pagination',
     'ui.grid.resizeColumns',
-    'ui.grid.autoFitColumns'
+    'ui.grid.autoFitColumns',
+    'ngMaterial'
   ])
   .constant('COLORS', {
     font: 'Arial, "Helvetica Neue", Helvetica, sans-serif',

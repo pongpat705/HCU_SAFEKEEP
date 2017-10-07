@@ -25,7 +25,6 @@ angular
 	
 	$scope.getPatientProfileList = function(page, size){
 		patientServices.getPatients(page, size).then(function(response){
-			console.log(response.data);
 			$scope.patientGridOptions.data = response.data._embedded.ipePatientProfiles;
 			$scope.patientGridOptions.totalItems = response.data.page.totalElements;
 		}).catch(function(response) {
@@ -44,7 +43,7 @@ angular
 						};
 
 		patientServices.addNewPatients(patient).then(function(response){
-			$state.go('app.newpatient',{newPatient : response.data})
+			$state.go('app.profile',{patient : response.data})
 		}).catch(function(response) {
 			console.error('Error',response);
 			toastr.error(response.data.message, 'Error');

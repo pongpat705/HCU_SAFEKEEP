@@ -12111,3 +12111,11 @@ td.align-middle {
  .require{
  	color: red;
  }
+ 
+ .full-w{
+    width: -webkit-fill-available !important;
+ }
+ 
+  .full-c{
+    width: inherit;
+ }

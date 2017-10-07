@@ -27,13 +27,61 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                   return $ocLazyLoad.load([{
                       files: [
+                    	  	  './scripts/services/patientServices.js',
                               './scripts/controllers/landing/landingCtrl.js'
                               ]
                     }]);
                 }]
-              }
-      }).state('app.user', {
-            url: '/user',
+              },
+	          data: {
+	              permissions: {
+	                only: ['ROLE_PATIEN'],
+	                redirectTo: 'user.signin'
+	              }
+	            }
+      }).state('app.track',{
+    	  url: '/track',
+          templateUrl: './views/app/landing/track.html',
+          controller: 'trackCtrl',
+      	resolve: {
+              deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load([{
+                    files: [
+                  	  	  './scripts/services/patientServices.js',
+                            './scripts/controllers/landing/trackCtrl.js'
+                            ]
+                  }]);
+              }]
+            },
+	          data: {
+	              permissions: {
+	                only: ['ROLE_PATIEN'],
+	                redirectTo: 'user.signin'
+	              }
+	            }
+      }).state('app.txn',{
+	    	  url: '/questionnair',
+	    	  params : {menuCode:null},
+	    	  templateUrl: './views/app/landing/txn.html',
+	          controller: 'txnCtrl',
+	      	resolve: {
+	              deps: ['$ocLazyLoad', function($ocLazyLoad) {
+	                return $ocLazyLoad.load([{
+	                    files: [
+	                    		'./scripts/services/patientServices.js',
+	                            './scripts/controllers/landing/txnCtrl.js'
+	                            ]
+	                  }]);
+	              }]
+	            },
+		          data: {
+		              permissions: {
+		                only: ['ROLE_PATIEN'],
+		                redirectTo: 'user.signin'
+		              }
+		            }
+	    }).state('app.user', {
+	        url: '/user',
             templateUrl: './views/app/user/user.html',
             controller: 'userCtrl',
         	resolve: {
@@ -114,28 +162,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 			          },
 			        data: {
 			            permissions: {
-			                only: ['ROLE_PROF'],
-			                redirectTo: 'user.signin'
-			              }
-			            }
-			    }).state('app.newpatient',{
-			    	url: '/newpatient',
-			    	params : {newPatient:null},
-			    	templateUrl: './views/app/patient/newpatient.html',
-			        controller: 'newPatientCtrl',
-			        resolve: {
-			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
-			              return $ocLazyLoad.load([{
-			                  files: [
-			                	  	  './scripts/services/patientServices.js',
-			                          './scripts/controllers/patient/newPatientCtrl.js'
-			                          ]
-			                }]);
-			            }]
-			          },
-			        data: {
-			            permissions: {
-			                only: ['ROLE_PROF'],
+			                only: ['ROLE_PROF', 'ROLE_STUD'],
 			                redirectTo: 'user.signin'
 			              }
 			            }
@@ -156,7 +183,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 			          },
 			        data: {
 			            permissions: {
-			                only: ['ROLE_PROF'],
+			                only: ['ROLE_PROF', 'ROLE_STUD'],
 			                redirectTo: 'user.signin'
 			              }
 			            }

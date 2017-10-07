@@ -10,6 +10,9 @@ angular.module('app').factory('patientServices',
 	  genericPatch : function(generic,link){
     	  return $http.patch(link,generic);
       },
+      genericDel : function(id){
+    	  return $http.delete(id);
+      },
 	  getPatients: function(page, size){
           return $http.get(CONTEXT+'/api/ipePatientProfiles',{params:{'page':page, 'size':size}});
       },

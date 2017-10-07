@@ -2,18 +2,18 @@
 'use strict';
 angular
 	.module('app')
-		.controller('landingCtrl', [	'$scope', '$http', '$localStorage', 
+		.controller('trackCtrl', [	'$scope', '$http', '$localStorage', 
 									'$timeout', '$translate', '$auth', 
 									'$state' , '$stateParams', 'Restangular', 
 									'toastr', '$rootScope', 'patientServices',
-  function landingCtrl($scope, $http, $localStorage, 
+  function trackCtrl($scope, $http, $localStorage, 
 		  			$timeout, $translate, $auth, 
 		  			$state, $stateParams, Restangular, 
 		  			toastr, $rootScope, patientServices) {
 	
 	$scope.$watch("init", function(){
 		$scope.param = $rootScope.param;
-			$scope.getPatientProfileList(0, 1000);
+//			$scope.getPatientProfileList(0, 1000);
 	});
 	
 	$scope.patientProfile = {};
@@ -30,8 +30,8 @@ angular
 	};
 	
 	
-	$scope.selectPatient = function(){
-		$state.go('app.track')
+	$scope.selectPatient = function(menuCode){
+		$state.go('app.txn',{menuCode : menuCode})
 	};
 	
 	

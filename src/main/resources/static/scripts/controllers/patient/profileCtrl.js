@@ -15,9 +15,8 @@ angular
 		if(undefined == $stateParams.patient){
 			$state.go('app.patient',{},{reload:true});
 		}
-		console.log($stateParams.patient);
 		$scope.patient = $stateParams.patient;
-		$scope._links = $stateParams.patient._links;
+		$scope._links = null != $stateParams.patient ? $stateParams.patient._links : null;
 		
 		$scope.combo = $rootScope.comboBox;
 		$scope.param = $rootScope.param;
