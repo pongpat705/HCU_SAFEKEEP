@@ -12,17 +12,30 @@ angular
 		  			toastr, $rootScope, patientServices) {
 	
 	$scope.$watch("init", function(){
+		if('' == $rootScope.currentUser){
+			$state.go('user.signout');
+		}
 		$scope.param = $rootScope.param;
-//			$scope.getPatientProfileList(0, 1000);
+		$scope.getTransaction();
 	});
 	
 	$scope.patientProfile = {};
 	$scope.patient = {};
 	
-	$scope.getPatientProfileList = function(page, size){
-		patientServices.getPatients(page, size).then(function(response){
-			$scope.patient.data = response.data._embedded.ipePatientProfiles;
-			$scope.patient.totalItems = response.data.page.totalElements;
+	$scope.prevMenu = function(){
+		$state.go('app.landing');
+	}
+	
+	$scope.getTransaction = function(){
+		var currentDate = new Date();
+		var day = currentDate.getDate();
+		var month = currentDate.getMonth()+1;
+		var year = currentDate.getFullYear();
+		var formatedDate = year+'/'+month+'/'+day;
+		patientServices.findByCreatedDate(formatedDate, $rootScope.currentUser).then(function(response){
+			console.log(response);
+			$scope.txn = response.data._embedded.ipePatientTransactions[0];
+			
 		}).catch(function(response) {
 			console.error('Error',response);
 			toastr.error(response.data.message, 'Error');
@@ -31,7 +44,7 @@ angular
 	
 	
 	$scope.selectPatient = function(menuCode){
-		$state.go('app.txn',{menuCode : menuCode})
+		$state.go('app.txn',{menuCode : menuCode, txn:$scope.txn})
 	};
 	
 	

@@ -18,6 +18,8 @@ angular
 		$scope.patient = $stateParams.patient;
 		$scope._links = null != $stateParams.patient ? $stateParams.patient._links : null;
 		
+		$scope.getPatientByRole();
+		
 		$scope.combo = $rootScope.comboBox;
 		$scope.param = $rootScope.param;
 		
@@ -30,6 +32,18 @@ angular
 		$scope.drugList = {};
 		
 	});
+	
+	$scope.getPatientByRole = function(){
+		var role = 'ROLE_PATIEN';
+		
+		patientServices.getPatientByRole(role).then(function(response){
+			console.log(response)
+			$scope.userPatients = response.data._embedded.users;
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+	}
 	
 	$scope.loadVisit = function(){
 		$scope.genericGet($scope._links.visits.href).then(function(response){

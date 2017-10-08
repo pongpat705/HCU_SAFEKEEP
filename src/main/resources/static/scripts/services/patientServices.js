@@ -16,6 +16,12 @@ angular.module('app').factory('patientServices',
 	  getPatients: function(page, size){
           return $http.get(CONTEXT+'/api/ipePatientProfiles',{params:{'page':page, 'size':size}});
       },
+      getPatientByRole : function(role){
+    	  return $http.get(CONTEXT+'/api/users/search/findByRole',{params:{'role':role}});
+      },
+      getPatientByIndexName : function(indexName){
+    	  return $http.get(CONTEXT+'/api/ipePatientProfiles/search/findByIndexName',{params:{'indexName':indexName}});
+      },
       addNewPatients: function(patients){
     	  return $http.post(CONTEXT+'/api/ipePatientProfiles',patients);
       },
@@ -48,6 +54,17 @@ angular.module('app').factory('patientServices',
       },
       patientDeleteDrug : function(patientId, drugId){
     	  return $http.delete(CONTEXT+'/api/ipePatientProfiles/'+patientId+'/useDrugs/'+drugId);
+      },
+      addPatientTransaction : function(txn){
+    	  return $http.post(CONTEXT+'/api/ipePatientTransactions',txn);
+      },
+      findByCreatedDate : function(createdDate, indexName){
+    	  return $http.get(CONTEXT+'/api/ipePatientTransactions/search/findByCreatedDate',{params:{'createdDate':createdDate, 'indexName': indexName}})
+      },
+      uploadFile : function(file, txn){
+    	  var fd = new FormData();
+          fd.append('file', file);
+          return $http.post(CONTEXT+'/service/uploadImage/'+txn.transactionId,fd);
       }
     
     };

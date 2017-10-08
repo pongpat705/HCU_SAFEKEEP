@@ -1,6 +1,13 @@
 <div class="p-x">
   <div class="row">
-  	<button class="btn btn-md btn-primary" ng-click="patchPatient(patient, _links.self.href)" ng-if="checkPermission('ROLE_PROF')" ><span>save</span></button>
+  	<button class="btn btn-md btn-primary m-b-md" ng-click="patchPatient(patient, _links.self.href)" ng-if="checkPermission('ROLE_PROF')" ><span>save</span></button>
+  	
+  	<div class="row">
+  		<label>mapping with userId <span class="require">*</span></label>
+	  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.indexName"
+							ng-options="u.userName as u.userName for u in userPatients">
+		</select>
+  	</div>
   </div>
   <div class="row">
   	<form class="form-horizontal" role="form" name="patientForm">

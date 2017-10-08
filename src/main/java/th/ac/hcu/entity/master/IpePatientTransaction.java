@@ -1,6 +1,7 @@
 package th.ac.hcu.entity.master;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,13 +21,14 @@ public class IpePatientTransaction {
 	@Id
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_PATIENT_TRANSACTION")
     private Long transactionId;
+	
+	private String indexName;
 
 	//Wounds
 	private String wAns1;
 	private String wAns2;
 	private String wAns2Descp;
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<IpeNurseImg> imgs;
+	private String imgs;
 	
 	//phlegm
 	private String pAns1;
@@ -34,15 +36,18 @@ public class IpePatientTransaction {
 	
 	//urine
 	private String uAns1;
+	private String uAns1Descp;
 	private String uAns2;
 	private String uAns3;
 	
 	//selfCare
 	private String sAns1;
 	private String sAns2;
+	private String sAns2Descp;
 	
 	//exercise
 	private String eAns1;
+	private String eAns1Descp;
 	private String eAns2;
 	
 	//Daily ability
@@ -72,33 +77,34 @@ public class IpePatientTransaction {
 	private String soAns12;
 	
 	//Pain level
-	private String plAns1;
-	private String plAns2;
-	private String plAns3;
-	private String plAns4;
-	private String plAns5;
+	private Integer plAns1;
+	private Integer plAns2;
+	private Integer plAns3;
+	private Integer plAns4;
+	private Integer plAns5;
 	
 	//Stiffness
-	private String snAns1;
-	private String snAns2;
+	private Integer snAns1;
+	private Integer snAns2;
 	
 	//Knee operation
-	private String koAns1;
-	private String koAns2;
-	private String koAns3;
-	private String koAns4;
-	private String koAns5;
-	private String koAns6;
-	private String koAns7;
-	private String koAns8;
-	private String koAns9;
-	private String koAns10;
-	private String koAns11;
-	private String koAns12;
-	private String koAns13;
-	private String koAns14;
-	private String koAns15;
+	private Integer koAns1;
+	private Integer koAns2;
+	private Integer koAns3;
+	private Integer koAns4;
+	private Integer koAns5;
+	private Integer koAns6;
+	private Integer koAns7;
+	private Integer koAns8;
+	private Integer koAns9;
+	private Integer koAns10;
+	private Integer koAns11;
+	private Integer koAns12;
+	private Integer koAns13;
+	private Integer koAns14;
+	private Integer koAns15;
 	
+	private Date createdDate;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeMedicalTechnical> medical;
@@ -129,14 +135,6 @@ public class IpePatientTransaction {
 
 	public void setMedicalAdvice(String medicalAdvice) {
 		this.medicalAdvice = medicalAdvice;
-	}
-
-	public List<IpeNurseImg> getImgs() {
-		return imgs;
-	}
-
-	public void setImgs(List<IpeNurseImg> imgs) {
-		this.imgs = imgs;
 	}
 
 	public String getwAns1() {
@@ -403,179 +401,179 @@ public class IpePatientTransaction {
 		this.soAns12 = soAns12;
 	}
 
-	public String getPlAns1() {
+	public Integer getPlAns1() {
 		return plAns1;
 	}
 
-	public void setPlAns1(String plAns1) {
+	public void setPlAns1(Integer plAns1) {
 		this.plAns1 = plAns1;
 	}
 
-	public String getPlAns2() {
+	public Integer getPlAns2() {
 		return plAns2;
 	}
 
-	public void setPlAns2(String plAns2) {
+	public void setPlAns2(Integer plAns2) {
 		this.plAns2 = plAns2;
 	}
 
-	public String getPlAns3() {
+	public Integer getPlAns3() {
 		return plAns3;
 	}
 
-	public void setPlAns3(String plAns3) {
+	public void setPlAns3(Integer plAns3) {
 		this.plAns3 = plAns3;
 	}
 
-	public String getPlAns4() {
+	public Integer getPlAns4() {
 		return plAns4;
 	}
 
-	public void setPlAns4(String plAns4) {
+	public void setPlAns4(Integer plAns4) {
 		this.plAns4 = plAns4;
 	}
 
-	public String getPlAns5() {
+	public Integer getPlAns5() {
 		return plAns5;
 	}
 
-	public void setPlAns5(String plAns5) {
+	public void setPlAns5(Integer plAns5) {
 		this.plAns5 = plAns5;
 	}
 
-	public String getSnAns1() {
+	public Integer getSnAns1() {
 		return snAns1;
 	}
 
-	public void setSnAns1(String snAns1) {
+	public void setSnAns1(Integer snAns1) {
 		this.snAns1 = snAns1;
 	}
 
-	public String getSnAns2() {
+	public Integer getSnAns2() {
 		return snAns2;
 	}
 
-	public void setSnAns2(String snAns2) {
+	public void setSnAns2(Integer snAns2) {
 		this.snAns2 = snAns2;
 	}
 
-	public String getKoAns1() {
+	public Integer getKoAns1() {
 		return koAns1;
 	}
 
-	public void setKoAns1(String koAns1) {
+	public void setKoAns1(Integer koAns1) {
 		this.koAns1 = koAns1;
 	}
 
-	public String getKoAns2() {
+	public Integer getKoAns2() {
 		return koAns2;
 	}
 
-	public void setKoAns2(String koAns2) {
+	public void setKoAns2(Integer koAns2) {
 		this.koAns2 = koAns2;
 	}
 
-	public String getKoAns3() {
+	public Integer getKoAns3() {
 		return koAns3;
 	}
 
-	public void setKoAns3(String koAns3) {
+	public void setKoAns3(Integer koAns3) {
 		this.koAns3 = koAns3;
 	}
 
-	public String getKoAns4() {
+	public Integer getKoAns4() {
 		return koAns4;
 	}
 
-	public void setKoAns4(String koAns4) {
+	public void setKoAns4(Integer koAns4) {
 		this.koAns4 = koAns4;
 	}
 
-	public String getKoAns5() {
+	public Integer getKoAns5() {
 		return koAns5;
 	}
 
-	public void setKoAns5(String koAns5) {
+	public void setKoAns5(Integer koAns5) {
 		this.koAns5 = koAns5;
 	}
 
-	public String getKoAns6() {
+	public Integer getKoAns6() {
 		return koAns6;
 	}
 
-	public void setKoAns6(String koAns6) {
+	public void setKoAns6(Integer koAns6) {
 		this.koAns6 = koAns6;
 	}
 
-	public String getKoAns7() {
+	public Integer getKoAns7() {
 		return koAns7;
 	}
 
-	public void setKoAns7(String koAns7) {
+	public void setKoAns7(Integer koAns7) {
 		this.koAns7 = koAns7;
 	}
 
-	public String getKoAns8() {
+	public Integer getKoAns8() {
 		return koAns8;
 	}
 
-	public void setKoAns8(String koAns8) {
+	public void setKoAns8(Integer koAns8) {
 		this.koAns8 = koAns8;
 	}
 
-	public String getKoAns9() {
+	public Integer getKoAns9() {
 		return koAns9;
 	}
 
-	public void setKoAns9(String koAns9) {
+	public void setKoAns9(Integer koAns9) {
 		this.koAns9 = koAns9;
 	}
 
-	public String getKoAns10() {
+	public Integer getKoAns10() {
 		return koAns10;
 	}
 
-	public void setKoAns10(String koAns10) {
+	public void setKoAns10(Integer koAns10) {
 		this.koAns10 = koAns10;
 	}
 
-	public String getKoAns11() {
+	public Integer getKoAns11() {
 		return koAns11;
 	}
 
-	public void setKoAns11(String koAns11) {
+	public void setKoAns11(Integer koAns11) {
 		this.koAns11 = koAns11;
 	}
 
-	public String getKoAns12() {
+	public Integer getKoAns12() {
 		return koAns12;
 	}
 
-	public void setKoAns12(String koAns12) {
+	public void setKoAns12(Integer koAns12) {
 		this.koAns12 = koAns12;
 	}
 
-	public String getKoAns13() {
+	public Integer getKoAns13() {
 		return koAns13;
 	}
 
-	public void setKoAns13(String koAns13) {
+	public void setKoAns13(Integer koAns13) {
 		this.koAns13 = koAns13;
 	}
 
-	public String getKoAns14() {
+	public Integer getKoAns14() {
 		return koAns14;
 	}
 
-	public void setKoAns14(String koAns14) {
+	public void setKoAns14(Integer koAns14) {
 		this.koAns14 = koAns14;
 	}
 
-	public String getKoAns15() {
+	public Integer getKoAns15() {
 		return koAns15;
 	}
 
-	public void setKoAns15(String koAns15) {
+	public void setKoAns15(Integer koAns15) {
 		this.koAns15 = koAns15;
 	}
 
@@ -585,6 +583,54 @@ public class IpePatientTransaction {
 
 	public void setwAns2Descp(String wAns2Descp) {
 		this.wAns2Descp = wAns2Descp;
+	}
+
+	public String getuAns1Descp() {
+		return uAns1Descp;
+	}
+
+	public void setuAns1Descp(String uAns1Descp) {
+		this.uAns1Descp = uAns1Descp;
+	}
+
+	public String getsAns2Descp() {
+		return sAns2Descp;
+	}
+
+	public void setsAns2Descp(String sAns2Descp) {
+		this.sAns2Descp = sAns2Descp;
+	}
+
+	public String geteAns1Descp() {
+		return eAns1Descp;
+	}
+
+	public void seteAns1Descp(String eAns1Descp) {
+		this.eAns1Descp = eAns1Descp;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getIndexName() {
+		return indexName;
+	}
+
+	public void setIndexName(String indexName) {
+		this.indexName = indexName;
+	}
+
+	public String getImgs() {
+		return imgs;
+	}
+
+	public void setImgs(String imgs) {
+		this.imgs = imgs;
 	}
 
 	public List<IpeStudentEstimate> getEstimates() {

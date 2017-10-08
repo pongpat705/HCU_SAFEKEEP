@@ -41,6 +41,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 	            }
       }).state('app.track',{
     	  url: '/track',
+    	  params : {txn:null},
           templateUrl: './views/app/landing/track.html',
           controller: 'trackCtrl',
       	resolve: {
@@ -61,7 +62,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 	            }
       }).state('app.txn',{
 	    	  url: '/questionnair',
-	    	  params : {menuCode:null},
+	    	  params : {menuCode:null, txn:null},
 	    	  templateUrl: './views/app/landing/txn.html',
 	          controller: 'txnCtrl',
 	      	resolve: {

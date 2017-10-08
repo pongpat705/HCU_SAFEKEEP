@@ -74,7 +74,7 @@ public class ServiceController {
 	  @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	  @ResponseBody
 	  public void uploadImage(HttpServletRequest request, 
-			  				@RequestParam(name="files") MultipartFile[] files) throws Exception {
+			  				@RequestParam(name="file") MultipartFile file) throws Exception {
 		  log.info("calling from "+request.getRemoteAddr());
 	  }
 }

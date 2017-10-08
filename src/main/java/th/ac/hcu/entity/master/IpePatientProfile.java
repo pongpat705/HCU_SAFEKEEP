@@ -22,6 +22,8 @@ public class IpePatientProfile {
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_PATIENT_PROFILE")
     private Long patientId;
 	
+	private String indexName;
+	
 	//PATIENT PROFILE
 	private String name;
 	private Long age;
@@ -614,6 +616,14 @@ public class IpePatientProfile {
 
 	public void setsResidenceRelation(String sResidenceRelation) {
 		this.sResidenceRelation = sResidenceRelation;
+	}
+
+	public String getIndexName() {
+		return indexName;
+	}
+
+	public void setIndexName(String indexName) {
+		this.indexName = indexName;
 	}
 	
 	
