@@ -61,10 +61,16 @@ angular.module('app').factory('patientServices',
       findByCreatedDate : function(createdDate, indexName){
     	  return $http.get(CONTEXT+'/api/ipePatientTransactions/search/findByCreatedDate',{params:{'createdDate':createdDate, 'indexName': indexName}})
       },
-      uploadFile : function(file, txn){
+      uploadFile : function(file, txn, user){
     	  var fd = new FormData();
           fd.append('file', file);
-          return $http.post(CONTEXT+'/service/uploadImage/'+txn.transactionId,fd);
+          return $http(
+        		  {	url: CONTEXT+'/service/uploadImage/'+txn.transactionId+'/'+user,
+        			method: 'POST',
+        			data: fd,
+        			headers: { 'Content-Type': undefined},
+        			transformRequest: angular.identity
+        		  });
       }
     
     };

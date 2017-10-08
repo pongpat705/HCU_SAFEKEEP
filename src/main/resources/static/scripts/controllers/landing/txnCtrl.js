@@ -21,6 +21,7 @@ angular
 			$state.go('app.landing',{},{reload:true});
 		}
 		$scope.txn = $stateParams.txn;
+		$scope.myFile = null;
 	});
 	var menuCode = $stateParams.menuCode;
 	
@@ -39,7 +40,14 @@ angular
 	
 	
 	$scope.uploadFile = function(){
-		$scope.myFile
+		var file = this.myFile;
+		patientServices.uploadFile(file, $scope.txn, $rootScope.currentUser).then(function(response){
+			console.log(response);
+			toastr.success('uploaded');
+		}).catch(function(response){
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+		});
 	};
 	
 	var wTab = [

@@ -58,6 +58,8 @@ public class Constants {
     		list.add(PATIENT_MENU);
     		list.add(PATIENT_TXN_MENU);
     		
+    		list.add(DIR_FILE);
+    		
     		
 			return list;
     	}
@@ -126,6 +128,8 @@ public class Constants {
 		
 		public static final String PATIENT_MENU = "PATIENT_MENU";
 		public static final String PATIENT_TXN_MENU = "PATIENT_TXN_MENU";
+		
+		public static final String DIR_FILE = "DIR_FILE";
 //		public static final String PL_01 = "PL_01";
 //		public static final String PL_02 = "PL_02";
 //		public static final String PL_03 = "PL_03";

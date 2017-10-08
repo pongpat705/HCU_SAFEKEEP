@@ -46,71 +46,71 @@ public class StartUp {
 	
 	 @PostConstruct
 	 public void settingData(){
-		initialRole();
+//		initialRole();
 		 loadParams();
 		 loadCombos();
 	 }
 	 
 	 public void initialRole(){
-//		 log.info("inserting admin");
-//			User adminUser = new User();
-//			adminUser.setEnabled("1");
-//			adminUser.setUserName("pongpat705");
-//			adminUser.setPassword("password");
-//			
-//			userRepository.save(adminUser);
-//			
-//			UserRole adminRole = new UserRole();
-//			adminRole.setEnabled("1");
-//			adminRole.setRole(Role.ROLE_ADMIN);
-//			adminRole.setUser(adminUser);
-//			
-//			userRoleRepository.save(adminRole);
-//			
-//			log.info("inserting prof");
-//			User profUser = new User();
-//			profUser.setEnabled("1");
-//			profUser.setUserName("pongpat706");
-//			profUser.setPassword("password");
-//			
-//			userRepository.save(profUser);
-//			
-//			UserRole profRole = new UserRole();
-//			profRole.setEnabled("1");
-//			profRole.setRole(Role.ROLE_PROF);
-//			profRole.setUser(profUser);
-//			
-//			userRoleRepository.save(profRole);
-//			
-//			log.info("inserting stud");
-//			User stud = new User();
-//			stud.setEnabled("1");
-//			stud.setUserName("pongpat707");
-//			stud.setPassword("password");
-//			
-//			userRepository.save(stud);
-//			
-//			UserRole studRole = new UserRole();
-//			studRole.setEnabled("1");
-//			studRole.setRole(Role.ROLE_STUD);
-//			studRole.setUser(stud);
-//			
-//			userRoleRepository.save(studRole);
+		 log.info("inserting admin");
+			User adminUser = new User();
+			adminUser.setEnabled("1");
+			adminUser.setUserName("thisadmin");
+			adminUser.setPassword("password");
+			
+			userRepository.save(adminUser);
+			
+			UserRole adminRole = new UserRole();
+			adminRole.setEnabled("1");
+			adminRole.setRole(Role.ROLE_ADMIN);
+			adminRole.setUser(adminUser);
+			
+			userRoleRepository.save(adminRole);
+			
+			log.info("inserting prof");
+			User profUser = new User();
+			profUser.setEnabled("1");
+			profUser.setUserName("thisprof");
+			profUser.setPassword("password");
+			
+			userRepository.save(profUser);
+			
+			UserRole profRole = new UserRole();
+			profRole.setEnabled("1");
+			profRole.setRole(Role.ROLE_PROF);
+			profRole.setUser(profUser);
+			
+			userRoleRepository.save(profRole);
+			
+			log.info("inserting stud");
+			User stud = new User();
+			stud.setEnabled("1");
+			stud.setUserName("thisstud");
+			stud.setPassword("password");
+			
+			userRepository.save(stud);
+			
+			UserRole studRole = new UserRole();
+			studRole.setEnabled("1");
+			studRole.setRole(Role.ROLE_STUD);
+			studRole.setUser(stud);
+			
+			userRoleRepository.save(studRole);
 		 
-//			log.info("inserting patient");
-//			User patient = new User();
-//			patient.setEnabled("1");
-//			patient.setUserName("pongpat708");
-//			patient.setPassword("password");
-//			
-//			userRepository.save(patient);
-//			
-//			UserRole patientRole = new UserRole();
-//			patientRole.setEnabled("1");
-//			patientRole.setRole(Role.ROLE_PATIEN);
-//			patientRole.setUser(patient);
-//			
-//			userRoleRepository.save(patientRole);
+			log.info("inserting patient");
+			User patient = new User();
+			patient.setEnabled("1");
+			patient.setUserName("thispatient");
+			patient.setPassword("password");
+			
+			userRepository.save(patient);
+			
+			UserRole patientRole = new UserRole();
+			patientRole.setEnabled("1");
+			patientRole.setRole(Role.ROLE_PATIEN);
+			patientRole.setUser(patient);
+			
+			userRoleRepository.save(patientRole);
 	 }
 	 
 	 public void loadParams(){

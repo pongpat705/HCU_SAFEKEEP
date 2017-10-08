@@ -1,8 +1,14 @@
 package th.ac.hcu.controller;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -10,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +29,7 @@ import th.ac.hcu.security.AuthenticatedUsers;
 import th.ac.hcu.security.TokenAuthenticationService;
 import th.ac.hcu.service.MaoUserDetailService;
 import th.ac.hcu.service.StartUp;
+import th.ac.hcu.service.StorageService;
 import th.ac.hcu.service.UserService;
 
 @RestController
@@ -37,6 +45,8 @@ public class ServiceController {
 	  @Autowired TokenAuthenticationService tokenService;
 	  
 	  @Autowired StartUp startUp;
+	  
+	  @Autowired StorageService storageService;
 	  
 	  @RequestMapping(value = "/parse", method = RequestMethod.GET)
 	  @ResponseBody
@@ -71,10 +81,27 @@ public class ServiceController {
 		  return "{\"ipAddress\":\""+request.getRemoteAddr()+"\"}";
 	  }
 	  
-	  @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
+	  @RequestMapping(value = "/uploadImage/{transactionId}/{userId}", method = RequestMethod.POST, headers = "content-type=multipart/form-data")
 	  @ResponseBody
-	  public void uploadImage(HttpServletRequest request, 
-			  				@RequestParam(name="file") MultipartFile file) throws Exception {
+	  public ResponseEntity<String> uploadImage(HttpServletRequest request, 
+			  				@RequestParam(name="file") MultipartFile file, @PathVariable("transactionId") String transactionId, @PathVariable("userId") String userId) throws Exception {
 		  log.info("calling from "+request.getRemoteAddr());
+		  log.info("transactionId : "+transactionId);
+		  log.info("userId : "+userId);
+		  
+		  String pathFile = storageService.saveFile(file, transactionId, userId);
+		return new ResponseEntity<String>(pathFile, HttpStatus.CREATED);
+	  }
+	  
+
+	  @RequestMapping(value = "/viewImage/{userId}/{transactionId}/{fileName}", method = RequestMethod.GET)
+	  @ResponseBody
+	  public byte[] viewImage(HttpServletRequest request, @PathVariable("transactionId") String transactionId, @PathVariable("userId") String userId, @PathVariable("fileName") String fileName) throws IOException {
+	      InputStream in = storageService.getFile(transactionId, userId, fileName);
+	      BufferedImage originalImage=ImageIO.read(in);
+	      ByteArrayOutputStream baos=new ByteArrayOutputStream();
+	      ImageIO.write(originalImage, "jpg", baos );
+	      byte[] imageInByte = baos.toByteArray();
+	      return imageInByte;
 	  }
 }

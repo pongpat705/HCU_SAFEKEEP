@@ -14,8 +14,8 @@ import th.ac.hcu.entity.master.IpePatientTransaction;
 @Repository
 public interface PatientTransactionRepository extends PagingAndSortingRepository<IpePatientTransaction, Long> {
 
-	@Query(value=" SELECT * FROM IPE_PATIENT_TRANSACTION WHERE date(CREATED_DATE) = date(:createdDate) and INDEX_NAME = :indexName ORDER BY ?#{#pageable} ",
-			countQuery = " SELECT count(*) FROM IPE_PATIENT_TRANSACTION WHERE date(CREATED_DATE) = date(:createdDate) and INDEX_NAME = :indexName ",
+	@Query(value=" SELECT * FROM ipe_patient_transaction WHERE date(CREATED_DATE) = date(:createdDate) and INDEX_NAME = :indexName ORDER BY ?#{#pageable} ",
+			countQuery = " SELECT count(*) FROM ipe_patient_transaction WHERE date(CREATED_DATE) = date(:createdDate) and INDEX_NAME = :indexName ",
 			nativeQuery = true)
 	Page<IpePatientTransaction> findByCreatedDate(Pageable pageable, @Param(value="createdDate") Date createdDate, @Param(value="indexName") String indexName);
 }

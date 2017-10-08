@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app').config(function(RestangularProvider){
-	RestangularProvider.setBaseUrl('http://localhost:8080');
+//	RestangularProvider.setBaseUrl('http://139.162.43.200:8080');
 	
     RestangularProvider.setResponseExtractor(function(response, operation) {
     	var extractedData;
