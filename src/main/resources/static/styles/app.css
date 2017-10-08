@@ -12116,6 +12116,10 @@ td.align-middle {
     width: -webkit-fill-available !important;
  }
  
+ .full-h{
+    height: -webkit-fill-available !important;
+ }
+ 
   .full-c{
     width: inherit;
  }
