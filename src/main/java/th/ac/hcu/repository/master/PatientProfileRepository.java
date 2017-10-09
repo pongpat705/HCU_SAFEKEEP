@@ -10,5 +10,5 @@ import th.ac.hcu.entity.master.IpePatientProfile;
 public interface PatientProfileRepository extends PagingAndSortingRepository<IpePatientProfile, Long> {
 	
 	IpePatientProfile findByIndexName(@Param(value="indexName") String indexName);
-
+	
 }

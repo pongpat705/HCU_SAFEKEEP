@@ -231,10 +231,5 @@ angular
 		$state.go('app.user.role.config', {userId:userId});
 	}
 	
-	$('.datepicker').datepicker({
-	    startDate: '-3d',
-	    format: "yyyy-mm-dd"
-	});
-	
   }
 ]);

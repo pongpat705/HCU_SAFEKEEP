@@ -188,6 +188,27 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 			                redirectTo: 'user.signin'
 			              }
 			            }
+			    }).state('app.transaction',{
+			    	url: '/patient-txn',
+			    	params : {patient:null},
+			    	templateUrl: './views/app/patient/transaction.html',
+			        controller: 'transactionCtrl',
+			        resolve: {
+			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+			              return $ocLazyLoad.load([{
+			                  files: [
+			                	  	  './scripts/services/patientServices.js',
+			                          './scripts/controllers/patient/transactionCtrl.js'
+			                          ]
+			                }]);
+			            }]
+			          },
+			        data: {
+			            permissions: {
+			                only: ['ROLE_PROF', 'ROLE_STUD'],
+			                redirectTo: 'user.signin'
+			              }
+			            }
 			    })
 			    .state('user', {
 			        templateUrl: './views/common/session.html',

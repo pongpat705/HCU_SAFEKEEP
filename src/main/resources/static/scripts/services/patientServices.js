@@ -71,6 +71,21 @@ angular.module('app').factory('patientServices',
         			headers: { 'Content-Type': undefined},
         			transformRequest: angular.identity
         		  });
+      },
+      addLab : function(lab){
+    	  return $http.post(CONTEXT+'/api/ipeMedicalTechnicals',lab);
+      },
+      transactionDeleteLab : function(transactionId, labId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientTransactions/'+transactionId+'/medical/'+labId);
+      },
+      getPatienTransactions : function(profileId, page, size){
+    	  return $http.get(CONTEXT+'/api/ipePatientTransactions/search/findByPatientId',{params:{'profileId': profileId, 'page':page, 'size':size}});
+      },
+      addEstimate : function(estimate){
+    	  return $http.post(CONTEXT+'/api/ipeStudentEstimates',estimate);
+      },
+      getEstimateByUserId : function(userId){
+    	  return $http.get(CONTEXT+'/api/ipeStudentEstimates/search/findByUserId',{params:{'userId': userId}});
       }
     
     };

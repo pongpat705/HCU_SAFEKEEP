@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -83,14 +84,15 @@ public class ServiceController {
 	  
 	  @RequestMapping(value = "/uploadImage/{transactionId}/{userId}", method = RequestMethod.POST, headers = "content-type=multipart/form-data")
 	  @ResponseBody
-	  public ResponseEntity<String> uploadImage(HttpServletRequest request, 
+	  public ResponseEntity<Map<String, String>> uploadImage(HttpServletRequest request, 
 			  				@RequestParam(name="file") MultipartFile file, @PathVariable("transactionId") String transactionId, @PathVariable("userId") String userId) throws Exception {
 		  log.info("calling from "+request.getRemoteAddr());
 		  log.info("transactionId : "+transactionId);
 		  log.info("userId : "+userId);
-		  
+		  Map<String, String> map = new HashMap<>();
 		  String pathFile = storageService.saveFile(file, transactionId, userId);
-		return new ResponseEntity<String>(pathFile, HttpStatus.CREATED);
+		  map.put("file", pathFile);
+		return new ResponseEntity<Map<String, String>>(map, HttpStatus.CREATED);
 	  }
 	  
 

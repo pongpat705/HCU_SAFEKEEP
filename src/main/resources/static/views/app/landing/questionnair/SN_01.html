@@ -1,7 +1,8 @@
 		<div class="form-group text-left">
 			<label class="col-sm-2 control-label">{{param.TX_QUESTION.SN_01.infoTh}}</label>
+			<b>{{txn.snAns1}}</b>
 			<div layout>
-			      <md-slider flex class="md-primary" md-discrete ng-model="txn.snAns1" step="1" min="0" max="10" aria-label="rating">
+			      <md-slider flex class="md-primary" md-discrete ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="txn.snAns1" step="1" min="0" max="10" aria-label="rating">
 			      </md-slider>
 		    </div>
 		</div>

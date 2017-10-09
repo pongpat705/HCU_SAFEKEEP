@@ -66,24 +66,18 @@ angular
             enableAutoFitColumns: true,
             useExternalPagination: true,
             columnDefs: [
-                { name: 'name'},
-    			{ name: 'age'},
-    			{ name: 'mobile'},
-    			{ name: 'houseNo'},
-    			{ name: 'groupNo'},
-    			{ name: 'district'},
-    			{ name: 'prefecture'},
-    			{ name: 'province'},
-    			{ name: 'diagnose'},
-    			{ name: 'createdDate'},
-    			{ name: 'createdBy'},
+                { name: 'name', width: 150},
+    			{ name: 'age', width: 50},
+    			{ name: 'mobile', width: 100},
+    			{ name: 'diagnose', width: 100},
     			{
                     name : 'Action',
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
-                                        '<button class="btn btn-xs btn-info" title="view transaction" ui-sref="app.transaction({patient: row.entity})" ><i class="fa fa-list-alt" aria-hidden="true"></i></button>' +
-                                        '&nbsp;<button class="btn btn-xs btn-primary" title="view profile" ui-sref="app.profile({patient: row.entity})" ><i class="fa fa-info-circle" aria-hidden="true"></i></button>' +
-                                        '&nbsp;<button class="btn btn-xs btn-danger" title="delete profile" ng-click="grid.appScope.delPatient(row.entity._links.self.href);" ><i class="fa fa-trash" aria-hidden="true"></i></button>' +
+                                        '<button class="btn btn-xs btn-info" title="view transaction" ui-sref="app.transaction({patient: row.entity})" >ข้อมูลประจำวันผู้ป่วย</button>' +
+                                        '&nbsp;<button class="btn btn-xs btn-primary" title="view profile" ui-sref="app.profile({patient: row.entity})" >ข้อมูลผู้ป่วย</button>' +
+                                        '&nbsp;<button class="btn btn-xs btn-danger" title="delete profile" ng-click="grid.appScope.delPatient(row.entity._links.self.href);" >ลบข้อมูลผู้ป่วย</button>' +
                                    '</div>',
+                                   width: 290,
                     enableCellEdit : false
                 }
     			

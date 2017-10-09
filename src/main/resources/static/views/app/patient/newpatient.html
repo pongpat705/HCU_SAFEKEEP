@@ -114,7 +114,10 @@
 	          				</tr>
 	          				<tr ng-if="checkPermission('ROLE_PROF')">
 	          					<td></td>
-	          					<td><input type="text" class="form-control datepicker" placeholder="" name="date" ng-model="visit.date"></td>
+	          					<td>
+<!-- 	          						<input type="text" class="form-control datepicker" placeholder="" name="date" ng-model="visit.date"> -->
+	          						<md-datepicker ng-model="visit.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+	          					</td>
 	          					<td><button class="btn btn-md btn-info" ng-click="addVisit(visit,_links.visits.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
 	          				</tr>
 	          			</table>
@@ -467,7 +470,8 @@
 						          <th>วันที่</th>
 					          		<td>
 					          			<div class="col-sm-8">
-					          			<input type="text" class="form-control datepicker" placeholder="" name="date" ng-model="drug.date">
+<!-- 					          			<input type="text" class="form-control datepicker" placeholder="" name="date" ng-model="drug.date"> -->
+					          			<md-datepicker ng-model="drug.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
 					          			</div>
 					          		</td>
 						        </tr>

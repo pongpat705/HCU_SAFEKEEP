@@ -50,6 +50,8 @@ public class IpePatientTransaction {
 	private String eAns1Descp;
 	private String eAns2;
 	
+	private String labAdvice;
+	
 	//Daily ability
 	private String daAns1;
 	private String daAns2;
@@ -631,6 +633,14 @@ public class IpePatientTransaction {
 
 	public void setImgs(String imgs) {
 		this.imgs = imgs;
+	}
+
+	public String getLabAdvice() {
+		return labAdvice;
+	}
+
+	public void setLabAdvice(String labAdvice) {
+		this.labAdvice = labAdvice;
 	}
 
 	public List<IpeStudentEstimate> getEstimates() {

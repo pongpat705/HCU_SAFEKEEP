@@ -62,6 +62,7 @@ public class StorageServiceImpl implements StorageService {
 			String fulldate = day+"-"+mont+"-"+year;
 			
 			File outputfile = new File(root+pathFile+"/"+fulldate+".png");
+			outputfile.deleteOnExit();
 			ImageIO.write(buffImage, "png", outputfile);
 			
 			String savedPath = userName+"/"+transactionId+"/"+fulldate+".png";

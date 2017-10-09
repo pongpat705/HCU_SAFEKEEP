@@ -3,9 +3,12 @@
 			<div class="col-sm-10">
 			
 				<div class="input">
-					<img alt="" src="/ipe/service/viewImage/{{txn.imgs}}">
-					<input type="file" accept="image/*" capture="camera" file-model="myFile" name="file"/>
-					<button ng-click = "uploadFile()">upload me</button>
+				<form>
+					<img alt="" ng-src="/ipe/service/viewImage/{{txn.imgs}}" style="    width: 100%;">
+					<input ng-if="checkPermission('ROLE_PATIEN')" type="file" accept="image/*" capture="camera" file-model="myFile" id="file" name="file"/>
+<!-- 					<button ng-if="checkPermission('ROLE_PATIEN')" ng-click = "uploadFile()">upload me</button> -->
+					<md-button class="md-raised full-w" ng-if="checkPermission('ROLE_PATIEN')" ng-click= "uploadFile()"><i class="glyphicon glyphicon-open"></i>UPLOAD</md-button>
+				</form>
 				</div>
 			</div>
 		</div>
