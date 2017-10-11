@@ -28,6 +28,7 @@ angular
 		$scope.loadVisit();
 		$scope.loadMember();
 		$scope.loadUseDrug();
+		$scope.loadLabs();
 		
 		$scope.drugList = {};
 		
@@ -226,10 +227,41 @@ angular
 			toastr.error(response.data.message, 'Error');
 	    });
 	};
+	//###
+	$scope.loadLabs = function(){
+		patientServices.genericGet($scope.patient._links.medical.href).then(function(response){
+			$scope.labs = response.data._embedded.ipeMedicalTechnicals;
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+	};
+	
+	$scope.addMedic = function(lab, link){
+		patientServices.addLab(lab).then(function(response){
+			var data = response.data._links.self.href;
+			patientServices.patchPatientParent(data, link).then(function(response){
+				toastr.success('saved');
+				$scope.loadLabs();
+			}).catch(function(response) {
+				console.error('Error',response);
+				toastr.error(response.data.message, 'Error');
+		    });
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+	};
+	
+	$scope.delMedic = function(patientId, labId){
+		patientServices.patientDeleteLab(patientId, labId).then(function(response){
+			$scope.loadLabs();
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+	};
 
-	$scope.openModal = function(userId){
-		$state.go('app.user.role.config', {userId:userId});
-	}
 	
   }
 ]);

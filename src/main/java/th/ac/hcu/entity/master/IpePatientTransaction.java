@@ -108,6 +108,8 @@ public class IpePatientTransaction {
 	
 	private Date createdDate;
 	
+	private String glucose;
+	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeMedicalTechnical> medical;
 	private String medicalAdvice;
@@ -641,6 +643,14 @@ public class IpePatientTransaction {
 
 	public void setLabAdvice(String labAdvice) {
 		this.labAdvice = labAdvice;
+	}
+
+	public String getGlucose() {
+		return glucose;
+	}
+
+	public void setGlucose(String glucose) {
+		this.glucose = glucose;
 	}
 
 	public List<IpeStudentEstimate> getEstimates() {

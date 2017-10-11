@@ -106,6 +106,21 @@ public class IpePatientProfile {
 	private String gAnswer8;
 	private String gAnswer9;
 	
+	//lab
+	private String lGlucose;
+	private String lCholesterol;
+	private String lTriglyceride;
+	private String lHdlc;
+	private String lLdlc;
+	private String lBun;
+	private String lCreatinine;
+	private String lUric;
+	private String lAlt;
+	private String lAst;
+	private String labAdvice;
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<IpeMedicalTechnical> medical;
+	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpePatientTransaction> transactions;
 	
@@ -624,6 +639,102 @@ public class IpePatientProfile {
 
 	public void setIndexName(String indexName) {
 		this.indexName = indexName;
+	}
+
+	public String getlGlucose() {
+		return lGlucose;
+	}
+
+	public void setlGlucose(String lGlucose) {
+		this.lGlucose = lGlucose;
+	}
+
+	public String getlCholesterol() {
+		return lCholesterol;
+	}
+
+	public void setlCholesterol(String lCholesterol) {
+		this.lCholesterol = lCholesterol;
+	}
+
+	public String getlTriglyceride() {
+		return lTriglyceride;
+	}
+
+	public void setlTriglyceride(String lTriglyceride) {
+		this.lTriglyceride = lTriglyceride;
+	}
+
+	public String getlHdlc() {
+		return lHdlc;
+	}
+
+	public void setlHdlc(String lHdlc) {
+		this.lHdlc = lHdlc;
+	}
+
+	public String getlLdlc() {
+		return lLdlc;
+	}
+
+	public void setlLdlc(String lLdlc) {
+		this.lLdlc = lLdlc;
+	}
+
+	public String getlBun() {
+		return lBun;
+	}
+
+	public void setlBun(String lBun) {
+		this.lBun = lBun;
+	}
+
+	public String getlCreatinine() {
+		return lCreatinine;
+	}
+
+	public void setlCreatinine(String lCreatinine) {
+		this.lCreatinine = lCreatinine;
+	}
+
+	public String getlUric() {
+		return lUric;
+	}
+
+	public void setlUric(String lUric) {
+		this.lUric = lUric;
+	}
+
+	public String getlAlt() {
+		return lAlt;
+	}
+
+	public void setlAlt(String lAlt) {
+		this.lAlt = lAlt;
+	}
+
+	public String getlAst() {
+		return lAst;
+	}
+
+	public void setlAst(String lAst) {
+		this.lAst = lAst;
+	}
+
+	public String getLabAdvice() {
+		return labAdvice;
+	}
+
+	public void setLabAdvice(String labAdvice) {
+		this.labAdvice = labAdvice;
+	}
+
+	public List<IpeMedicalTechnical> getMedical() {
+		return medical;
+	}
+
+	public void setMedical(List<IpeMedicalTechnical> medical) {
+		this.medical = medical;
 	}
 	
 	

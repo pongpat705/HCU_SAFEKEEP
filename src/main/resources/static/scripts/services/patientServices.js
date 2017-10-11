@@ -86,6 +86,9 @@ angular.module('app').factory('patientServices',
       },
       getEstimateByUserId : function(userId){
     	  return $http.get(CONTEXT+'/api/ipeStudentEstimates/search/findByUserId',{params:{'userId': userId}});
+      },
+      patientDeleteLab : function(patienId, labId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientProfiles/'+patienId+'/medical/'+labId);
       }
     
     };

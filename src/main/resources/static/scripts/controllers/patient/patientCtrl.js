@@ -12,6 +12,9 @@ angular
 		  			toastr, $rootScope, patientServices) {
 	
 	$scope.$watch("init", function(){
+		if('' == $rootScope.currentUser){
+			$state.go('user.signout');
+		}
 		$scope.getPatientProfileList();
 	});
 	var paginationOptions = {
@@ -19,6 +22,8 @@ angular
 	        pageSize: 20,
 	        sort: null
     };
+	
+	var isRoleProf = $rootScope.checkPermission('ROLE_PROF');
 	
 	$scope.combo = $rootScope.comboBox;
 	$scope.param = $rootScope.param;
@@ -59,6 +64,10 @@ angular
 	    });
 	}
 	
+	$scope.checkRolePermission = function(role){
+		return $rootScope.checkPermission(role);
+	}
+	
 	$scope.patientGridOptions = {
             paginationPageSizes: [5, 10, 20],
             paginationPageSize: paginationOptions.pageSize,
@@ -75,10 +84,18 @@ angular
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
                                         '<button class="btn btn-xs btn-info" title="view transaction" ui-sref="app.transaction({patient: row.entity})" >ข้อมูลประจำวันผู้ป่วย</button>' +
                                         '&nbsp;<button class="btn btn-xs btn-primary" title="view profile" ui-sref="app.profile({patient: row.entity})" >ข้อมูลผู้ป่วย</button>' +
-                                        '&nbsp;<button class="btn btn-xs btn-danger" title="delete profile" ng-click="grid.appScope.delPatient(row.entity._links.self.href);" >ลบข้อมูลผู้ป่วย</button>' +
                                    '</div>',
-                                   width: 290,
+                                   width: 210,
                     enableCellEdit : false
+                },
+                {
+                    name : 'Delete',
+                    cellTemplate : '<div class="ui-grid-cell-contents">' +
+                                        '<button class="btn btn-xs btn-danger" title="delete profile" ng-click="grid.appScope.delPatient(row.entity._links.self.href);" >ลบข้อมูลผู้ป่วย</button>' +
+                                   '</div>',
+                                   width: 100,
+                    enableCellEdit : false,
+                    visible : isRoleProf
                 }
     			
             ],

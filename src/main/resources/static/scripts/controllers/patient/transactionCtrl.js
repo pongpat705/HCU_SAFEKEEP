@@ -76,7 +76,11 @@ angular
 			$scope.estimate = response.data;
 		}).catch(function(response) {
 			console.error('Error',response);
-			toastr.error(response.data.message, 'Error');
+			if(404 == response.status){
+				toastr.info($scope.param.MESSAGE.DATA_NOTFOUND.infoTh, 'Error');
+			} else {
+				toastr.error(response.data.message, 'Error');
+			}
 	    });
 		
 		$scope.loadLabs();
@@ -87,7 +91,11 @@ angular
 			$scope.labs = response.data._embedded.ipeMedicalTechnicals;
 		}).catch(function(response) {
 			console.error('Error',response);
-			toastr.error(response.data.message, 'Error');
+			if(404 == response.status){
+				toastr.info($scope.param.MESSAGE.DATA_NOTFOUND.infoTh, 'Error');
+			} else {
+				toastr.error(response.data.message, 'Error');
+			}
 	    });
 	};
 	

@@ -73,6 +73,15 @@ angular
 		$state.go($rootScope.prevState);
 	};
 	
+	$scope.glucoseWarning = function(val){
+		if(val > 100){
+			toastr.warning($scope.param.MESSAGE.GLUCOSE_WARN_OVER.infoEn, 'Warning');
+		}
+		if(val < 70){
+			toastr.warning($scope.param.MESSAGE.GLUCOSE_WARN_OVER.infoTh, 'Warning');
+		}
+	};
+	
 	
 	$scope.uploadFile = function(){
 		var file = $( "#file" );

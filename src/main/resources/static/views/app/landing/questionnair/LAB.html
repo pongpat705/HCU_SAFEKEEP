@@ -11,6 +11,18 @@
 							<th>ผลตรวจ</th>
 							<th></th>
 						</tr>
+						<tr>
+							<td>{{param.LAB_CONSTANTS.LAB_GLUCOSE_LABEL.infoTh}}</td>
+							<td>{{param.LAB_CONSTANTS.LAB_GLUCOSE_NORMAL.infoTh}}</td>
+							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-blur="glucoseWarning(txn.glucose)" ng-model="txn.glucose"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>อื่น ๆ</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
 						<tr ng-repeat="l in labs">
 							<td>{{l.record}}</td>
 							<td>{{l.nomalValue}}</td>
@@ -18,12 +30,12 @@
 							<td><button class="btn btn-md btn-danger" ng-if="checkPermission('ROLE_PATIEN')" ng-click="delMedic(txn.transactionId, l.medicalId)" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
 						</tr>
 						<tr>
-							<td><input type="text" class="form-control datepicker" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="lab.record"></td>
-							<td><input type="text" class="form-control datepicker" placeholder="" name="normalValue" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="lab.nomalValue"></td>
-							<td><input type="text" class="form-control datepicker" placeholder="" name="result" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="lab.result"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="lab.record"></td>
+							<td><input type="text" class="form-control" placeholder="" name="normalValue" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="lab.nomalValue"></td>
+							<td><input type="number" class="form-control" placeholder="" name="result" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="lab.result"></td>
 							<td><button class="btn btn-md btn-info" ng-if="checkPermission('ROLE_PATIEN')" ng-click="addMedic(lab, txn._links.medical.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
 						</tr>
 					</table>
-					<textarea rows="4" cols="30" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="txn.labAdvice" ></textarea>
+					<textarea rows="4" cols="30" class="form-control" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="txn.labAdvice" ></textarea>
 			</div>
 		</div>
