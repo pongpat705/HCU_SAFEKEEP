@@ -108,7 +108,7 @@ public class IpePatientTransaction {
 	
 	private Date createdDate;
 	
-	private String glucose;
+	private Integer glucose;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeMedicalTechnical> medical;
@@ -645,11 +645,11 @@ public class IpePatientTransaction {
 		this.labAdvice = labAdvice;
 	}
 
-	public String getGlucose() {
+	public Integer getGlucose() {
 		return glucose;
 	}
 
-	public void setGlucose(String glucose) {
+	public void setGlucose(Integer glucose) {
 		this.glucose = glucose;
 	}
 

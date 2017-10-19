@@ -46,7 +46,7 @@ public class StartUp {
 	
 	 @PostConstruct
 	 public void settingData(){
-//		initialRole();
+		initialRole();
 		 loadParams();
 		 loadCombos();
 	 }
@@ -112,35 +112,35 @@ public class StartUp {
 //			
 //			userRoleRepository.save(patientRole);
 			
-			log.info("inserting pt");
-			User stuPt = new User();
-			stuPt.setEnabled("1");
-			stuPt.setUserName("stupt");
-			stuPt.setPassword("password");
+//			log.info("inserting pt");
+//			User stuPt = new User();
+//			stuPt.setEnabled("1");
+//			stuPt.setUserName("stupt");
+//			stuPt.setPassword("password");
+//			
+//			userRepository.save(stuPt);
+//			
+//			UserRole stuPtRole = new UserRole();
+//			stuPtRole.setEnabled("1");
+//			stuPtRole.setRole(Role.ROLE_STUD_PT);
+//			stuPtRole.setUser(stuPt);
+//			
+//			userRoleRepository.save(stuPtRole);
 			
-			userRepository.save(stuPt);
-			
-			UserRole stuPtRole = new UserRole();
-			stuPtRole.setEnabled("1");
-			stuPtRole.setRole(Role.ROLE_STUD_PT);
-			stuPtRole.setUser(stuPt);
-			
-			userRoleRepository.save(stuPtRole);
-			
-			log.info("inserting ph");
-			User stuPh = new User();
-			stuPh.setEnabled("1");
-			stuPh.setUserName("stupt");
-			stuPh.setPassword("password");
-			
-			userRepository.save(stuPh);
-			
-			UserRole stuPhRole = new UserRole();
-			stuPhRole.setEnabled("1");
-			stuPhRole.setRole(Role.ROLE_STUD_PH);
-			stuPhRole.setUser(stuPh);
-			
-			userRoleRepository.save(stuPhRole);
+//			log.info("inserting ph");
+//			User stuPh = new User();
+//			stuPh.setEnabled("1");
+//			stuPh.setUserName("stuph");
+//			stuPh.setPassword("password");
+//			
+//			userRepository.save(stuPh);
+//			
+//			UserRole stuPhRole = new UserRole();
+//			stuPhRole.setEnabled("1");
+//			stuPhRole.setRole(Role.ROLE_STUD_PH);
+//			stuPhRole.setUser(stuPh);
+//			
+//			userRoleRepository.save(stuPhRole);
 	 }
 	 
 	 public void loadParams(){
