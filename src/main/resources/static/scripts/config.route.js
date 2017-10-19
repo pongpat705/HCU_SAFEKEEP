@@ -209,8 +209,47 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 			                redirectTo: 'user.signin'
 			              }
 			            }
-			    })
-			    .state('user', {
+			    }).state('app.pt',{
+			    	url: '/pt',
+			    	templateUrl: './views/app/patient/pt.html',
+			        controller: 'ptCtrl',
+			        resolve: {
+			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+			              return $ocLazyLoad.load([{
+			                  files: [
+			                	  	  './scripts/services/patientServices.js',
+			                          './scripts/controllers/patient/ptCtrl.js'
+			                          ]
+			                }]);
+			            }]
+			          },
+			        data: {
+			            permissions: {
+			                only: ['ROLE_PROF', 'ROLE_STUD_PT'],
+			                redirectTo: 'user.signin'
+			              }
+			            }
+			    }).state('app.ph',{
+			    	url: '/ph',
+			    	templateUrl: './views/app/patient/ph.html',
+			        controller: 'phCtrl',
+			        resolve: {
+			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+			              return $ocLazyLoad.load([{
+			                  files: [
+			                	  	  './scripts/services/patientServices.js',
+			                          './scripts/controllers/patient/phCtrl.js'
+			                          ]
+			                }]);
+			            }]
+			          },
+			        data: {
+			            permissions: {
+			                only: ['ROLE_PROF', 'ROLE_STUD_PH'],
+			                redirectTo: 'user.signin'
+			              }
+			            }
+			    }).state('user', {
 			        templateUrl: './views/common/session.html',
 			      }).state('user.signin', {
 			        url: '/signin',

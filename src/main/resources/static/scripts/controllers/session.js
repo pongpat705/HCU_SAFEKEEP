@@ -66,6 +66,10 @@ function sessionCtrl(	$scope, $state, $auth,
 					  $state.go('app.user');
 				  } else if((roleList.indexOf('ROLE_STUD')> -1)){
 					  $state.go('app.patient');
+				  } else if((roleList.indexOf('ROLE_STUD_PT')> -1)){
+					  $state.go('app.pt');
+				  } else if((roleList.indexOf('ROLE_STUD_PH')> -1)){
+					  $state.go('app.ph');
 				  } else if((roleList.indexOf('ROLE_PROF')> -1)){
 					  $state.go('app.patient');
 				  } else {

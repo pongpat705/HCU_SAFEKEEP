@@ -123,6 +123,10 @@ public class IpePatientProfile {
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpePatientTransaction> transactions;
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<IpePatientPtStudent> ptStudent;
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<IpePatientPhStudent> phStudent;
 	
 	private Date createdDate;
 	private String createdBy;
@@ -735,6 +739,22 @@ public class IpePatientProfile {
 
 	public void setMedical(List<IpeMedicalTechnical> medical) {
 		this.medical = medical;
+	}
+
+	public List<IpePatientPtStudent> getPtStudent() {
+		return ptStudent;
+	}
+
+	public void setPtStudent(List<IpePatientPtStudent> ptStudent) {
+		this.ptStudent = ptStudent;
+	}
+
+	public List<IpePatientPhStudent> getPhStudent() {
+		return phStudent;
+	}
+
+	public void setPhStudent(List<IpePatientPhStudent> phStudent) {
+		this.phStudent = phStudent;
 	}
 	
 	
