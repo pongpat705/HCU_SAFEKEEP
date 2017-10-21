@@ -12,11 +12,12 @@ angular
 		  			toastr, $rootScope, patientServices) {
 	
 	$scope.$watch("init", function(){
-		if(undefined == $stateParams.patient){
-			$state.go('app.patient',{},{reload:true});
+		if('' == $rootScope.currentUser){
+			$rootScope.unAuthorized();
+		} else {
+			$scope.patient = $stateParams.patient;
+			$scope.getPatientTransaction($scope.patient.patientId, 0, 20);
 		}
-		$scope.patient = $stateParams.patient;
-		$scope.getPatientTransaction($scope.patient.patientId, 0, 20);
 	});
 	var paginationOptions = {
 	        pageNumber: 0,
@@ -70,20 +71,31 @@ angular
 		}
 	};
 	
+	
 	$scope.showDetail = function(txn){
 		$scope.txn = txn;
-		patientServices.getEstimateByUserId($rootScope.currentUser).then(function(response){
-			$scope.estimate = response.data;
-		}).catch(function(response) {
-			console.error('Error',response);
-			if(404 == response.status){
-				toastr.info($scope.param.MESSAGE.DATA_NOTFOUND.infoTh, 'Error');
-			} else {
-				toastr.error(response.data.message, 'Error');
-			}
-	    });
+		
+		if(!$rootScope.checkPermission('ROLE_PROF')){
+			patientServices.getEstimateByUserId($rootScope.currentUser).then(function(response){
+				$scope.estimate = response.data;
+			}).catch(function(response) {
+				console.error('Error',response);
+				if(404 == response.status){
+					toastr.info($scope.param.MESSAGE.DATA_NOTFOUND.infoTh, 'Error');
+				} else {
+					toastr.error(response.data.message, 'Error');
+				}
+		    });
+		}
 		
 		$scope.loadLabs();
+		
+		if($rootScope.checkPermission('ROLE_PROF')){
+			$scope.genericGet($scope.txn._links.estimates.href).then(function(response){
+				$scope.estimateList = response.data._embedded.ipeStudentEstimates;
+			});
+		}
+		
 	};
 	
 	$scope.loadLabs = function(){
@@ -135,6 +147,17 @@ angular
                 });
             }
         };
+	
+	$scope.genericGet = function(link){
+		var result = null;
+		result = patientServices.genericGet(link).then(function(response){
+			return response;
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+		return result;
+	};
 	
   }
 ]);

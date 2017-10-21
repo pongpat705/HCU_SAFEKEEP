@@ -61,6 +61,8 @@ public class Constants {
     		list.add(DIR_FILE);
     		list.add(LAB_CONSTANTS);
     		list.add(MESSAGE);
+    		list.add(PT);
+    		
     		
 			return list;
     	}
@@ -72,6 +74,7 @@ public class Constants {
     		list.add(COMBO_DRUG_ALLERGY);
     		list.add(COMBO_DRUG_USING);
     		list.add(COMBO_DRUG_PROBLEM);
+    		list.add(DRP);
 			return list;
     	}
 		public static final String COMBO_SELF_HELP = "COMBO_SELF_HELP";
@@ -133,6 +136,8 @@ public class Constants {
 		public static final String DIR_FILE = "DIR_FILE";
 		public static final String LAB_CONSTANTS = "LAB_CONSTANTS";
 		public static final String MESSAGE = "MESSAGE";
+		public static final String PT = "PT";
+		public static final String DRP = "DRP";
 //		public static final String PL_01 = "PL_01";
 //		public static final String PL_02 = "PL_02";
 //		public static final String PL_03 = "PL_03";

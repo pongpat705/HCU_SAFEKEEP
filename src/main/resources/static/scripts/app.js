@@ -8,6 +8,7 @@
  *
  * Main module of the application.
  */
+
 angular
   .module('app', [
     'ui.router',
@@ -24,12 +25,9 @@ angular
     'textAngular',
     'satellizer',
     'permission', 'permission.ui', 
-    'ngTable', 
-    'angularjs-dropdown-multiselect',
     'restangular', 
     'toastr',
     'ngSnakeCamel',
-    'valdr',
     'ui.grid',
     'ui.grid.pagination',
     'ui.grid.resizeColumns',

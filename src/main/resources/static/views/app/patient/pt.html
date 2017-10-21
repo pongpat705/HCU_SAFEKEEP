@@ -1,15 +1,105 @@
 <div class="p-x m-t-lg">
   <div class="row">
+  	<button class="btn btn-md btn-primary m-b-md" ng-click="patchPatientPt(pt, _links.self.href)" ng-if="checkPermission('ROLE_PROF') || checkPermission('ROLE_STUD_PT')" ><span>save</span></button>
   	<b><p>ข้อมูลผู้ป่วย</p></b>
   	
   		<form class="form-horizontal" role="form">
 			<div class="form-group">
 	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>ข้อมูลนี้เป็นของผู้ป่วย </label>
 			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="patient"
-									ng-options="u.userName as u.userName for u in userPatients">
+									ng-options="u as u.name for u in patients track by u.patientId"
+									ng-change="changePatient(patient);">
 				</select>
 	  		</div>
   		</form>
+  		
+  		<form class="form-horizontal" role="form">
+		          <div class="form-group">
+		            <label class="col-sm-2 text-uppercase control-label">ชื่อ สกุล ผู้รับบริการ <span class="require">*</span></label>
+		            <div class="col-sm-8">
+		            	<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="name" ng-model="patient.name" maxlength="50" required>
+		            </div>
+		          </div>
+		          <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">อายุ</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="age" ng-model="patient.age" maxlength="2">
+		          	</div>
+		          </div>  
+		          <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">เบอร์โทรศัพท์</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="mobile" ng-model="patient.mobile" maxlength="10">
+		          	</div>
+		          </div>  
+		          <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">บ้านเลขที่</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="houseNo" ng-model="patient.houseNo">
+		          	</div>
+		          </div>  
+		          <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">หมู่</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="groupNo" ng-model="patient.groupNo" >
+		          	</div>
+		          </div>  
+		          <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">ตำบล</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="district" ng-model="patient.district" >
+		          	</div>
+		          </div>  
+		          <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">อำเภอ</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="prefecture" ng-model="patient.prefecture" >
+		          	</div>
+		          </div>  
+		          <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">จังหวัด</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="province" ng-model="patient.province" >
+		          	</div>
+		          </div>  
+		          <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">วินิจฉัยโรค</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="diagnose" ng-model="patient.diagnose" >
+		          	</div>
+		          </div>  
+				  <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">ระยะเวลาที่ป่วย/เริ่มป่วยเมื่อ</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="period" ng-model="patient.period" >
+		          	</div>
+		          </div>  
+				  <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">ชื่อผู้ดูแลหลัก</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="curator" ng-model="patient.curator" >
+		          	</div>
+		          </div> 
+				  <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">ความสัมพันธ์กับผู้ป่วย</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="curatorRelation" ng-model="patient.curatorRelation" >
+		          	</div>
+		          </div> 
+				  <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">ชื่อ อ.ส.ม ที่รับผิดชอบ</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="supervisor" ng-model="patient.supervisor" maxlength="50">
+		          	</div>
+		          </div> 
+				  <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">เบอร์โทรศัพท์</label>
+		          	<div class="col-sm-8">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="supervisorMobile" ng-model="patient.supervisorMobile" maxlength="10">
+		          	</div>
+		          </div> 
+  		</form>
+  		
   		<hr>
   		<form class="form-horizontal" role="form">
 			<div class="form-group">
@@ -45,7 +135,7 @@
 			<div class="form-group">
 	  			<label class="col-sm-2 text-uppercase control-label">Upload image </label>
 			  	<div class="col-sm-8">
-        		  	<img alt="" ng-src="/ipe/service/viewImage/{{pt.image}}" style="    width: 100%;">
+        		  	<img alt="" ng-src="/ipe/service/pt/viewImage/{{pt.image}}" style="    width: 100%;">
 					<input ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" type="file" accept="image/*" capture="camera" file-model="myFile" id="file" name="file"/>
 <!-- 					<button ng-if="checkPermission('ROLE_PATIEN')" ng-click = "uploadFile()">upload me</button> -->
 					<md-button class="md-raised full-w" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-click= "uploadFile()"><i class="glyphicon glyphicon-open"></i>UPLOAD</md-button>
@@ -110,116 +200,283 @@
 	            </div>
 	  		</div>
 			<div class="form-group">
-			  	<div class="col-sm-10">
+				<label class="col-sm-2 text-uppercase control-label">Systems Review : General Health</label>
+			  	<div class="col-sm-8">
 		            	<table class="table">
 						<tr>
-							<th colspan="4">Systems Review : General Health</th>
-						</tr>
-						<tr>
 							<th>Items</th>
-							<th>Yes</th>
-							<th>No</th>
+							<th>Yes/No</th>
 							<th>Comments</th>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM1.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item1" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item1"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item1" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item1"></td>
+							<td class="text-left-imp">{{param.PT.ITEM1.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item1" ng-model="pt.item1" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item1" ng-model="pt.item1" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment1" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment1"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM2.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item2" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item2"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item2" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item2"></td>
+							<td class="text-left-imp">{{param.PT.ITEM2.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item2" ng-model="pt.item2" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item2" ng-model="pt.item2" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment2" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment2"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM3.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item3" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item3"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item3" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item3"></td>
+							<td class="text-left-imp">{{param.PT.ITEM3.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item3" ng-model="pt.item3" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item3" ng-model="pt.item3" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment3" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment3"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM4.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item4" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item4"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item4" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item4"></td>
+							<td class="text-left-imp">{{param.PT.ITEM4.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item4" ng-model="pt.item4" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item4" ng-model="pt.item4" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment4" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment4"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM5.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item5" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item5"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item5" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item5"></td>
+							<td class="text-left-imp">{{param.PT.ITEM5.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item5" ng-model="pt.item5" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item5" ng-model="pt.item5" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment5" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment5"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM6.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item6" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item6"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item6" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item6"></td>
+							<td class="text-left-imp">{{param.PT.ITEM6.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item6" ng-model="pt.item6" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item6" ng-model="pt.item6" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment6" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment6"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM7.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item7" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item7"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item7" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item7"></td>
+							<td class="text-left-imp">{{param.PT.ITEM7.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item7" ng-model="pt.item7" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item7" ng-model="pt.item7" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment7" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment7"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM8.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item8" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item8"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item8" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item8"></td>
+							<td class="text-left-imp">{{param.PT.ITEM8.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item8" ng-model="pt.item8" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item8" ng-model="pt.item8" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment8" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment8"></td>
 						<tr>
-							<td>{{param.PT.ITEM9.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item9" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item9"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item9" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item9"></td>
+							<td class="text-left-imp">{{param.PT.ITEM9.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item9" ng-model="pt.item9" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item9" ng-model="pt.item9" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment9" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment9"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM10.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item10" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item10"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item10" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item10"></td>
+							<td class="text-left-imp">{{param.PT.ITEM10.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item10" ng-model="pt.item10" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item10" ng-model="pt.item10" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment10" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment10"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM11.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item11" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item11"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item11" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item11"></td>
+							<td class="text-left-imp">{{param.PT.ITEM11.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item11" ng-model="pt.item11" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item11" ng-model="pt.item11" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment11" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment11"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM12.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item12" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item12"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item12" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item12"></td>
+							<td class="text-left-imp">{{param.PT.ITEM12.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item12" ng-model="pt.item12" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item12" ng-model="pt.item12" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment12" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment12"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM13.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item13" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item13"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item13" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item13"></td>
+							<td class="text-left-imp">{{param.PT.ITEM13.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item13" ng-model="pt.item13" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item13" ng-model="pt.item13" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment13" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment13"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM14.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item14" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item14"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item14" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item14"></td>
+							<td class="text-left-imp">{{param.PT.ITEM14.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item14" ng-model="pt.item14" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item14" ng-model="pt.item14" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment14" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment14"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM15.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item15" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item15"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item15" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item15"></td>
+							<td class="text-left-imp">{{param.PT.ITEM15.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item15" ng-model="pt.item15" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item15" ng-model="pt.item15" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment15" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment15"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM16.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item16" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item16"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item16" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item16"></td>
+							<td class="text-left-imp">{{param.PT.ITEM16.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item16" ng-model="pt.item16" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item16" ng-model="pt.item16" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment16" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment16"></td>
 						</tr>
 						<tr>
-							<td>{{param.PT.ITEM17.infoTh}}</td>
-							<td><input type="text" class="form-control" placeholder="" name="item17" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item17"></td>
-							<td><input type="text" class="form-control" placeholder="" name="item17" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.item17"></td>
+							<td class="text-left-imp">{{param.PT.ITEM17.infoTh}}</td>
+							<td>
+								<div class="form-group">
+								<label class="radio-inline">
+							    	<input type="radio" name="item17" ng-model="pt.item17" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'Y'">
+							    	Yes
+							  	</label>
+			          		  	<label class="radio-inline">
+							    	<input type="radio" name="item17" ng-model="pt.item17" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-value="'N'">
+							    	No
+							  	</label>
+							  	</div>
+							</td>
 							<td><input type="text" class="form-control" placeholder="" name="comment17" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.comment17"></td>
 						</tr>
 					</table>
@@ -231,6 +488,142 @@
 		            	<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" rows="3" cols="105" ng-model="pt.assumpDianosis"></textarea>
 	            </div>
 	  		</div>
+	  		<hr>
+			<div class="form-group">
+	          	<label class="col-sm-2 left text-uppercase control-label"><b>การตรวจร่างกาย (Physical Examination)</b></label>
+	          		<div class="col-sm-8">
+	          			<table class="table">
+	          				<tr>
+	          					<th>การตรวจร่างกาย</th>
+	          					<th>แปลผล</th>
+	          					<th>วันที่ตรวจ</th>
+	          					<th></th>
+	          				</tr>
+	          				<tr ng-repeat="ex in examinations">
+	          					<td>{{ex.action}}</td>
+	          					<td>{{ex.result}}</td>
+	          					<td>{{ex.examDate| date:"dd/MM/yyyy"}}</td>
+	          					<td><button class="btn btn-md btn-danger" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-click="delExaminat(pt.ptId, ex.examinationId)" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+	          				</tr>
+	          				<tr ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')">
+	          					<td><input type="text" class="form-control" placeholder="" name="action" ng-model="examinat.action"></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="result" ng-model="examinat.result"></td>
+	          					<td><md-datepicker ng-model="examinat.examDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
+	          					<td><button class="btn btn-md btn-info" ng-click="addExaminat(examinat,_links.examinations.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+	          				</tr>
+	          			</table>
+		          	</div>
+	        </div> 
+			<div class="form-group">
+	  			<label class="col-sm-2 text-uppercase control-label">การวินิจฉัยทางกายภาพบำบัด </label>
+			  	<div class="col-sm-8">
+		            	<input type="text" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" class="form-control" placeholder="" name="physicalDiagnosis" ng-model="pt.physicalDiagnosis">
+	            </div>
+	  		</div>
+			<div class="form-group">
+	  			<label class="col-sm-2 text-uppercase control-label">ผลการตรวจร่างกายที่ยืนยันการวินิจฉัย </label>
+			  	<div class="col-sm-8">
+		            	<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" rows="3" cols="105" ng-model="pt.confirmDiagnosis"></textarea>
+	            </div>
+	  		</div>
+	  		<hr>
+			<div class="form-group">
+	          	<label class="col-sm-2 left text-uppercase control-label"><b>สรุปปัญหาและวิเคราะห์ปัญหา </b></label>
+	          		<div class="col-sm-8">
+	          			<table class="table">
+	          				<tr>
+	          					<th>Functional Limitation </th>
+	          					<th>Impairment</th>
+	          					<th>Pathology</th>
+	          					<th></th>
+	          				</tr>
+	          				<tr ng-repeat="con in concludeAnalysis">
+	          					<td>{{con.functional}}</td>
+	          					<td>{{con.impairment}}</td>
+	          					<td>{{con.pathology}}</td>
+	          					<td><button class="btn btn-md btn-danger" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-click="delConclude(pt.ptId, con.caId)" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+	          				</tr>
+	          				<tr ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')">
+	          					<td><input type="text" class="form-control" placeholder="" name="functional" ng-model="conclude.functional"></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="impairment" ng-model="conclude.impairment"></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="pathology" ng-model="conclude.pathology"></td>
+	          					<td><button class="btn btn-md btn-info" ng-click="addConclude(conclude,_links.concludeAnalysis.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+	          				</tr>
+	          			</table>
+		          	</div>
+	        </div>
+	        <hr>
+			<div class="form-group">
+	  			<label class="col-sm-2 text-uppercase control-label">วัตถุประสงค์ระยะสั้น (Short term Goals)</label>
+			  	<div class="col-sm-8">
+		            	<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" rows="3" cols="105" ng-model="pt.shortTermGoal"></textarea>
+	            </div>
+	  		</div>
+			<div class="form-group">
+	  			<label class="col-sm-2 text-uppercase control-label">วัตถุประสงค์ระยะยาว (Long term Goals)</label>
+			  	<div class="col-sm-8">
+		            	<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" rows="3" cols="105" ng-model="pt.longTermGoal"></textarea>
+	            </div>
+	  		</div>
+			<div class="form-group">
+	  			<label class="col-sm-2 text-uppercase control-label">การพยากรณ์โรค</label>
+			  	<div class="col-sm-8">
+		            	<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" rows="3" cols="105" ng-model="pt.prediction"></textarea>
+	            </div>
+	  		</div>
+			<div class="form-group">
+	          	<label class="col-sm-2 left text-uppercase control-label"><b>เป้าหมาย การวางแผนการรักษา การรักษา และการประเมินผล   </b></label>
+	          		<div class="col-sm-8">
+	          			<table class="table">
+	          				<tr>
+	          					<th>Goal</th>
+	          					<th>Due Date </th>
+	          					<th>Treatment Plan</th>
+	          					<th>Treatment</th>
+	          					<th>Evaluation</th>
+	          					<th></th>
+	          				</tr>
+	          				<tr ng-repeat="g in goals">
+	          					<td>{{g.goal}}</td>
+	          					<td>{{g.dueDate | date:"dd/MM/yyyy"}}</td>
+	          					<td>{{g.plan}}</td>
+	          					<td>{{g.treatment}}</td>
+	          					<td>{{g.evaluation}}</td>
+	          					<td><button class="btn btn-md btn-danger" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-click="delGoal(pt.ptId, g.goalId)" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+	          				</tr>
+	          				<tr ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')">
+	          					<td><input type="text" class="form-control" placeholder="" name="goal" ng-model="goal.goal"></td>
+	          					<td><md-datepicker ng-model="goal.dueDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="plan" ng-model="goal.plan"></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="treatment" ng-model="goal.treatment"></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="evaluation" ng-model="goal.evaluation"></td>
+	          					<td><button class="btn btn-md btn-info" ng-click="addGoal(goal,_links.goals.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+	          				</tr>
+	          			</table>
+		          	</div>
+	        </div>
+			<div class="form-group">
+	          	<label class="col-sm-2 left text-uppercase control-label"><b>Physical Therapy Progression Note (SOAP/SOAPIE) (บันทึกความก้าวหน้าในการักษาผู้ป่วย ในรูปแบบ SOAP หรือ SOAPIE) </b></label>
+	          		<div class="col-sm-8">
+	          			<table class="table">
+	          				<tr>
+	          					<th>Date </th>
+	          					<th>Progress Note </th>
+	          					<th></th>
+	          				</tr>
+	          				<tr ng-repeat="n in notes">
+	          					<td>{{n.date | date:"dd/MM/yyyy"}}</td>
+	          					<td>{{n.note}}</td>
+	          					<td><button class="btn btn-md btn-danger" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-click="delNote(pt.ptId, n.progressId)" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+	          				</tr>
+	          				<tr ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')">
+	          					<td><md-datepicker ng-model="note.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="impairment" ng-model="note.note"></td>
+	          					<td><button class="btn btn-md btn-info" ng-click="addNote(note,_links.notes.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+	          				</tr>
+	          			</table>
+		          	</div>
+	        </div>
   		</form>
   </div>
 </div>

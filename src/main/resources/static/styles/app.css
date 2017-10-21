@@ -12137,3 +12137,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffdb3f', end
 height:calc(100vh);
 width:100%;
 }
+
+.text-left-imp {
+  text-align: left !important; }

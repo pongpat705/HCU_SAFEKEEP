@@ -75,23 +75,32 @@ angular
             enableAutoFitColumns: true,
             useExternalPagination: true,
             columnDefs: [
-                { name: 'name', width: 150},
-    			{ name: 'age', width: 50},
-    			{ name: 'mobile', width: 100},
-    			{ name: 'diagnose', width: 100},
+                { name: 'ชื่อ', field: 'name', width: 150},
+    			{ name: 'อายุ', field: 'age', width: 50},
+    			{ name: 'เบอร์โทรศัพท์เคลื่อนที่', field: 'mobile', width: 100},
+    			{ name: 'อาการ', field: 'diagnose', width: 100},
     			{
-                    name : 'Action',
+                    name : 'ข้อมูลพื้นฐานผู้ป่วย',
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
-                                        '<button class="btn btn-xs btn-info" title="view transaction" ui-sref="app.transaction({patient: row.entity})" >ข้อมูลประจำวันผู้ป่วย</button>' +
-                                        '&nbsp;<button class="btn btn-xs btn-primary" title="view profile" ui-sref="app.profile({patient: row.entity})" >ข้อมูลผู้ป่วย</button>' +
+                                       '<button class="btn btn-xs btn-primary" title="view profile" ui-sref="app.profile({patient: row.entity})" ><i class="fa fa-info-circle" aria-hidden="true"></i> ข้อมูลผู้ป่วย</button>' +
                                    '</div>',
-                                   width: 210,
+                                   width: 142,
                     enableCellEdit : false
                 },
                 {
-                    name : 'Delete',
+                	name : 'ข้อมูลผู้ป่วยรายวันและการประเมิน',
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
-                                        '<button class="btn btn-xs btn-danger" title="delete profile" ng-click="grid.appScope.delPatient(row.entity._links.self.href);" >ลบข้อมูลผู้ป่วย</button>' +
+                                        '<button class="btn btn-xs btn-white" title="view transaction" ui-sref="app.transaction({patient: row.entity})"><i class="fa fa-wheelchair" aria-hidden="true"></i> ข้อมูลประจำวันผู้ป่วย</button>' +
+                                        '&nbsp;<button class="btn btn-xs btn-white" title="view profile" ui-sref="app.physic({patient: row.entity})"><i class="fa fa-odnoklassniki" aria-hidden="true"></i> ข้อมูลผู้ป่วย(กายภาพบำบัด)</button>' +
+                                        '&nbsp;<button class="btn btn-xs btn-white" title="view profile" ui-sref="app.pharmachy({patient: row.entity})" ><i class="fa fa-medkit" aria-hidden="true"></i> ข้อมูลผู้ป่วย(เภสัช)</button>' +
+                                   '</div>',
+                                   width: 467,
+                    enableCellEdit : false
+                },
+                {
+                    name : 'ลบข้อมูล',
+                    cellTemplate : '<div class="ui-grid-cell-contents">' +
+                                        '<button class="btn btn-xs btn-danger" title="delete profile" ng-click="grid.appScope.delPatient(row.entity._links.self.href);" ><i class="fa fa-trash-o" aria-hidden="true"></i> ลบข้อมูลผู้ป่วย</button>' +
                                    '</div>',
                                    width: 100,
                     enableCellEdit : false,

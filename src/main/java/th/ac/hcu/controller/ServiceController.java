@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,7 +48,9 @@ public class ServiceController {
 	  
 	  @Autowired StartUp startUp;
 	  
-	  @Autowired StorageService storageService;
+	  @Autowired @Qualifier("storageService")StorageService storageService;
+	  
+	  @Autowired @Qualifier("ptStorageService") StorageService ptStorageService;
 	  
 	  @RequestMapping(value = "/parse", method = RequestMethod.GET)
 	  @ResponseBody
@@ -100,6 +103,31 @@ public class ServiceController {
 	  @ResponseBody
 	  public byte[] viewImage(HttpServletRequest request, @PathVariable("transactionId") String transactionId, @PathVariable("userId") String userId, @PathVariable("fileName") String fileName) throws IOException {
 	      InputStream in = storageService.getFile(transactionId, userId, fileName);
+	      BufferedImage originalImage=ImageIO.read(in);
+	      ByteArrayOutputStream baos=new ByteArrayOutputStream();
+	      ImageIO.write(originalImage, "jpg", baos );
+	      byte[] imageInByte = baos.toByteArray();
+	      return imageInByte;
+	  }
+	  
+	  @RequestMapping(value = "/pt/uploadImage/{ptId}/{userId}", method = RequestMethod.POST, headers = "content-type=multipart/form-data")
+	  @ResponseBody
+	  public ResponseEntity<Map<String, String>> ptUploadImage(HttpServletRequest request, 
+			  				@RequestParam(name="file") MultipartFile file, @PathVariable("ptId") String ptId, @PathVariable("userId") String userId) throws Exception {
+		  log.info("calling from "+request.getRemoteAddr());
+		  log.info("ptId : "+ptId);
+		  log.info("userId : "+userId);
+		  Map<String, String> map = new HashMap<>();
+		  String pathFile = ptStorageService.saveFile(file, ptId, userId);
+		  map.put("file", pathFile);
+		return new ResponseEntity<Map<String, String>>(map, HttpStatus.CREATED);
+	  }
+	  
+
+	  @RequestMapping(value = "/pt/viewImage/{userId}/{ptId}/{fileName}", method = RequestMethod.GET)
+	  @ResponseBody
+	  public byte[] ptViewImage(HttpServletRequest request, @PathVariable("ptId") String ptId, @PathVariable("userId") String userId, @PathVariable("fileName") String fileName) throws IOException {
+	      InputStream in = ptStorageService.getFile(ptId, userId, fileName);
 	      BufferedImage originalImage=ImageIO.read(in);
 	      ByteArrayOutputStream baos=new ByteArrayOutputStream();
 	      ImageIO.write(originalImage, "jpg", baos );

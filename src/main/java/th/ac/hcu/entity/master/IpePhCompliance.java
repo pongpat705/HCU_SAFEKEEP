@@ -10,12 +10,12 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 @Entity
-@Table(name = "IPE_CONCLUDE_ANALYSIS")
-@TableGenerator(name="GEN_CONCLUDE_ANALYSIS", initialValue=0, allocationSize=50)
+@Table(name = "IPE_PH_COMPLIANCE")
+@TableGenerator(name="GEN_PH_COMPLIANCE", initialValue=0, allocationSize=50)
 public class IpePhCompliance {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_CONCLUDE_ANALYSIS")
+    @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_PH_COMPLIANCE")
     private Long complianceId;
 	
 	private String drug;

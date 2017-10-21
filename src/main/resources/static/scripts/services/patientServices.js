@@ -89,7 +89,74 @@ angular.module('app').factory('patientServices',
       },
       patientDeleteLab : function(patienId, labId){
     	  return $http.delete(CONTEXT+'/api/ipePatientProfiles/'+patienId+'/medical/'+labId);
+      },
+      getPatientPtByStudentId : function(studentId){
+    	  return $http.get(CONTEXT+'/api/ipePatientPtStudents/search/findByStudentId',{params:{'studentId': studentId}});
+      },
+      addPatientPt: function(patientPt){
+    	  return $http.post(CONTEXT+'/api/ipePatientPtStudents',patientPt);
+      },
+      genericPutUrl : function(object, link){
+    	  return $http.put(link,object, {headers:{'Content-Type': 'text/uri-list'}});
+      },
+      addExamination :function(examinat){
+    	  return $http.post(CONTEXT+'/api/ipePatientExaminations',examinat);
+      },
+      ptDeleteExamination : function(ptId, examinatId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientPtStudents/'+ptId+'/examinations/'+examinatId);
+      },
+      addConclude :function(conclude){
+    	  return $http.post(CONTEXT+'/api/ipeConcludeAnalyses',conclude);
+      },
+      ptDeleteConclude : function(ptId, concludeId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientPtStudents/'+ptId+'/concludeAnalysis/'+concludeId);
+      },
+      addGoal :function(goal){
+    	  return $http.post(CONTEXT+'/api/ipeGoalPlans',goal);
+      },
+      ptDeleteGoal : function(ptId, goalId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientPtStudents/'+ptId+'/goals/'+goalId);
+      },
+      addNote :function(note){
+    	  return $http.post(CONTEXT+'/api/ipeProgressNotes',note);
+      },
+      ptDeleteNote : function(ptId, noteId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientPtStudents/'+ptId+'/notes/'+noteId);
+      },
+      ptUploadFile : function(file, pt, user){
+    	  var fd = new FormData();
+          fd.append('file', file);
+          return $http(
+        		  {	url: CONTEXT+'/service/pt/uploadImage/'+pt.ptId+'/'+user,
+        			method: 'POST',
+        			data: fd,
+        			headers: { 'Content-Type': undefined},
+        			transformRequest: angular.identity
+        		  });
+      },
+      getPatientPhByStudentId : function(studentId){
+    	  return $http.get(CONTEXT+'/api/ipePatientPhStudents/search/findByStudentId',{params:{'studentId': studentId}});
+      },
+      addPatientPh: function(patientPh){
+    	  return $http.post(CONTEXT+'/api/ipePatientPhStudents',patientPh);
+      },
+      addCompliance :function(compliance){
+    	  return $http.post(CONTEXT+'/api/ipePhCompliances',compliance);
+      },
+      phDeleteCompliance : function(phId, complianceId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientPhStudents/'+phId+'/compliances/'+complianceId);
+      },
+      addDrp :function(drp){
+    	  return $http.post(CONTEXT+'/api/ipeDrpReports',drp);
+      },
+      phDeleteDrp : function(phId, drpId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientPhStudents/'+phId+'/drpReports/'+drpId);
+      },
+      addReconcil :function(reconcil){
+    	  return $http.post(CONTEXT+'/api/ipeMedReconcils',reconcil);
+      },
+      phDeleteReconcil : function(phId, medId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientPhStudents/'+phId+'/reconcils/'+medId);
       }
-    
     };
   }]);

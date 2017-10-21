@@ -107,26 +107,23 @@ public class IpePatientProfile {
 	private String gAnswer9;
 	
 	//lab
-	private String lGlucose;
-	private String lCholesterol;
-	private String lTriglyceride;
-	private String lHdlc;
-	private String lLdlc;
-	private String lBun;
-	private String lCreatinine;
-	private String lUric;
-	private String lAlt;
-	private String lAst;
-	private String labAdvice;
+	private Integer lGlucose;
+	private Integer lCholesterol;
+	private Integer lTriglyceride;
+	private Integer lHdlc;
+	private Integer lLdlc;
+	private Integer lBun;
+	private Integer lCreatinine;
+	private Integer lUric;
+	private Integer lAlt;
+	private Integer lAst;
+	private Integer labAdvice;
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeMedicalTechnical> medical;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpePatientTransaction> transactions;
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<IpePatientPtStudent> ptStudent;
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<IpePatientPhStudent> phStudent;
+
 	
 	private Date createdDate;
 	private String createdBy;
@@ -645,91 +642,91 @@ public class IpePatientProfile {
 		this.indexName = indexName;
 	}
 
-	public String getlGlucose() {
+	public Integer getlGlucose() {
 		return lGlucose;
 	}
 
-	public void setlGlucose(String lGlucose) {
+	public void setlGlucose(Integer lGlucose) {
 		this.lGlucose = lGlucose;
 	}
 
-	public String getlCholesterol() {
+	public Integer getlCholesterol() {
 		return lCholesterol;
 	}
 
-	public void setlCholesterol(String lCholesterol) {
+	public void setlCholesterol(Integer lCholesterol) {
 		this.lCholesterol = lCholesterol;
 	}
 
-	public String getlTriglyceride() {
+	public Integer getlTriglyceride() {
 		return lTriglyceride;
 	}
 
-	public void setlTriglyceride(String lTriglyceride) {
+	public void setlTriglyceride(Integer lTriglyceride) {
 		this.lTriglyceride = lTriglyceride;
 	}
 
-	public String getlHdlc() {
+	public Integer getlHdlc() {
 		return lHdlc;
 	}
 
-	public void setlHdlc(String lHdlc) {
+	public void setlHdlc(Integer lHdlc) {
 		this.lHdlc = lHdlc;
 	}
 
-	public String getlLdlc() {
+	public Integer getlLdlc() {
 		return lLdlc;
 	}
 
-	public void setlLdlc(String lLdlc) {
+	public void setlLdlc(Integer lLdlc) {
 		this.lLdlc = lLdlc;
 	}
 
-	public String getlBun() {
+	public Integer getlBun() {
 		return lBun;
 	}
 
-	public void setlBun(String lBun) {
+	public void setlBun(Integer lBun) {
 		this.lBun = lBun;
 	}
 
-	public String getlCreatinine() {
+	public Integer getlCreatinine() {
 		return lCreatinine;
 	}
 
-	public void setlCreatinine(String lCreatinine) {
+	public void setlCreatinine(Integer lCreatinine) {
 		this.lCreatinine = lCreatinine;
 	}
 
-	public String getlUric() {
+	public Integer getlUric() {
 		return lUric;
 	}
 
-	public void setlUric(String lUric) {
+	public void setlUric(Integer lUric) {
 		this.lUric = lUric;
 	}
 
-	public String getlAlt() {
+	public Integer getlAlt() {
 		return lAlt;
 	}
 
-	public void setlAlt(String lAlt) {
+	public void setlAlt(Integer lAlt) {
 		this.lAlt = lAlt;
 	}
 
-	public String getlAst() {
+	public Integer getlAst() {
 		return lAst;
 	}
 
-	public void setlAst(String lAst) {
+	public void setlAst(Integer lAst) {
 		this.lAst = lAst;
 	}
 
-	public String getLabAdvice() {
+	public Integer getLabAdvice() {
 		return labAdvice;
 	}
 
-	public void setLabAdvice(String labAdvice) {
+	public void setLabAdvice(Integer labAdvice) {
 		this.labAdvice = labAdvice;
 	}
 
@@ -741,24 +738,5 @@ public class IpePatientProfile {
 		this.medical = medical;
 	}
 
-	public List<IpePatientPtStudent> getPtStudent() {
-		return ptStudent;
-	}
-
-	public void setPtStudent(List<IpePatientPtStudent> ptStudent) {
-		this.ptStudent = ptStudent;
-	}
-
-	public List<IpePatientPhStudent> getPhStudent() {
-		return phStudent;
-	}
-
-	public void setPhStudent(List<IpePatientPhStudent> phStudent) {
-		this.phStudent = phStudent;
-	}
-	
-	
-	
-	
 	
 }
