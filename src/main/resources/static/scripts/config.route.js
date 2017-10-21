@@ -209,6 +209,48 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 			                redirectTo: 'user.signin'
 			              }
 			            }
+			    }).state('app.physic',{
+			    	url: '/physic-info',
+			    	params : {patient:null},
+			    	templateUrl: './views/app/patient/physic.html',
+			        controller: 'physicCtrl',
+			        resolve: {
+			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+			              return $ocLazyLoad.load([{
+			                  files: [
+			                	  	  './scripts/services/patientServices.js',
+			                          './scripts/controllers/patient/physicCtrl.js'
+			                          ]
+			                }]);
+			            }]
+			          },
+			        data: {
+			            permissions: {
+			                only: ['ROLE_PROF', 'ROLE_STUD'],
+			                redirectTo: 'user.signin'
+			              }
+			            }
+			    }).state('app.pharmachy',{
+			    	url: '/pharma-info',
+			    	params : {patient:null},
+			    	templateUrl: './views/app/patient/pharma.html',
+			        controller: 'pharmaCtrl',
+			        resolve: {
+			            deps: ['$ocLazyLoad', function($ocLazyLoad) {
+			              return $ocLazyLoad.load([{
+			                  files: [
+			                	  	  './scripts/services/patientServices.js',
+			                          './scripts/controllers/patient/pharmaCtrl.js'
+			                          ]
+			                }]);
+			            }]
+			          },
+			        data: {
+			            permissions: {
+			                only: ['ROLE_PROF', 'ROLE_STUD'],
+			                redirectTo: 'user.signin'
+			              }
+			            }
 			    }).state('app.pt',{
 			    	url: '/pt',
 			    	templateUrl: './views/app/patient/pt.html',

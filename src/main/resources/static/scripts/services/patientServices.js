@@ -157,6 +157,12 @@ angular.module('app').factory('patientServices',
       },
       phDeleteReconcil : function(phId, medId){
     	  return $http.delete(CONTEXT+'/api/ipePatientPhStudents/'+phId+'/reconcils/'+medId);
+      },
+      getPtByPatientId : function(ptId){
+    	  return $http.get(CONTEXT+'/api/ipePatientPtStudents/search/getByPatient',{params:{'patient': ptId}});
+      },
+      getPhByPatientId : function(phId){
+    	  return $http.get(CONTEXT+'/api/ipePatientPhStudents/search/getByPatient',{params:{'patient': phId}});
       }
     };
   }]);
