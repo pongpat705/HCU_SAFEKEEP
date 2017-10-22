@@ -1,5 +1,6 @@
 <div class="p-x">
   <div class="row">
+  	<button class="btn btn-md btn-danger m-t-lg m-b-lg full-w" ng-click="prevMenu()" ><i class="glyphicon glyphicon-backward"></i> PrevMenu</button>
   	<button class="btn btn-md btn-primary m-b-md" ng-click="patchPatient(patient, _links.self.href)" ng-if="checkPermission('ROLE_PROF')" ><span>save</span></button>
   	
   	<div class="row">
@@ -109,7 +110,7 @@
 				  <div class="form-group">
 		          	<label class="col-sm-2 left text-uppercase control-label">การเยี่ยม</label>
 		          		<div class="col-sm-8">
-		          			<table class="table">
+		          			<table class="table table-fixed-layout">
 		          				<tr>
 		          					<th>ครั้งที่</th>
 		          					<th>วันที่</th>
@@ -133,9 +134,9 @@
 		          </div> 
 	        </md-content>
 	      </md-tab>
-	      <md-tab label="ข้อมูลข้อมูลในการดูแลตนเองของผู้ป่วยและผู้ดูแล">
+	      <md-tab label="ข้อมูลในการดูแลตนเองของผู้ป่วยและผู้ดูแล">
 	        <md-content class="md-padding">
-	          <h1 class="md-display-2">กรอกข้อมูลข้อมูลในการดูแลตนเองของผู้ป่วยและผู้ดูแล(พยาบาล)</h1>
+	          <h1 class="md-display-2">กรอกข้อมูลในการดูแลตนเองของผู้ป่วยและผู้ดูแล(พยาบาล)</h1>
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">อาการเจ็บป่วยปัจจุบัน</label>
 	          	<div class="col-sm-8">
@@ -292,7 +293,7 @@
 			  <div class="form-group">
 	          	<label class="col-sm-2 left text-uppercase control-label">สมาชิกในครอบครัว</label>
 	          		<div class="col-sm-8">
-	          			<table class="table">
+	          			<table class="table table-fixed-layout">
 	          				<tr>
 	          					<th>ชื่อสมาชิกในครอบครัว</th>
 	          					<th>อายุ</th>
@@ -384,7 +385,7 @@
 	          	<label class="col-sm-2 left text-uppercase control-label">ข้อมูลการใช้ยา</label>
 	          		<div class="col-sm-10">
 		          		
-						<table class="table">
+						<table class="table table-fixed-layout">
 						    <tbody ng-repeat="d in useDrugs" ng-init="getDrugList(d)" class="m-b-n-g">
 						        <tr>
 						          <th>วันที่</th>
@@ -398,7 +399,7 @@
 						          <th>การใช้ยา / วิตามิน /อาหารเสริม</th>
 							          <td>
 							          	<div class="col-sm-8">
-				    						<table>
+				    						<table class="table table-fixed-layout">
 			          							<tr>
 			          								<th>รายการยา</th>
 			          								<th>วิธีการบริหาร</th>
@@ -478,7 +479,7 @@
 						        </tr>
 						    </tbody>
 						</table>
-						<table class="table" ng-if="checkPermission('ROLE_PROF')">
+						<table class="table table-fixed-layout" ng-if="checkPermission('ROLE_PROF')">
 						    <tbody>
 						        <tr>
 						          <th>วันที่</th>
@@ -493,7 +494,7 @@
 						          <th>การใช้ยา / วิตามิน /อาหารเสริม</th>
 							          <td>
 							          	<div class="col-sm-8">
-				    						<table>
+				    						<table class="table table-fixed-layout">
 			          							<tr>
 			          								<th>รายการยา</th>
 			          								<th>วิธีการบริหาร</th>
@@ -781,7 +782,7 @@
 	          <h1 class="md-display-2">กรอกข้อมูลพื้นฐานประวัติผลการตรวจทางห้องปฏิบัติการ</h1>
 				<div class="form-group">
   				<div class="col-sm-8">
-  					<table class="table">
+  					<table class="table table-fixed-layout">
 						<tr>
 							<th colspan="4">ข้อมูลพื้นฐานประวัติผลการตรวจทางห้องปฏิบัติการ</th>
 						</tr>

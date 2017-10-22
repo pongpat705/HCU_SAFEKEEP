@@ -34,6 +34,10 @@ angular
 		
 	});
 	
+	$scope.prevMenu = function(){
+		$state.go($rootScope.prevState);
+	};
+	
 	$scope.getPatientByRole = function(){
 		var role = 'ROLE_PATIEN';
 		

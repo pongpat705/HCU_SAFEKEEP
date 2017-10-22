@@ -118,9 +118,9 @@ angular
             enableAutoFitColumns: true,
             useExternalPagination: true,
             columnDefs: [
-                { name: 'createdDate', width: 100,  type : 'date', cellFilter : 'date:"dd/MM/yyyy"',},
+                { name: 'วันที่', field:'createdDate', width: 100,  type : 'date', cellFilter : 'date:"dd/MM/yyyy"',},
     			{
-                    name : 'Action',
+                    name : 'ดูข้อมูล',
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
                                         '<button class="btn btn-xs btn-primary" title="full view" ng-click="grid.appScope.showDetail(row.entity)" >ดูข้อมูลประจำวัน</button>' +
                                    '</div>',

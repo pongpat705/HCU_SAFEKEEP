@@ -19,12 +19,6 @@
 			<span>ข้อมูลผู้ใช้</span>
 		</a>	
 	</div>
-	<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.parameters')}" ng-if="checkPermission('ROLE_ADMIN')" >
-		<a ui-sref-active="active" ui-sref="app.parameters">
-			<i class="fa fa-tachometer fa-2x fa-fw"> </i>
-			<span>Parameters</span>
-		</a>	
-	</div>
 	<div class="row" style="margin-bottom:10px;" ng-class="{'text-danger':isCurrentState('app.tray')}" ng-if="checkPermission('ROLE_STUD') || checkPermission('ROLE_PROF')" >
 		<a ui-sref-active="active" ui-sref="app.patient">
 			<i class="fa fa-tachometer fa-2x fa-fw"> </i>

@@ -2,10 +2,19 @@
   <div class="row">
   	<b><p>ข้อมูลผู้ป่วย</p></b>
   	
+  		<form class="form-horizontal" role="form" ng-if="checkPermission('ROLE_PROF')">
+			<div class="form-group">
+	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>กรุณาเลือกข้อมูลการประเมินของนักศึกษา </label>
+			  	<select class="form-control m-b-md"  ng-model="student"
+									ng-options="u as u.userName for u in studentPt"
+									ng-change="changeStudent(student);">
+				</select>
+	  		</div>
+  		</form>
   		<form class="form-horizontal" role="form">
 			<div class="form-group">
 	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>ข้อมูลนี้เป็นของผู้ป่วย </label>
-			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PH')" ng-model="patient"
+			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_STUD_PH')" ng-model="patient"
 									ng-options="u as u.name for u in patients track by u.patientId"
 									ng-change="changePatient(patient);">
 				</select>
@@ -15,13 +24,13 @@
   		<form class="form-horizontal" role="form">
 			<div class="form-group">
 	          		<div class="col-sm-12">
-	          			<table class="table">
+	          			<table class="table table-fixed-layout">
 	          			 <thead>
 	          				<tr>
-	          					<th colspan="12">ความร่วมมือในการใช้ยาของผู้ป่วย</th>
+	          					<th colspan="13">ความร่วมมือในการใช้ยาของผู้ป่วย</th>
 	          				</tr>
 	          				<tr>
-	          					<th colspan="12">Patient Compliance</th>
+	          					<th colspan="13">Patient Compliance</th>
 	          				</tr>
 	          				<tr>
 	          					<th colspan="2">รายการยาและขนาดยา (a)</th>
@@ -32,6 +41,7 @@
 	          					<th colspan="1">ท่านรู้หรือไม่ว่ายานี้ใช้รักษาโรคอะไร (f)</th>
 	          					<th colspan="1">ท่านรับประทานยานี้แล้วได้ผลดีหรือไม่ มาก-น้อยเพียงใด (g)</th>
 	          					<th colspan="2">ท่านมีปัญหาจาการใช้ยานี้หรือไม่ ปัญหารบกวนมากน้อยเพียงใด (h)</th>
+	          					<th></th>
 	          				</tr>
 	          				<tr>
 	          					<th>ลำดับที่</th>
@@ -88,13 +98,13 @@
 	        </div>
 			<div class="form-group">
 			  	<div class="col-sm-12">
-		            	<table class="table">
+		            	<table class="table table-fixed-layout">
 		            		<thead>
 		            			<tr>
-		            				<td colspan="7">ปัญหาการใช้ยา (DRPs)</td>
+		            				<td colspan="8">ปัญหาการใช้ยา (DRPs)</td>
 		            			</tr>
 		            			<tr>
-		            				<td colspan="7">Drug-Related Problems (DRPs) Report Form</td>
+		            				<td colspan="8">Drug-Related Problems (DRPs) Report Form</td>
 		            			</tr>
 								<tr>
 									<th>Date</th>
@@ -121,7 +131,7 @@
 							</tbody>
 							<tfoot>
 								<tr>
-									<td><md-datepicker ng-model="drp.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
+									<td><md-datepicker style="white-space: normal;" ng-model="drp.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
 									<td>
 <!-- 										<input type="text" class="form-control" placeholder="" name="drps" ng-model="drp.drps"> -->
 										<select class="form-control" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PH')" ng-model="drp.drps"
@@ -152,13 +162,13 @@
 			</div>
 			<div class="form-group">
 			  	<div class="col-sm-12">
-		            	<table class="table">
+		            	<table class="table table-fixed-layout">
 		            		<thead>
 		            			<tr>
-		            				<td colspan="7">แบบทวนรายการยา</td>
+		            				<td colspan="5">แบบทวนรายการยา</td>
 		            			</tr>
 		            			<tr>
-		            				<td colspan="7">Medication Reconciliation</td>
+		            				<td colspan="5">Medication Reconciliation</td>
 		            			</tr>
 								<tr>
 									<th>รายการยา</th>
@@ -181,7 +191,7 @@
 								<tr>
 									<td><input type="text" class="form-control" placeholder="" name="drug" ng-model="reconcil.drug"></td>
 									<td><input type="number" class="form-control" placeholder="" name="volume" ng-model="reconcil.volume"></td>
-									<td><md-datepicker ng-model="reconcil.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
+									<td><md-datepicker style="white-space: normal;" ng-model="reconcil.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
 									<td><input type="text" class="form-control" placeholder="" name="note" ng-model="reconcil.note"></td>
 									<td><button class="btn btn-md btn-info" ng-click="addReconcil(reconcil,_links.reconcils.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
 								</tr>

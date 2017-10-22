@@ -97,6 +97,7 @@
   <div class="row m-t-lg" ng-if="(null != txn) && checkPermission('ROLE_STUD')">
  	<div class="col-xs-12 col-sm-12">
 	  	<md-content class="md-padding full-h">
+	  			<label class="col-sm-2 left text-uppercase control-label">การประเมินผู้ป่วย</label>
 				<div class="col-sm-8">
 	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_STUD')" rows="3" cols="105" ng-model="estimate.desctiption"></textarea>
 	          	</div>
@@ -106,7 +107,7 @@
   </div>
   <div class="row m-t-lg" ng-if="(null != txn) && checkPermission('ROLE_PROF')">
  	<div class="col-xs-12 col-sm-12">
- 		<table class="table">
+ 		<table class="table table-fixed-layout">
 			<tr>
 				<th>ผู้ใช้</th>
 				<th>ข้อความ</th>

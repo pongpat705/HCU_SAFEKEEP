@@ -20,12 +20,29 @@ angular
 		if('' == $rootScope.currentUser){
 			$rootScope.unAuthorized();
 		} else {
-			$scope.getPatients();			
-			$scope.initPatientPhStudentByStudentId();
+			$scope.getPatients();		
+			if($rootScope.checkPermission('ROLE_PROF')){
+				$scope.loadStudentByRole();
+			} else {
+				$scope.initPatientPhStudentByStudentId($rootScope.currentUser);
+			}
+			
 		}
 		
 	});
+	$scope.loadStudentByRole = function(){
+		var role = 'ROLE_STUD_PH';
+		patientServices.getPatientByRole(role).then(function(response){
+			$scope.studentPt = response.data._embedded.users;
+		}).catch(function(response){
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+		});
+	};
 	
+	$scope.changeStudent = function(student){
+		$scope.initPatientPhStudentByStudentId(student.userName);
+	};
 	$scope.getPatients = function(){
 		var allPatient = '/ipe/api/ipePatientProfiles'
 		patientServices.genericGet(allPatient).then(function(response){
@@ -36,8 +53,8 @@ angular
 	    });
 	};
 	
-	$scope.initPatientPhStudentByStudentId = function(){
-		patientServices.getPatientPhByStudentId($rootScope.currentUser).then(function(response){
+	$scope.initPatientPhStudentByStudentId = function(user){
+		patientServices.getPatientPhByStudentId(user).then(function(response){
 			console.log(response);
 			$scope.ph = response.data;
 			$scope._links = response.data._links;

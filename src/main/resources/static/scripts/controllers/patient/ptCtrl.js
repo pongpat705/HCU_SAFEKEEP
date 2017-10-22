@@ -19,10 +19,28 @@ angular
 			$rootScope.unAuthorized();
 		} else {
 			$scope.getPatients();
-			$scope.initPatientPtStudentByStudentId();
+			if($rootScope.checkPermission('ROLE_PROF')){
+				$scope.loadStudentByRole();
+			} else {
+				$scope.initPatientPtStudentByStudentId($rootScope.currentUser);
+			}
 			
 		}
 	});
+	
+	$scope.loadStudentByRole = function(){
+		var role = 'ROLE_STUD_PT';
+		patientServices.getPatientByRole(role).then(function(response){
+			$scope.studentPt = response.data._embedded.users;
+		}).catch(function(response){
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+		});
+	};
+	
+	$scope.changeStudent = function(student){
+		$scope.initPatientPtStudentByStudentId(student.userName);
+	};
 	
 	$scope.uploadFile = function(){
 		var file = $( "#file" );
@@ -50,8 +68,8 @@ angular
 	    });
 	};
 	
-	$scope.initPatientPtStudentByStudentId = function(){
-		patientServices.getPatientPtByStudentId($rootScope.currentUser).then(function(response){
+	$scope.initPatientPtStudentByStudentId = function(user){
+		patientServices.getPatientPtByStudentId(user).then(function(response){
 			console.log(response);
 			$scope.pt = response.data;
 			$scope._links = response.data._links;

@@ -88,14 +88,24 @@ angular
                     enableCellEdit : false
                 },
                 {
-                	name : 'ข้อมูลผู้ป่วยรายวันและการประเมิน',
+                	name : 'ข้อมูลผู้ป่วยรายวันและการประเมิน สำหรับนักศึกษา',
+                    cellTemplate : '<div class="ui-grid-cell-contents">' +
+                                        '<button class="btn btn-xs btn-white" title="ข้อมูลผู้ป่วยประจำวัน" ui-sref="app.transaction({patient: row.entity})"><i class="fa fa-wheelchair" aria-hidden="true"></i> ข้อมูลผู้ป่วยประจำวัน</button>' +
+                                   '</div>',
+                                   width: 467,
+                    enableCellEdit : false,
+                    visible : !isRoleProf
+                },
+                {
+                	name : 'ข้อมูลผู้ป่วยรายวันและการประเมิน สำหรับอาจารย์',
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
                                         '<button class="btn btn-xs btn-white" title="ข้อมูลผู้ป่วยประจำวัน" ui-sref="app.transaction({patient: row.entity})"><i class="fa fa-wheelchair" aria-hidden="true"></i> ข้อมูลผู้ป่วยประจำวัน</button>' +
                                         '&nbsp;<button class="btn btn-xs btn-white" title="ข้อมูลกายภาพบำบัด" ui-sref="app.physic({patient: row.entity})"><i class="fa fa-odnoklassniki" aria-hidden="true"></i> ข้อมูลผู้ป่วย(กายภาพบำบัด)</button>' +
                                         '&nbsp;<button class="btn btn-xs btn-white" title="ข้อมูลเภสัชวิทยา" ui-sref="app.pharmachy({patient: row.entity})" ><i class="fa fa-medkit" aria-hidden="true"></i> ข้อมูลผู้ป่วย(เภสัชศาสตร์)</button>' +
                                    '</div>',
                                    width: 467,
-                    enableCellEdit : false
+                    enableCellEdit : false,
+                    visible : isRoleProf
                 },
                 {
                     name : 'ลบข้อมูล',

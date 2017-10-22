@@ -3,10 +3,19 @@
   	<button class="btn btn-md btn-primary m-b-md" ng-click="patchPatientPt(pt, _links.self.href)" ng-if="checkPermission('ROLE_PROF') || checkPermission('ROLE_STUD_PT')" ><span>save</span></button>
   	<b><p>ข้อมูลผู้ป่วย</p></b>
   	
+  		<form class="form-horizontal" role="form" ng-if="checkPermission('ROLE_PROF')">
+			<div class="form-group">
+	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>กรุณาเลือกข้อมูลการประเมินของนักศึกษา </label>
+			  	<select class="form-control m-b-md"  ng-model="student"
+									ng-options="u as u.userName for u in studentPt"
+									ng-change="changeStudent(student);">
+				</select>
+	  		</div>
+  		</form>
   		<form class="form-horizontal" role="form">
 			<div class="form-group">
 	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>ข้อมูลนี้เป็นของผู้ป่วย </label>
-			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="patient"
+			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_STUD_PT')" ng-model="patient"
 									ng-options="u as u.name for u in patients track by u.patientId"
 									ng-change="changePatient(patient);">
 				</select>
@@ -123,7 +132,7 @@
 			<div class="form-group">
 	  			<label class="col-sm-2 text-uppercase control-label">แรกรับการรักษาทางกายภาพบำบัด วันที่ </label>
 			  	<div class="col-sm-8">
-			  			<md-datepicker ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.checkin" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+			  			<md-datepicker style="white-space: normal;" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-model="pt.checkin" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
 	            </div>
 	  		</div>
 			<div class="form-group">
@@ -202,7 +211,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 text-uppercase control-label">Systems Review : General Health</label>
 			  	<div class="col-sm-8">
-		            	<table class="table">
+		            	<table class="table table-fixed-layout">
 						<tr>
 							<th>Items</th>
 							<th>Yes/No</th>
@@ -492,7 +501,7 @@
 			<div class="form-group">
 	          	<label class="col-sm-2 left text-uppercase control-label"><b>การตรวจร่างกาย (Physical Examination)</b></label>
 	          		<div class="col-sm-8">
-	          			<table class="table">
+	          			<table class="table table-fixed-layout">
 	          				<tr>
 	          					<th>การตรวจร่างกาย</th>
 	          					<th>แปลผล</th>
@@ -508,7 +517,7 @@
 	          				<tr ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')">
 	          					<td><input type="text" class="form-control" placeholder="" name="action" ng-model="examinat.action"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="result" ng-model="examinat.result"></td>
-	          					<td><md-datepicker ng-model="examinat.examDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
+	          					<td><md-datepicker style="white-space: normal;" ng-model="examinat.examDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
 	          					<td><button class="btn btn-md btn-info" ng-click="addExaminat(examinat,_links.examinations.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
 	          				</tr>
 	          			</table>
@@ -530,7 +539,7 @@
 			<div class="form-group">
 	          	<label class="col-sm-2 left text-uppercase control-label"><b>สรุปปัญหาและวิเคราะห์ปัญหา </b></label>
 	          		<div class="col-sm-8">
-	          			<table class="table">
+	          			<table class="table table-fixed-layout">
 	          				<tr>
 	          					<th>Functional Limitation </th>
 	          					<th>Impairment</th>
@@ -574,7 +583,7 @@
 			<div class="form-group">
 	          	<label class="col-sm-2 left text-uppercase control-label"><b>เป้าหมาย การวางแผนการรักษา การรักษา และการประเมินผล   </b></label>
 	          		<div class="col-sm-8">
-	          			<table class="table">
+	          			<table class="table table-fixed-layout">
 	          				<tr>
 	          					<th>Goal</th>
 	          					<th>Due Date </th>
@@ -593,7 +602,7 @@
 	          				</tr>
 	          				<tr ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')">
 	          					<td><input type="text" class="form-control" placeholder="" name="goal" ng-model="goal.goal"></td>
-	          					<td><md-datepicker ng-model="goal.dueDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
+	          					<td><md-datepicker style="white-space: normal;" ng-model="goal.dueDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="plan" ng-model="goal.plan"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="treatment" ng-model="goal.treatment"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="evaluation" ng-model="goal.evaluation"></td>
@@ -605,7 +614,7 @@
 			<div class="form-group">
 	          	<label class="col-sm-2 left text-uppercase control-label"><b>Physical Therapy Progression Note (SOAP/SOAPIE) (บันทึกความก้าวหน้าในการักษาผู้ป่วย ในรูปแบบ SOAP หรือ SOAPIE) </b></label>
 	          		<div class="col-sm-8">
-	          			<table class="table">
+	          			<table class="table table-fixed-layout">
 	          				<tr>
 	          					<th>Date </th>
 	          					<th>Progress Note </th>
@@ -617,7 +626,7 @@
 	          					<td><button class="btn btn-md btn-danger" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-click="delNote(pt.ptId, n.progressId)" ><i class="fa fa-trash" aria-hidden="true"></i></button></td>
 	          				</tr>
 	          				<tr ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')">
-	          					<td><md-datepicker ng-model="note.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
+	          					<td><md-datepicker style="white-space: normal;" ng-model="note.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="impairment" ng-model="note.note"></td>
 	          					<td><button class="btn btn-md btn-info" ng-click="addNote(note,_links.notes.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
 	          				</tr>
