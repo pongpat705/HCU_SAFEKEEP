@@ -1,11 +1,14 @@
 angular.module('app')
-  .factory('UserService', ['$http', '$rootScope', function UserService($http, $rootScope) {
+  .factory('userService', ['$http', '$rootScope', function UserService($http, $rootScope) {
     return {
-    	getAllUser: function(params) {
-            return $http.get(CONTEXT+'/api/users',{params : params});
+    	getAllUser: function(page, size) {
+            return $http.get(CONTEXT+'/api/users',{params:{'page':page, 'size':size}});
         },
-        getUserByName: function(params) {
-        	return $http.get(CONTEXT+'/api/users/search/findByUserNameContaining',{params : params});
+        getUserByName: function(page, size) {
+        	return $http.get(CONTEXT+'/api/users/search/findByUserNameContaining',{params:{'page':page, 'size':size}});
+        },
+        addUser: function(user){
+        	return $http.post(CONTEXT+'/service/addUser',user);
         }
     };
   }])

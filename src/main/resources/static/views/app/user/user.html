@@ -1,21 +1,10 @@
-<div class="p-x">
+<div class="p-x m-t-lg">
   <div class="row">
-  	
+  		<button class="btn btn-md btn-info" ng-if="checkPermission('ROLE_ADMIN')" title="new User" ng-click="addNewUser($event)" ><i class="fa fa-plus" aria-hidden="true"></i>Add new user</button>
   </div>
   <br>
-<!--   <div class="row"> -->
-<!--  	<h2 class="page-header">User List</h2> -->
-<!--     <table ng-table="tableParams" show-filter="true" class="table table-bordered table-striped"> -->
-<!--       <tr ng-repeat="row in users"> -->
-<!--         <td title="'Username'" filter="{userName: 'text'}" sortable="'userName'">{{row.userName}}</td> -->
-<!--         <td title="'Password'" sortable="'password'">{{row.password}}</td> -->
-<!--       </tr> -->
-<!--     </table> -->
-<!--   </div> -->
-  
-  
   <div class="row">
-    
+	<div ng-if="userGridOptions.totalItems > 0" ui-grid="userGridOptions" class="grid" ui-grid-pagination ui-grid-resize-columns ui-grid-auto-fit-columns>
+  	</div>
   </div>
-  
 </div>

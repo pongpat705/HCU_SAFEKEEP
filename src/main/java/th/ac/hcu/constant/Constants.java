@@ -75,6 +75,7 @@ public class Constants {
     		list.add(COMBO_DRUG_USING);
     		list.add(COMBO_DRUG_PROBLEM);
     		list.add(DRP);
+    		list.add(ROLE);
 			return list;
     	}
 		public static final String COMBO_SELF_HELP = "COMBO_SELF_HELP";
@@ -138,6 +139,7 @@ public class Constants {
 		public static final String MESSAGE = "MESSAGE";
 		public static final String PT = "PT";
 		public static final String DRP = "DRP";
+		public static final String ROLE = "ROLE";
 //		public static final String PL_01 = "PL_01";
 //		public static final String PL_02 = "PL_02";
 //		public static final String PL_03 = "PL_03";

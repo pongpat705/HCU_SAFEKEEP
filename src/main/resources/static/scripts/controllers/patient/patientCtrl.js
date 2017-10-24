@@ -14,8 +14,10 @@ angular
 	$scope.$watch("init", function(){
 		if('' == $rootScope.currentUser){
 			$state.go('user.signout');
+		} else {
+			$scope.getPatientProfileList();
 		}
-		$scope.getPatientProfileList();
+		
 	});
 	var paginationOptions = {
 	        pageNumber: 0,

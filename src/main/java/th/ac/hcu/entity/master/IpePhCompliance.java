@@ -22,7 +22,7 @@ public class IpePhCompliance {
 	
 	private Integer takeQty;
 	private Integer takePerDay;
-	private Date takeTime;
+	private String takeTime;
 	private String takePerWeek;
 	
 	private Integer missTime;
@@ -57,10 +57,10 @@ public class IpePhCompliance {
 	public void setTakePerDay(Integer takePerDay) {
 		this.takePerDay = takePerDay;
 	}
-	public Date getTakeTime() {
+	public String getTakeTime() {
 		return takeTime;
 	}
-	public void setTakeTime(Date takeTime) {
+	public void setTakeTime(String takeTime) {
 		this.takeTime = takeTime;
 	}
 	public String getTakePerWeek() {

@@ -65,7 +65,7 @@
 	          					<td>{{c.drug}}</td>
 	          					<td>{{c.takeQty}}</td>
 	          					<td>{{c.takePerDay}}</td>
-	          					<td>{{c.takeTime | date: "HH:mm"}}</td>
+	          					<td>{{c.takeTime}}</td>
 	          					<td>{{c.takePerWeek}}</td>
 	          					<td>{{c.missTime}}</td>
 	          					<td>{{c.missReason}}</td>
@@ -82,7 +82,7 @@
 	          					<td><input type="text" class="form-control" placeholder="" name="drug" ng-model="compliance.drug"></td>
 	          					<td><input type="number" class="form-control" placeholder="" name="takeQty" ng-model="compliance.takeQty"></td>
 	          					<td><input type="number" class="form-control" placeholder="" name="takePerDay" ng-model="compliance.takePerDay"></td>
-	          					<td><input type="time" class="form-control" placeholder="" ng-init="compliance.takeTime = new Date()" name="takeTime" ng-model="compliance.takeTime"></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="takeTime" ng-model="compliance.takeTime"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="takePerWeek" ng-model="compliance.takePerWeek"></td>
 	          					<td><input type="number" class="form-control" placeholder="" name="missTime" ng-model="compliance.missTime"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="missReason" ng-model="compliance.missReason"></td>
