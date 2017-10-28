@@ -9,6 +9,15 @@ angular.module('app')
         },
         addUser: function(user){
         	return $http.post(CONTEXT+'/service/addUser',user);
+        },
+        delUsers : function(id){
+      	  return $http.patch(CONTEXT+'/service/deleteUsers/'+id);
+        },
+        getUserForpatch : function(id){
+    	  return $http.get(CONTEXT+'/service/getUserForPatch/'+id);
+        },
+        patchUser : function(user, id){
+        	return $http.patch(CONTEXT+'/service/patchUser/'+id,user);
         }
     };
   }])

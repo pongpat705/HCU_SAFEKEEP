@@ -31,7 +31,6 @@ angular
 			var year = currentDate.getFullYear();
 			var formatedDate = year+'/'+month+'/'+day;
 			patientServices.findByCreatedDate(formatedDate, $rootScope.currentUser).then(function(response){
-				console.log(response);
 				if(response.data._embedded.ipePatientTransactions.length>0){
 					$scope.txn = response.data._embedded.ipePatientTransactions[0];
 					
@@ -42,7 +41,6 @@ angular
 					
 					patientServices.addPatientTransaction(txn).then(function(cresponse){
 						//patch relate with profile
-						console.log(cresponse);
 						$scope.txn = cresponse.data;
 						$scope.patchPatient($scope.txn._links.self.href, $scope.patient._links.transactions.href);
 					}).catch(function(cresponse){

@@ -16,8 +16,8 @@ angular.module('app').factory('patientServices',
 	  getPatients: function(page, size){
           return $http.get(CONTEXT+'/api/ipePatientProfiles',{params:{'page':page, 'size':size}});
       },
-      getPatientByRole : function(role){
-    	  return $http.get(CONTEXT+'/api/users/search/findByRole',{params:{'role':role}});
+      getPatientByRole : function(role, page, size){
+    	  return $http.get(CONTEXT+'/api/users/search/findByRole',{params:{'role':role, 'page':page, 'size':size}});
       },
       getPatientByIndexName : function(indexName){
     	  return $http.get(CONTEXT+'/api/ipePatientProfiles/search/findByIndexName',{params:{'indexName':indexName}});

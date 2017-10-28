@@ -32,7 +32,7 @@ angular
 	});
 	$scope.loadStudentByRole = function(){
 		var role = 'ROLE_STUD_PH';
-		patientServices.getPatientByRole(role).then(function(response){
+		patientServices.getPatientByRole(role, 0, 1000).then(function(response){
 			$scope.studentPt = response.data._embedded.users;
 		}).catch(function(response){
 			console.error('Error',response);
@@ -55,7 +55,6 @@ angular
 	
 	$scope.initPatientPhStudentByStudentId = function(user){
 		patientServices.getPatientPhByStudentId(user).then(function(response){
-			console.log(response);
 			$scope.ph = response.data;
 			$scope._links = response.data._links;
 			patientServices.genericGet($scope._links.patient.href).then(function(pResp){

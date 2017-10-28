@@ -12,4 +12,5 @@ public interface UserService {
 	public User getUser(String userName);
 	
 	public void addUser(UserBean userBean);
+	public void patchUser(UserBean userBean, Long userId);
 }

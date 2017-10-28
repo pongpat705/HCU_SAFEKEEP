@@ -33,7 +33,6 @@ angular
 		var year = currentDate.getFullYear();
 		var formatedDate = year+'/'+month+'/'+day;
 		patientServices.findByCreatedDate(formatedDate, $rootScope.currentUser).then(function(response){
-			console.log(response);
 			$scope.txn = response.data._embedded.ipePatientTransactions[0];
 			
 		}).catch(function(response) {

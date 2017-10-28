@@ -1,6 +1,5 @@
 package th.ac.hcu.controller;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -1,5 +1,7 @@
 package th.ac.hcu.bean;
 
+import java.util.List;
+
 public class UserBean {
 
 	private String userName;
@@ -10,7 +12,7 @@ public class UserBean {
 	private String advisor;
 	private String hospital;
 	private String major;
-	private String role;
+	private List<String> role;
 	
 	public String getUserName() {
 		return userName;
@@ -60,10 +62,10 @@ public class UserBean {
 	public void setMajor(String major) {
 		this.major = major;
 	}
-	public String getRole() {
+	public List<String> getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	public void setRole(List<String> role) {
 		this.role = role;
 	}
 }

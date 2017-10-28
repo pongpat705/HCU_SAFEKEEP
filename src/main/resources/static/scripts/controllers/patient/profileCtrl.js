@@ -41,8 +41,7 @@ angular
 	$scope.getPatientByRole = function(){
 		var role = 'ROLE_PATIEN';
 		
-		patientServices.getPatientByRole(role).then(function(response){
-			console.log(response)
+		patientServices.getPatientByRole(role, 0, 1000).then(function(response){
 			$scope.userPatients = response.data._embedded.users;
 		}).catch(function(response) {
 			console.error('Error',response);

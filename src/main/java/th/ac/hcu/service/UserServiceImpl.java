@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void addUser(UserBean userBean) {
 		// TODO Auto-generated method stub
-		log.info("inserting ph");
+		log.info("inserting user");
 		User user = new User();
 		user.setEnabled("1");
 		user.setName(userBean.getName());
@@ -86,12 +86,42 @@ public class UserServiceImpl implements UserService {
 		
 		usersRepository.save(user);
 		
-		UserRole role = new UserRole();
-		role.setEnabled("1");
-		role.setRole(Role.valueOf(userBean.getRole()));
-		role.setUser(user);
+		for (String role : userBean.getRole()) {
+			UserRole userRole = new UserRole();
+			userRole.setEnabled("1");
+			userRole.setRole(Role.valueOf(role));
+			userRole.setUser(user);
+			
+			userRoleRepository.save(userRole);
+		}
 		
-		userRoleRepository.save(role);
+	}
+
+    @Transactional
+    @Override
+	public void patchUser(UserBean userBean, Long userId) {
+		// TODO Auto-generated method stub
+		User user = usersRepository.findOne(userId);
+		user.setName(userBean.getName());
+		user.setPassword(userBean.getPassword());
+		user.setStudentId(userBean.getStudentId());
+		user.setMajor(userBean.getMajor());
+		user.setYears(userBean.getYears());
+		user.setHospital(userBean.getHospital());
+		user.setAdvisor(userBean.getAdvisor());
+		for (UserRole xRole : user.getUserRole()) {
+			userRoleRepository.delete(xRole);
+		}
+		
+		for (String xRole : userBean.getRole()) {
+			UserRole userRole = new UserRole();
+			userRole.setEnabled("1");
+			userRole.setRole(Role.valueOf(xRole));
+			userRole.setUser(user);
+			
+			userRoleRepository.save(userRole);
+		}
+		usersRepository.save(user);
 	}
 
 }

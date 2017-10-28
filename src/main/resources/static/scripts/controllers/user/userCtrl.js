@@ -46,15 +46,37 @@ angular
 		      parent: angular.element(document.body),
 		      targetEvent: ev,
 		      clickOutsideToClose:true,
+		      locals: {
+		          mode : 'add'
+		       },
 		      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
 		    })
-		    .then(function(answer) {
-		      $scope.status = 'You said the information was "' + answer + '".';
+		    .then(function() {
+		    	$scope.getAllUser(paginationOptions.pageNumber, paginationOptions.pageSize);
 		    }, function() {
-		      $scope.status = 'You cancelled the dialog.';
+		    	log.info('dialog closed');
 		    });
 	}
-	$scope.del = function(e, link, ev){
+	$scope.patchUser = function(e, ev){
+		$mdDialog.show({
+		      controller: PatchDialogController,
+		      templateUrl: 'views/app/user/dialog.html',
+		      parent: angular.element(document.body),
+		      targetEvent: ev,
+		      clickOutsideToClose:true,
+		      locals: {
+		          userId: e.userId,
+		          mode : 'edit'
+		       },
+		      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+		    })
+		    .then(function() {
+		    	$scope.getAllUser(paginationOptions.pageNumber, paginationOptions.pageSize);
+		    }, function() {
+		    	log.info('dialog closed');
+		    });
+	}
+	$scope.del = function(e, ev){
 		// Appending dialog to document.body to cover sidenav in docs app
 	    var confirm = $mdDialog.confirm()
 	          .title('Would you like to delete this user?')
@@ -65,9 +87,17 @@ angular
 	          .cancel('CANCEL');
 
 	    $mdDialog.show(confirm).then(function() {
-	      $scope.status = 'You decided to get rid of your debt.';
+	      var userId = e.userId;
+	      
+	      	userService.delUsers(userId).then(function(response){
+	      		toastr.success('User has been deleted', 'Info');
+	      		$scope.getAllUser(paginationOptions.pageNumber, paginationOptions.pageSize);
+			}).catch(function(response) {
+				console.error('Error',response);
+				toastr.error(response.data.message, 'Error');
+		    });
 	    }, function() {
-	      $scope.status = 'You decided to keep your debt.';
+	    	log.info('deleting canceled');
 	    });
 	};
 	
@@ -85,10 +115,19 @@ angular
     			{ name: 'years', width: 100},
     			{ name: 'advisor', width: 100},
     			{ name: 'hospital', width: 100},
+    			 {
+                    name : 'Edit',
+                    cellTemplate : '<div class="ui-grid-cell-contents">' +
+                                        '<button class="btn btn-xs btn-info" title="Edit this" ng-click="grid.appScope.patchUser(row.entity, $event);" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>' +
+                                   '</div>',
+                                   width: 100,
+                    enableCellEdit : false,
+                    visible : isRoleAdmin
+                },
                 {
                     name : 'Delete',
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
-                                        '<button class="btn btn-xs btn-danger" title="delete this" ng-click="grid.appScope.del(row.entity._links.self.href, $event);" ><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>' +
+                                        '<button class="btn btn-xs btn-danger" title="delete this" ng-click="grid.appScope.del(row.entity, $event);" ><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>' +
                                    '</div>',
                                    width: 100,
                     enableCellEdit : false,
@@ -115,9 +154,19 @@ angular
             }
         };
 	
-	function DialogController($scope, $rootScope, $mdDialog, userService, toastr) {
+	function DialogController($scope, $rootScope, $mdDialog, userService, toastr, mode) {
+		$scope.mode = mode;
 		$scope.combo = $rootScope.comboBox;
 		$scope.param = $rootScope.param;
+		
+		$scope.user = {};
+		$scope.user.role = [];
+		$scope.addRole = function(xRole){
+			$scope.user.role.push(xRole);
+		};
+		$scope.deRole = function(index){
+			$scope.user.role.splice(index, 1);
+		};
 		
 	    $scope.hide = function() {
 	      $mdDialog.hide();
@@ -128,9 +177,50 @@ angular
 	    };
 
 	    $scope.add = function(user) {
-	    	console.log(user);
 	    	userService.addUser(user).then(function(response){
 	    		toastr.success('Added', 'Info');
+	    		$scope.hide();
+			}).catch(function(response) {
+				console.error('Error',response);
+				toastr.error(response.data.message, 'Error');
+				$scope.hide();
+		    });
+	      
+	    };
+	  }
+	
+	function PatchDialogController($scope, $rootScope, $mdDialog, userService, toastr, userId, mode) {
+		$scope.mode = mode;
+		$scope.combo = $rootScope.comboBox;
+		$scope.param = $rootScope.param;
+		
+		
+		userService.getUserForpatch(userId).then(function(response){
+      		$scope.user = response.data;
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+		
+		
+		$scope.addRole = function(xRole){
+			$scope.user.role.push(xRole);
+		};
+		$scope.deRole = function(index){
+			$scope.user.role.splice(index, 1);
+		};
+		
+	    $scope.hide = function() {
+	      $mdDialog.hide();
+	    };
+
+	    $scope.cancel = function() {
+	      $mdDialog.cancel();
+	    };
+
+	    $scope.add = function(user) {
+	    	userService.patchUser(user, userId).then(function(response){
+	    		toastr.success('Updated', 'Info');
 	    		$scope.hide();
 			}).catch(function(response) {
 				console.error('Error',response);

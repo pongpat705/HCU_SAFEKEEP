@@ -145,7 +145,10 @@
 	  			<label class="col-sm-2 text-uppercase control-label">Upload image </label>
 			  	<div class="col-sm-8">
         		  	<img alt="" ng-src="/ipe/service/pt/viewImage/{{pt.image}}" style="    width: 100%;">
-					<input ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" type="file" accept="image/*" capture="camera" file-model="myFile" id="file" name="file"/>
+        		  	<div class="fileUpload btn btn-danger full-w">
+					    <span><i class="fa fa-camera" aria-hidden="true"></i> เลือกรูป / ถ่ายภาพ</span>
+					    <input class="upload" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" type="file" accept="image/*" capture="camera" file-model="myFile" id="file" name="file"/>
+					</div>
 <!-- 					<button ng-if="checkPermission('ROLE_PATIEN')" ng-click = "uploadFile()">upload me</button> -->
 					<md-button class="md-raised full-w" ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PT')" ng-click= "uploadFile()"><i class="glyphicon glyphicon-open"></i>UPLOAD</md-button>
 	            </div>
