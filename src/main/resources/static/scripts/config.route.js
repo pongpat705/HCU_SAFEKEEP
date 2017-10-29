@@ -169,7 +169,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 			            }
 			    }).state('app.profile',{
 			    	url: '/patient-profile',
-			    	params : {patient:null},
+			    	params : {patient:null, mode: null},
 			    	templateUrl: './views/app/patient/newpatient.html',
 			        controller: 'profileCtrl',
 			        resolve: {

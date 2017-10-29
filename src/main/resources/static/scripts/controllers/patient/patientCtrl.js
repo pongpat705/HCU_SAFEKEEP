@@ -50,7 +50,7 @@ angular
 						};
 
 		patientServices.addNewPatients(patient).then(function(response){
-			$state.go('app.profile',{patient : response.data})
+			$state.go('app.profile',{patient : response.data, mode : 'add'})
 		}).catch(function(response) {
 			console.error('Error',response);
 			toastr.error(response.data.message, 'Error');
@@ -84,7 +84,7 @@ angular
     			{
                     name : 'ข้อมูลพื้นฐานผู้ป่วย',
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
-                                       '<button class="btn btn-xs btn-primary" title="ข้อมูลพื้นฐาน" ui-sref="app.profile({patient: row.entity})" ><i class="fa fa-info-circle" aria-hidden="true"></i> ข้อมูลผู้ป่วย</button>' +
+                                       '<button class="btn btn-xs btn-primary" title="ข้อมูลพื้นฐาน" ui-sref="app.profile({patient: row.entity, mode:null})" ><i class="fa fa-info-circle" aria-hidden="true"></i> ข้อมูลผู้ป่วย</button>' +
                                    '</div>',
                                    width: 142,
                     enableCellEdit : false

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -102,8 +103,8 @@ public class IpePatientPtStudent {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeProgressNote> notes;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	private IpePatientProfile patient;
+//	@ManyToOne(cascade=CascadeType.ALL)
+//	private IpePatientProfile patient;
 
 	public Long getPtId() {
 		return ptId;
@@ -609,12 +610,13 @@ public class IpePatientPtStudent {
 		this.notes = notes;
 	}
 
-	public IpePatientProfile getPatient() {
-		return patient;
-	}
+//	public IpePatientProfile getPatient() {
+//		return patient;
+//	}
+//
+//	public void setPatient(IpePatientProfile patient) {
+//		this.patient = patient;
+//	}
 
-	public void setPatient(IpePatientProfile patient) {
-		this.patient = patient;
-	}
 	
 }

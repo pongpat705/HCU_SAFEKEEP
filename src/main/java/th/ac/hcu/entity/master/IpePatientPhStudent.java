@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,8 +33,8 @@ public class IpePatientPhStudent {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeMedReconcil> reconcils;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	private IpePatientProfile patient;
+//	@ManyToOne(cascade=CascadeType.ALL)
+//	private IpePatientProfile patient;
 	
 	public Long getPhId() {
 		return phId;
@@ -65,10 +66,11 @@ public class IpePatientPhStudent {
 	public void setReconcils(List<IpeMedReconcil> reconcils) {
 		this.reconcils = reconcils;
 	}
-	public IpePatientProfile getPatient() {
-		return patient;
-	}
-	public void setPatient(IpePatientProfile patient) {
-		this.patient = patient;
-	}
+//	public IpePatientProfile getPatient() {
+//		return patient;
+//	}
+//	public void setPatient(IpePatientProfile patient) {
+//		this.patient = patient;
+//	}
+	
 }

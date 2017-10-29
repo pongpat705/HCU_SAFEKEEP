@@ -22,7 +22,7 @@ angular
 			if($rootScope.checkPermission('ROLE_PROF')){
 				$scope.loadStudentByRole();
 			} else {
-				$scope.initPatientPtStudentByStudentId($rootScope.currentUser);
+//				$scope.initPatientPtStudentByStudentId($rootScope.currentUser);
 			}
 			
 		}
@@ -39,7 +39,7 @@ angular
 	};
 	
 	$scope.changeStudent = function(student){
-		$scope.initPatientPtStudentByStudentId(student.userName);
+//		$scope.initPatientPtStudentByStudentId(student.userName);
 	};
 	
 	$scope.uploadFile = function(){
@@ -60,7 +60,7 @@ angular
 	
 	$scope.getPatients = function(){
 		var allPatient = '/ipe/api/ipePatientProfiles'
-		patientServices.genericGet(allPatient).then(function(response){
+		patientServices.genericGet(allPatient, 0, 1000).then(function(response){
 			$scope.patients = response.data._embedded.ipePatientProfiles;
 		}).catch(function(response) {
 			console.error('Error',response);
@@ -107,11 +107,40 @@ angular
 	};
 	
 	$scope.changePatient = function(patient){
-		patientServices.genericPutUrl(patient._links.self.href,$scope._links.patient.href).then(function(resp){
-			console.log(resp)
-		}).catch(function(resp){
-			console.error('Error',resp);
-			toastr.error(resp.data.message, 'Error');
+		patientServices.genericGet(patient._links.ptStudent.href).then(function(pResp){
+//		patientServices.genericPutUrl(patient._links.self.href,$scope._links.patient.href).then(function(resp){
+			$scope.pt = pResp.data;
+			$scope._links = pResp.data._links;
+			
+			$scope.loadExaminate();
+			$scope.loadConclude();
+			$scope.loadGoal();
+			$scope.loadNote();
+		}).catch(function(pResp){
+			if(404 == pResp.status){
+				var pt = {};
+				pt.studentId = $rootScope.currentUser;
+				patientServices.addPatientPt(pt).then(function(aResp){
+					$scope.pt = aResp.data;
+					$scope._links = aResp.data._links;
+					
+					var data = aResp.data._links.self.href;
+					patientServices.genericPutUrl(data, patient._links.ptStudent.href).then(function(resp){
+						console.log(resp)
+					}).catch(function(resp) {
+						console.error('Error',resp);
+						toastr.error(resp.data.message, 'Error');
+				    });
+					
+				}).catch(function(aResp){
+					console.error('Error',aResp);
+					toastr.error(aResp.data.message, 'Error');
+				});
+				
+			} else {
+				console.error('Error',pResp);
+				toastr.error(pResp.data.message, 'Error');
+			}
 		});
 	};
 	

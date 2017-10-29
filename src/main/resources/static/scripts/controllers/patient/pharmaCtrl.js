@@ -16,7 +16,8 @@ angular
 			$rootScope.unAuthorized();
 		} else {
 			$scope.patient = $stateParams.patient;
-			$scope.getPhByPatientId($scope.patient.patientId, 0, 20);
+//			$scope.getPhByPatientId($scope.patient.patientId, 0, 20);
+			$scope.getPhInfo($scope.patient._links.phStudent.href);
 		}
 	});
 	var paginationOptions = {
@@ -45,6 +46,13 @@ angular
 	    });
 	};
 	
+	$scope.getPhInfo = function(link){
+		$scope.genericGet(link).then(function(response){
+			var ph = response.data;
+			console.log(ph);
+			$scope.showDetail(ph);
+		});
+	};
 	
 	$scope.phGridOption = {
             paginationPageSizes: [5, 10, 20],

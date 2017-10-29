@@ -2,19 +2,19 @@
   <div class="row">
   	<b><p>ข้อมูลผู้ป่วย</p></b>
   	
-  		<form class="form-horizontal" role="form" ng-if="checkPermission('ROLE_PROF')">
-			<div class="form-group">
-	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>กรุณาเลือกข้อมูลการประเมินของนักศึกษา </label>
-			  	<select class="form-control m-b-md"  ng-model="student"
-									ng-options="u as u.userName for u in studentPt"
-									ng-change="changeStudent(student);">
-				</select>
-	  		</div>
-  		</form>
+<!--   		<form class="form-horizontal" role="form" ng-if="checkPermission('ROLE_PROF')"> -->
+<!-- 			<div class="form-group"> -->
+<!-- 	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>กรุณาเลือกข้อมูลการประเมินของนักศึกษา </label> -->
+<!-- 			  	<select class="form-control m-b-md"  ng-model="student" -->
+<!-- 									ng-options="u as u.userName for u in studentPt" -->
+<!-- 									ng-change="changeStudent(student);"> -->
+<!-- 				</select> -->
+<!-- 	  		</div> -->
+<!--   		</form> -->
   		<form class="form-horizontal" role="form">
 			<div class="form-group">
 	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>ข้อมูลนี้เป็นของผู้ป่วย </label>
-			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_STUD_PH')" ng-model="patient"
+			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_STUD_PH') && !checkPermission('ROLE_PROF')" ng-model="patient"
 									ng-options="u as u.name for u in patients track by u.patientId"
 									ng-change="changePatient(patient);">
 				</select>

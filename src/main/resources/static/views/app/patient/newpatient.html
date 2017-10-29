@@ -7,7 +7,7 @@
   		<form class="form-horizontal" role="form">
 			<div class="form-group">
 	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>ข้อมูลนี้เป็นของผู้ป่วย(user id ของผู้ป่วย) </label>
-			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.indexName"
+			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_PROF') || (null == mode)" ng-model="patient.indexName"
 									ng-options="u.userName as u.userName for u in userPatients">
 				</select>
 	  		</div>

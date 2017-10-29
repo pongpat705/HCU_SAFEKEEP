@@ -4,8 +4,8 @@ angular.module('app').factory('patientServices',
 		 function patientServices
 		 ($http, $filter,$rootScope) {
     return { 
-	  genericGet : function(link){
-	  	  return $http.get(link);
+	  genericGet : function(link, page, size){
+	  	  return $http.get(link, {params:{'page':page, 'size':size}});
 	  },
 	  genericPatch : function(generic,link){
     	  return $http.patch(link,generic);

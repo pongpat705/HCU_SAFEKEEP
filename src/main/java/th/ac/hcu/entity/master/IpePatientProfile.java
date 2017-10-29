@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
@@ -129,6 +130,12 @@ public class IpePatientProfile {
 	private String createdBy;
 	private Date updatedDate;
 	private String updatedBy;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private IpePatientPhStudent phStudent;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private IpePatientPtStudent ptStudent;
 
 	public Long getPatientId() {
 		return patientId;
@@ -737,6 +744,24 @@ public class IpePatientProfile {
 	public void setMedical(List<IpeMedicalTechnical> medical) {
 		this.medical = medical;
 	}
+
+	public IpePatientPhStudent getPhStudent() {
+		return phStudent;
+	}
+
+	public void setPhStudent(IpePatientPhStudent phStudent) {
+		this.phStudent = phStudent;
+	}
+
+	public IpePatientPtStudent getPtStudent() {
+		return ptStudent;
+	}
+
+	public void setPtStudent(IpePatientPtStudent ptStudent) {
+		this.ptStudent = ptStudent;
+	}
+
+
 
 	
 }

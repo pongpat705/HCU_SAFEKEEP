@@ -24,7 +24,7 @@ angular
 			if($rootScope.checkPermission('ROLE_PROF')){
 				$scope.loadStudentByRole();
 			} else {
-				$scope.initPatientPhStudentByStudentId($rootScope.currentUser);
+//				$scope.initPatientPhStudentByStudentId($rootScope.currentUser);
 			}
 			
 		}
@@ -41,11 +41,11 @@ angular
 	};
 	
 	$scope.changeStudent = function(student){
-		$scope.initPatientPhStudentByStudentId(student.userName);
+//		$scope.initPatientPhStudentByStudentId(student.userName);
 	};
 	$scope.getPatients = function(){
 		var allPatient = '/ipe/api/ipePatientProfiles'
-		patientServices.genericGet(allPatient).then(function(response){
+		patientServices.genericGet(allPatient, 0, 1000).then(function(response){
 			$scope.patients = response.data._embedded.ipePatientProfiles;
 		}).catch(function(response) {
 			console.error('Error',response);
@@ -91,11 +91,37 @@ angular
 	};
 	
 	$scope.changePatient = function(patient){
-		patientServices.genericPutUrl(patient._links.self.href,$scope._links.patient.href).then(function(resp){
-			console.log(resp)
+		patientServices.genericGet(patient._links.phStudent.href).then(function(pResp){
+			$scope.ph = pResp.data;
+			$scope._links = pResp.data._links;
+			//load default
+			$scope.loadCompliance();
+			$scope.loadDrp();
+			$scope.loadReconcil();
 		}).catch(function(resp){
-			console.error('Error',resp);
-			toastr.error(resp.data.message, 'Error');
+			if(404 == resp.status){
+				var ph = {};
+				ph.studentId = $rootScope.currentUser;
+				patientServices.addPatientPh(ph).then(function(aResp){
+					$scope.ph = aResp.data;
+					$scope._links = aResp.data._links;
+					
+					var data = aResp.data._links.self.href;
+					patientServices.genericPutUrl(data, patient._links.phStudent.href).then(function(resp){
+						console.log(resp)
+					}).catch(function(resp) {
+						console.error('Error',resp);
+						toastr.error(resp.data.message, 'Error');
+				    });
+					
+				}).catch(function(aResp){
+					console.error('Error',aResp);
+					toastr.error(aResp.data.message, 'Error');
+				});
+			} else {
+				console.error('Error',resp);
+				toastr.error(resp.data.message, 'Error');
+			}
 		});
 	};
 	

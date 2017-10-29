@@ -16,6 +16,8 @@ angular
 			$state.go('app.patient',{},{reload:true});
 		}
 		$scope.patient = $stateParams.patient;
+		console.info($stateParams.mode);
+		$scope.mode = $stateParams.mode;
 		$scope._links = null != $stateParams.patient ? $stateParams.patient._links : null;
 		
 		$scope.getPatientByRole();
