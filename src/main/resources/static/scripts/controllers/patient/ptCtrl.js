@@ -13,7 +13,7 @@ angular
 	
 	$scope.$watch("init", function(){
 		$scope.pt = {};
-		$scope.patient = {};
+		$scope.patient = null;
 		$scope._links = {};
 		if('' == $rootScope.currentUser){
 			$rootScope.unAuthorized();

@@ -85,29 +85,19 @@ angular
                     name : 'ข้อมูลพื้นฐานผู้ป่วย',
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
                                        '<button class="btn btn-xs btn-primary" title="ข้อมูลพื้นฐาน" ui-sref="app.profile({patient: row.entity, mode:null})" ><i class="fa fa-info-circle" aria-hidden="true"></i> ข้อมูลผู้ป่วย</button>' +
+                                       '&nbsp;<button class="btn btn-xs btn-warning" title="ข้อมูลกายภาพบำบัด" ui-sref="app.physic({patient: row.entity})"><i class="fa fa-odnoklassniki" aria-hidden="true"></i> ข้อมูลผู้ป่วย(กายภาพบำบัด)</button>' +
+                                       '&nbsp;<button class="btn btn-xs btn-info" title="ข้อมูลเภสัชวิทยา" ui-sref="app.pharmachy({patient: row.entity})" ><i class="fa fa-medkit" aria-hidden="true"></i> ข้อมูลผู้ป่วย(เภสัชศาสตร์)</button>' +
                                    '</div>',
-                                   width: 142,
+                                   width: 415,
                     enableCellEdit : false
                 },
                 {
-                	name : 'ข้อมูลผู้ป่วยรายวันและการประเมิน สำหรับนักศึกษา',
+                	name : 'ข้อมูลผู้ป่วยรายวัน',
                     cellTemplate : '<div class="ui-grid-cell-contents">' +
                                         '<button class="btn btn-xs btn-white" title="ข้อมูลผู้ป่วยประจำวัน" ui-sref="app.transaction({patient: row.entity})"><i class="fa fa-wheelchair" aria-hidden="true"></i> ข้อมูลผู้ป่วยประจำวัน</button>' +
                                    '</div>',
-                                   width: 467,
-                    enableCellEdit : false,
-                    visible : !isRoleProf
-                },
-                {
-                	name : 'ข้อมูลผู้ป่วยรายวันและการประเมิน สำหรับอาจารย์',
-                    cellTemplate : '<div class="ui-grid-cell-contents">' +
-                                        '<button class="btn btn-xs btn-white" title="ข้อมูลผู้ป่วยประจำวัน" ui-sref="app.transaction({patient: row.entity})"><i class="fa fa-wheelchair" aria-hidden="true"></i> ข้อมูลผู้ป่วยประจำวัน</button>' +
-                                        '&nbsp;<button class="btn btn-xs btn-white" title="ข้อมูลกายภาพบำบัด" ui-sref="app.physic({patient: row.entity})"><i class="fa fa-odnoklassniki" aria-hidden="true"></i> ข้อมูลผู้ป่วย(กายภาพบำบัด)</button>' +
-                                        '&nbsp;<button class="btn btn-xs btn-white" title="ข้อมูลเภสัชวิทยา" ui-sref="app.pharmachy({patient: row.entity})" ><i class="fa fa-medkit" aria-hidden="true"></i> ข้อมูลผู้ป่วย(เภสัชศาสตร์)</button>' +
-                                   '</div>',
-                                   width: 467,
-                    enableCellEdit : false,
-                    visible : isRoleProf
+                                   width: 140,
+                    enableCellEdit : false
                 },
                 {
                     name : 'ลบข้อมูล',

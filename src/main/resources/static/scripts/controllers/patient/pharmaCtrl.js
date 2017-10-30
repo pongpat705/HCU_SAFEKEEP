@@ -95,11 +95,11 @@ angular
 		$scope.ph = ph;
 		$scope._links = $scope.ph._links;
 		
-		if($rootScope.checkPermission('ROLE_PROF')){
+//		if($rootScope.checkPermission('ROLE_PROF')){
 			$scope.loadCompliance();
 			$scope.loadDrp();
 			$scope.loadReconcil();
-		}
+//		}
 		
 	};
 	

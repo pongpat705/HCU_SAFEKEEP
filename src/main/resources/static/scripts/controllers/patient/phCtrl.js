@@ -13,7 +13,7 @@ angular
 	
 	$scope.$watch("init", function(){
 		$scope.ph = {};
-		$scope.patient = {};
+		$scope.patient = null;
 		$scope._links = {};
 		$scope.combo = $rootScope.comboBox;
 		

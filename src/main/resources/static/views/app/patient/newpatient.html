@@ -26,13 +26,13 @@
 		          <div class="form-group">
 		            <label class="col-sm-2 text-uppercase control-label">ชื่อ สกุล ผู้รับบริการ <span class="require">*</span></label>
 		            <div class="col-sm-8">
-		            	<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="name" ng-model="patient.name" maxlength="50" required>
+		            	<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="name" ng-model="patient.name" required>
 		            </div>
 		          </div>
 		          <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">อายุ</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="age" ng-model="patient.age" maxlength="2">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="age" ng-model="patient.age">
 		          	</div>
 		          </div>  
 		          <div class="form-group">
@@ -88,6 +88,13 @@
 		          	<div class="col-sm-8">
 		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="curator" ng-model="patient.curator" >
 		          	</div>
+		          </div> 
+				  <div class="form-group">
+		          	<label class="col-sm-2 text-uppercase control-label">อายุ</label>
+		          	<div class="col-sm-2">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="curatorAge" ng-model="patient.curatorAge" >
+		          	</div>
+		          	<label class="col-sm-6 text-uppercase control-label text-left-imp">ปี</label>
 		          </div> 
 				  <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">ความสัมพันธ์กับผู้ป่วย</label>
@@ -289,6 +296,13 @@
 <!-- 	          		<input type="text" class="form-control" placeholder="" name="sResidenceDescription" ng-model="patient.sResidenceDescription"> -->
 	          		<text-angular ta-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.sResidenceDescription"></text-angular>
 	          	</div>
+	          </div> 
+			  <div class="form-group">
+	          	<label class="col-sm-2 text-uppercase control-label">สมาชิกในครอบครัว จำนวน</label>
+	          	<div class="col-sm-2">
+	          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="sFamilyCount" ng-model="patient.sFamilyCount">
+	          	</div>
+	          	<label class="col-sm-6 text-uppercase control-label text-left-imp">คน /ความสัมพันธ์ / อาชีพ/ รายได้ของบุคคลในครอบครัว</label>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 left text-uppercase control-label">สมาชิกในครอบครัว</label>

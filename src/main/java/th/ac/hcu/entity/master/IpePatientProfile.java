@@ -38,6 +38,7 @@ public class IpePatientProfile {
 	private String diagnose;
 	private String period;
 	private String curator;
+	private String curatorAge;
 	private String curatorRelation;
 	private String supervisor;
 	private String supervisorMobile;
@@ -78,6 +79,7 @@ public class IpePatientProfile {
 	@Lob
 	private String sResidenceDescription;//3
 
+	private String sFamilyCount;
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeFamilyMember> members;//4
 	
@@ -759,6 +761,22 @@ public class IpePatientProfile {
 
 	public void setPtStudent(IpePatientPtStudent ptStudent) {
 		this.ptStudent = ptStudent;
+	}
+
+	public String getCuratorAge() {
+		return curatorAge;
+	}
+
+	public void setCuratorAge(String curatorAge) {
+		this.curatorAge = curatorAge;
+	}
+
+	public String getsFamilyCount() {
+		return sFamilyCount;
+	}
+
+	public void setsFamilyCount(String sFamilyCount) {
+		this.sFamilyCount = sFamilyCount;
 	}
 
 

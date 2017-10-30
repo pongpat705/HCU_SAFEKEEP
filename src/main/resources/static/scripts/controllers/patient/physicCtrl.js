@@ -94,12 +94,12 @@ angular
 		$scope.pt = pt;
 		$scope._links = $scope.pt._links;
 		
-		if($rootScope.checkPermission('ROLE_PROF')){
+//		if($rootScope.checkPermission('ROLE_PROF')){
 			$scope.loadExaminate();
 			$scope.loadConclude();
 			$scope.loadGoal();
 			$scope.loadNote();
-		}
+//		}
 		
 	};
 	
