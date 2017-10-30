@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Order(1)
 public class JwtProperties {
 	
-	private final long jwtExpirationTime = 1000*60*10;
+	private final long jwtExpirationTime = 1000*60*40;
 	
 	private final String jwtSecret = "MaozcaptionitSuperSecret";
 	
