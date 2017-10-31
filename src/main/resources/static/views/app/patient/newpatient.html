@@ -148,14 +148,14 @@
 	          	<label class="col-sm-2 text-uppercase control-label">อาการเจ็บป่วยปัจจุบัน</label>
 	          	<div class="col-sm-8">
 <!-- 	          		<input type="text" class="form-control" placeholder="" name="nSickness" ng-model="patient.nSickness"> -->
-	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nSickness"></textarea>
+	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nSickness" maxlength="1000"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">General Appearance</label>
 	          	<div class="col-sm-8">
 <!-- 	          		<input type="text" class="form-control" placeholder="" name="nGeneralAppearance" ng-model="patient.nGeneralAppearance"> -->
-	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nGeneralAppearance"></textarea>
+	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nGeneralAppearance" maxlength="1000"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
@@ -199,21 +199,21 @@
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ประเมินภาวะโภชนาการอาหาร(ทางที่ได้รับ, ชนิด, ปริมาณ)</label>
 	          	<div class="col-sm-8">
-	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nFoodCondition"></textarea>
+	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nFoodCondition" maxlength="1000"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ประเมินสภาพจิตใจและสังคม</label>
 	          	<div class="col-sm-8">
 <!-- 	          		<input type="text" class="form-control" placeholder="" name="nMentalCondition" ng-model="patient.nMentalCondition"> -->
-	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nMentalCondition"></textarea>
+	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nMentalCondition" maxlength="1000"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">การดูแลผู้ป่วยของผู้ดูแล</label>
 	          	<div class="col-sm-8">
 <!-- 	          		<input type="text" class="form-control" placeholder="" name="nHowSupTakeCare" ng-model="patient.nHowSupTakeCare"> -->
-	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nHowSupTakeCare"></textarea>
+	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nHowSupTakeCare" maxlength="1000"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
@@ -222,7 +222,7 @@
 			         	<label class="col-sm-2 text-uppercase control-label">ตามระบบ(เน้นระบบที่มีปัญหา)</label>
 			          	<div class="col-sm-8">
 <!-- 			          		<input type="text" class="form-control" placeholder="" name="nCheckBySystem" ng-model="patient.nCheckBySystem"> -->
-			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nCheckBySystem"></textarea>
+			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nCheckBySystem" maxlength="1000"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
@@ -239,19 +239,19 @@
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">วินิจฉัยปัญหา</label>
 	          	<div class="col-sm-8">
-	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nDiagnosis"></textarea>
+	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nDiagnosis" maxlength="1000"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">การดูแล</label>
 	          	<div class="col-sm-8">
-	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nCare"></textarea>
+	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nCare" maxlength="1000"></textarea>
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ประเมินผล</label>
 	          	<div class="col-sm-8">
-	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nEstimate"></textarea>
+	          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.nEstimate" maxlength="1000"></textarea>
 	          	</div>
 	          </div> 
 	        </md-content>
@@ -357,31 +357,31 @@
 	          			<div class="col-sm-12"></div>
 			         	<label class="col-sm-2 text-uppercase control-label">การประเมินสภาวะกาย จิต สังคม</label>
 			          	<div class="col-sm-8">
-			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.sMentalCondition"></textarea>
+			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.sMentalCondition" maxlength="1000"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">การประเมินสภาวะครอบครัว</label>
 			          	<div class="col-sm-8">
-			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.sFamilyCondition"></textarea>
+			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.sFamilyCondition" maxlength="1000"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">การประเมินความเสี่ยง</label>
 			          	<div class="col-sm-8">
-			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.sRiskCondition"></textarea>
+			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.sRiskCondition" maxlength="1000"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">การประเมินตวามต้องการ</label>
 			          	<div class="col-sm-8">
-			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.sNeedCondition"></textarea>
+			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.sNeedCondition" maxlength="1000"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
 			          	<label class="col-sm-2 text-uppercase control-label">แนวทางการวางแผนให้ความช่วยเหลือ</label>
 			          	<div class="col-sm-8">
-			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.sHelpingGuid"></textarea>
+			          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="105" ng-model="patient.sHelpingGuid" maxlength="1000"></textarea>
 			          	</div>
 			          	
 			          	<div class="col-sm-12"></div>
@@ -443,7 +443,7 @@
 							            	<select class="full-w form-control m-b" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="d.isAllergy"
 												ng-options="r.infoTh as r.infoTh for r in combo.COMBO_DRUG_ALLERGY">
 							          		</select>
-							          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="30" ng-model="d.allergyDescription"></textarea>
+							          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="30" ng-model="d.allergyDescription" maxlength="1000"></textarea>
 						            	</div>
 						            </td>
 						        </tr>
@@ -461,7 +461,7 @@
 						          <th>คำแนะนำใช้ยา</th>
 						          	<td>
 						          		<div class="col-sm-8">
-											<textarea class="form-control" rows="3" ng-disabled="!checkPermission('ROLE_PROF')" cols="30" ng-model="d.drugAdvice"></textarea>
+											<textarea class="form-control" rows="3" ng-disabled="!checkPermission('ROLE_PROF')" cols="30" ng-model="d.drugAdvice" maxlength="1000"></textarea>
 						          		</div>
 						          	</td>
 						        </tr>
@@ -479,7 +479,7 @@
 						          <th>note</th>
 						          	<td>
 						          		<div class="col-sm-8">
-						          			<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="30" ng-model="d.problemDescription"></textarea>
+						          			<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="30" ng-model="d.problemDescription" maxlength="1000"></textarea>
 						          		</div>
 						          	</td>
 						        </tr>
@@ -538,7 +538,7 @@
 							            	<select class="full-w form-control m-b" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="drug.isAllergy"
 												ng-options="r.infoTh as r.infoTh for r in combo.COMBO_DRUG_ALLERGY">
 							          		</select>
-							          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="30" ng-model="drug.allergyDescription"></textarea>
+							          		<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="30" ng-model="drug.allergyDescription" maxlength="1000"></textarea>
 						            	</div>
 						            </td>
 						        </tr>
@@ -556,7 +556,7 @@
 						          <th>คำแนะนำใช้ยา</th>
 						          	<td>
 						          		<div class="col-sm-8">
-											<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="30" ng-model="drug.drugAdvice"></textarea>
+											<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="30" ng-model="drug.drugAdvice" maxlength="1000"></textarea>
 						          		</div>
 						          	</td>
 						        </tr>
@@ -574,7 +574,7 @@
 						          <th>note</th>
 						          	<td>
 						          		<div class="col-sm-8">
-						          			<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="30" ng-model="drug.problemDescription"></textarea>
+						          			<textarea class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" rows="3" cols="30" ng-model="drug.problemDescription" maxlength="1000"></textarea>
 						          		</div>
 						          	</td>
 						        </tr>
@@ -886,7 +886,7 @@
 						</tr>
 					</table>
 					<div class="col-sm-12">
-						<textarea rows="4" cols="105" class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.labAdvice" ></textarea>
+						<textarea rows="4" cols="105" class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.labAdvice" maxlength="1000"></textarea>
 					</div>
   				</div>
   			</div>

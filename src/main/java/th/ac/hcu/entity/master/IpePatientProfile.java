@@ -92,6 +92,7 @@ public class IpePatientProfile {
 	private String sRiskCondition;//5.3
 	private String sNeedCondition;//5.4
 	private String sHelpingGuid;//6
+	@Lob
 	private String sPatientMapImg;//7
 	
 	//pharma
@@ -120,7 +121,7 @@ public class IpePatientProfile {
 	private Integer lUric;
 	private Integer lAlt;
 	private Integer lAst;
-	private Integer labAdvice;
+	private String labAdvice;
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeMedicalTechnical> medical;
 	
@@ -731,11 +732,11 @@ public class IpePatientProfile {
 		this.lAst = lAst;
 	}
 
-	public Integer getLabAdvice() {
+	public String getLabAdvice() {
 		return labAdvice;
 	}
 
-	public void setLabAdvice(Integer labAdvice) {
+	public void setLabAdvice(String labAdvice) {
 		this.labAdvice = labAdvice;
 	}
 
