@@ -63,7 +63,9 @@ angular
 	  $rootScope.$on('$stateChangeStart',  function(event, toState, toParams, fromState, fromParams, options){
 		  $uibModalStack.dismissAll();
 		  $rootScope.currentState = toState.name;
-		  $rootScope.prevState = fromState.name;
+		  if(toState.name != fromState.name){
+			  $rootScope.prevState = fromState.name;
+		  }
 		  if(undefined != $sessionStorage.roleList){
 			  PermissionStore
 				.defineManyPermissions($sessionStorage.roleList, function(permissionName, transitionProperties) {

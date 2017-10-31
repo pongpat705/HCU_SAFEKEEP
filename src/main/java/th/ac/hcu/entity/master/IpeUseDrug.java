@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -29,15 +30,16 @@ public class IpeUseDrug {
 	private List<IpeDrugList> drugList;//4
 	
 	private String isAllergy;
+	@Lob
 	private String allergyDescription;
 	
 	//paramconfig
 	private String usingDrug;
-	
+	@Lob
 	private String drugAdvice;
 	//paramconfig
 	private String drugProblem;
-	
+	@Lob
 	private String problemDescription;
 
 	public Long getDrugId() {

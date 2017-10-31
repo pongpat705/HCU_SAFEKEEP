@@ -51,6 +51,12 @@ public class ServiceController {
 	  
 	  @Autowired @Qualifier("ptStorageService") StorageService ptStorageService;
 	  
+	  @Autowired @Qualifier("mapStorageService") StorageService mapStorageService;
+
+	  @Autowired @Qualifier("ecoStorageService") StorageService ecoStorageService;
+	  
+	  @Autowired @Qualifier("genoStorageService") StorageService genoStorageService;
+	  
 	  @RequestMapping(value = "/parse", method = RequestMethod.GET)
 	  @ResponseBody
 	  public AuthenticatedUsers parse(HttpServletRequest request) throws Exception {
@@ -127,6 +133,81 @@ public class ServiceController {
 	  @ResponseBody
 	  public byte[] ptViewImage(HttpServletRequest request, @PathVariable("ptId") String ptId, @PathVariable("userId") String userId, @PathVariable("fileName") String fileName) throws IOException {
 	      InputStream in = ptStorageService.getFile(ptId, userId, fileName);
+	      BufferedImage originalImage=ImageIO.read(in);
+	      ByteArrayOutputStream baos=new ByteArrayOutputStream();
+	      ImageIO.write(originalImage, "jpg", baos );
+	      byte[] imageInByte = baos.toByteArray();
+	      return imageInByte;
+	  }
+	  
+	  @RequestMapping(value = "/map/uploadImage/{patientId}/{userId}", method = RequestMethod.POST, headers = "content-type=multipart/form-data")
+	  @ResponseBody
+	  public ResponseEntity<Map<String, String>> mapUploadImage(HttpServletRequest request, 
+			  				@RequestParam(name="file") MultipartFile file, @PathVariable("patientId") String patientId, @PathVariable("userId") String userId) throws Exception {
+		  log.info("calling from "+request.getRemoteAddr());
+		  log.info("patientId : "+patientId);
+		  log.info("userId : "+userId);
+		  Map<String, String> map = new HashMap<>();
+		  String pathFile = mapStorageService.saveFile(file, patientId, userId);
+		  map.put("file", pathFile);
+		return new ResponseEntity<Map<String, String>>(map, HttpStatus.CREATED);
+	  }
+	  
+
+	  @RequestMapping(value = "/map/viewImage/{userId}/map/{patientId}/{fileName}", method = RequestMethod.GET)
+	  @ResponseBody
+	  public byte[] mapViewImage(HttpServletRequest request, @PathVariable("patientId") String ptId, @PathVariable("userId") String userId, @PathVariable("fileName") String fileName) throws IOException {
+	      InputStream in = mapStorageService.getFile(ptId, userId, fileName);
+	      BufferedImage originalImage=ImageIO.read(in);
+	      ByteArrayOutputStream baos=new ByteArrayOutputStream();
+	      ImageIO.write(originalImage, "jpg", baos );
+	      byte[] imageInByte = baos.toByteArray();
+	      return imageInByte;
+	  }
+	  
+	  @RequestMapping(value = "/eco/uploadImage/{patientId}/{userId}", method = RequestMethod.POST, headers = "content-type=multipart/form-data")
+	  @ResponseBody
+	  public ResponseEntity<Map<String, String>> ecoUploadImage(HttpServletRequest request, 
+			  				@RequestParam(name="file") MultipartFile file, @PathVariable("patientId") String patientId, @PathVariable("userId") String userId) throws Exception {
+		  log.info("calling from "+request.getRemoteAddr());
+		  log.info("patientId : "+patientId);
+		  log.info("userId : "+userId);
+		  Map<String, String> map = new HashMap<>();
+		  String pathFile = ecoStorageService.saveFile(file, patientId, userId);
+		  map.put("file", pathFile);
+		return new ResponseEntity<Map<String, String>>(map, HttpStatus.CREATED);
+	  }
+	  
+
+	  @RequestMapping(value = "/eco/viewImage/{userId}/eco/{patientId}/{fileName}", method = RequestMethod.GET)
+	  @ResponseBody
+	  public byte[] ecoViewImage(HttpServletRequest request, @PathVariable("patientId") String patientId, @PathVariable("userId") String userId, @PathVariable("fileName") String fileName) throws IOException {
+	      InputStream in = ecoStorageService.getFile(patientId, userId, fileName);
+	      BufferedImage originalImage=ImageIO.read(in);
+	      ByteArrayOutputStream baos=new ByteArrayOutputStream();
+	      ImageIO.write(originalImage, "jpg", baos );
+	      byte[] imageInByte = baos.toByteArray();
+	      return imageInByte;
+	  }
+	  
+	  @RequestMapping(value = "/geno/uploadImage/{patientId}/{userId}", method = RequestMethod.POST, headers = "content-type=multipart/form-data")
+	  @ResponseBody
+	  public ResponseEntity<Map<String, String>> genoUploadImage(HttpServletRequest request, 
+			  				@RequestParam(name="file") MultipartFile file, @PathVariable("patientId") String patientId, @PathVariable("userId") String userId) throws Exception {
+		  log.info("calling from "+request.getRemoteAddr());
+		  log.info("patientId : "+patientId);
+		  log.info("userId : "+userId);
+		  Map<String, String> map = new HashMap<>();
+		  String pathFile = genoStorageService.saveFile(file, patientId, userId);
+		  map.put("file", pathFile);
+		return new ResponseEntity<Map<String, String>>(map, HttpStatus.CREATED);
+	  }
+	  
+
+	  @RequestMapping(value = "/geno/viewImage/{userId}/geno/{patientId}/{fileName}", method = RequestMethod.GET)
+	  @ResponseBody
+	  public byte[] genoViewImage(HttpServletRequest request, @PathVariable("patientId") String patientId, @PathVariable("userId") String userId, @PathVariable("fileName") String fileName) throws IOException {
+	      InputStream in = genoStorageService.getFile(patientId, userId, fileName);
 	      BufferedImage originalImage=ImageIO.read(in);
 	      ByteArrayOutputStream baos=new ByteArrayOutputStream();
 	      ImageIO.write(originalImage, "jpg", baos );

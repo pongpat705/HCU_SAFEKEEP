@@ -16,7 +16,6 @@ angular
 			$state.go('app.patient',{},{reload:true});
 		}
 		$scope.patient = $stateParams.patient;
-		console.info($stateParams.mode);
 		$scope.mode = $stateParams.mode;
 		$scope._links = null != $stateParams.patient ? $stateParams.patient._links : null;
 		
@@ -268,5 +267,54 @@ angular
 	};
 
 	
+	$scope.uploadMap = function(){
+		var file = $( "#map" );
+		patientServices.mapUploadFile(file[0].files[0], $scope.patient, $rootScope.currentUser).then(function(response){
+			toastr.success('uploaded');
+			patientServices.genericGet($scope.patient._links.self.href).then(function(response){
+				$scope.patient = response.data;
+				$state.go('app.profile',{},{reload:true});
+			}).catch(function(response) {
+				console.error('Error',response);
+				toastr.error(response.data.message, 'Error');
+		    });
+		}).catch(function(response){
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+		});
+	};
+	
+	$scope.uploadEco = function(){
+		var file = $( "#eco" );
+		patientServices.ecoMapUploadFile(file[0].files[0], $scope.patient, $rootScope.currentUser).then(function(response){
+			toastr.success('uploaded');
+			patientServices.genericGet($scope.patient._links.self.href).then(function(response){
+				$scope.patient = response.data;
+				$state.go('app.profile',{},{reload:true});
+			}).catch(function(response) {
+				console.error('Error',response);
+				toastr.error(response.data.message, 'Error');
+		    });
+		}).catch(function(response){
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+		});
+	};
+	$scope.uploadGeno = function(){
+		var file = $( "#geno" );
+		patientServices.genoMapUploadFile(file[0].files[0], $scope.patient, $rootScope.currentUser).then(function(response){
+			toastr.success('uploaded');
+			patientServices.genericGet($scope.patient._links.self.href).then(function(response){
+				$scope.patient = response.data;
+				$state.go('app.profile',{},{reload:true});
+			}).catch(function(response) {
+				console.error('Error',response);
+				toastr.error(response.data.message, 'Error');
+		    });
+		}).catch(function(response){
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+		});
+	};
   }
 ]);

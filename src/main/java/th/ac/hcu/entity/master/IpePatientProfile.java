@@ -54,16 +54,13 @@ public class IpePatientProfile {
 	private String nBloodPressure;//3
 	//paramconfig
 	private String nSelfHelp;//4
-	
 	private String nFoodCondition;//5
 	private String nMentalCondition;//6
 	private	String nHowSupTakeCare;//7
-	
 	private String nCheckBySystem;//8
 	//paramconfig
 	private String nCheckByTools;//8
 	private String nCheckByToolsDesc;
-	
 	private String nDiagnosis;//8
 	private String nCare;//9
 	private String nEstimate;//10
@@ -83,16 +80,13 @@ public class IpePatientProfile {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeFamilyMember> members;//4
 	
-	@Lob
 	private String sGenogramImg; //4.2
-	@Lob
 	private String sEcoMapImg; //4.3
 	private String sMentalCondition;//5.1
 	private String sFamilyCondition;//5.2
 	private String sRiskCondition;//5.3
 	private String sNeedCondition;//5.4
 	private String sHelpingGuid;//6
-	@Lob
 	private String sPatientMapImg;//7
 	
 	//pharma
@@ -121,6 +115,7 @@ public class IpePatientProfile {
 	private Integer lUric;
 	private Integer lAlt;
 	private Integer lAst;
+	@Lob
 	private String labAdvice;
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<IpeMedicalTechnical> medical;

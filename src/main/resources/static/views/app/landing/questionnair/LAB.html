@@ -36,6 +36,6 @@
 							<td><button class="btn btn-md btn-info" ng-if="checkPermission('ROLE_PATIEN')" ng-click="addMedic(lab, txn._links.medical.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
 						</tr>
 					</table>
-					<textarea rows="4" cols="30" class="form-control" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="txn.labAdvice" maxlength="1000"></textarea>
+					<textarea rows="4" cols="30" class="form-control" ng-disabled="!checkPermission('ROLE_PATIEN')" ng-model="txn.labAdvice" maxlength="300"></textarea>
 			</div>
 		</div>

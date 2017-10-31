@@ -163,6 +163,39 @@ angular.module('app').factory('patientServices',
       },
       getPhByPatientId : function(phId){
     	  return $http.get(CONTEXT+'/api/ipePatientPhStudents/search/getByPatient',{params:{'patient': phId}});
+      },
+      mapUploadFile : function(file, patient, user){
+    	  var fd = new FormData();
+          fd.append('file', file);
+          return $http(
+        		  {	url: CONTEXT+'/service/map/uploadImage/'+patient.patientId+'/'+user,
+        			method: 'POST',
+        			data: fd,
+        			headers: { 'Content-Type': undefined},
+        			transformRequest: angular.identity
+        		  });
+      },
+      ecoMapUploadFile : function(file, patient, user){
+    	  var fd = new FormData();
+          fd.append('file', file);
+          return $http(
+        		  {	url: CONTEXT+'/service/eco/uploadImage/'+patient.patientId+'/'+user,
+        			method: 'POST',
+        			data: fd,
+        			headers: { 'Content-Type': undefined},
+        			transformRequest: angular.identity
+        		  });
+      },
+      genoMapUploadFile : function(file, patient, user){
+    	  var fd = new FormData();
+          fd.append('file', file);
+          return $http(
+        		  {	url: CONTEXT+'/service/geno/uploadImage/'+patient.patientId+'/'+user,
+        			method: 'POST',
+        			data: fd,
+        			headers: { 'Content-Type': undefined},
+        			transformRequest: angular.identity
+        		  });
       }
     };
   }]);
