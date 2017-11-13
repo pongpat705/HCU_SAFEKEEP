@@ -80,11 +80,11 @@
 	          				<tr ng-disabled="!checkPermission('ROLE_PROF') && !checkPermission('ROLE_STUD_PH')">
 	          					<td></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="drug" ng-model="compliance.drug"></td>
-	          					<td><input type="number" class="form-control" placeholder="" name="takeQty" ng-model="compliance.takeQty"></td>
-	          					<td><input type="number" class="form-control" placeholder="" name="takePerDay" ng-model="compliance.takePerDay"></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="takeQty" ng-model="compliance.takeQty"></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="takePerDay" ng-model="compliance.takePerDay"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="takeTime" ng-model="compliance.takeTime"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="takePerWeek" ng-model="compliance.takePerWeek"></td>
-	          					<td><input type="number" class="form-control" placeholder="" name="missTime" ng-model="compliance.missTime"></td>
+	          					<td><input type="text" class="form-control" placeholder="" name="missTime" ng-model="compliance.missTime"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="missReason" ng-model="compliance.missReason"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="knowsDrug" ng-model="compliance.knowsDrug"></td>
 	          					<td><input type="text" class="form-control" placeholder="" name="resultDrug" ng-model="compliance.resultDrug"></td>
@@ -190,7 +190,7 @@
 							<tfoot>
 								<tr>
 									<td><input type="text" class="form-control" placeholder="" name="drug" ng-model="reconcil.drug"></td>
-									<td><input type="number" class="form-control" placeholder="" name="volume" ng-model="reconcil.volume"></td>
+									<td><input type="text" class="form-control" placeholder="" name="volume" ng-model="reconcil.volume"></td>
 									<td><md-datepicker style="white-space: normal;" ng-model="reconcil.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
 									<td><input type="text" class="form-control" placeholder="" name="note" ng-model="reconcil.note"></td>
 									<td><button class="btn btn-md btn-info" ng-click="addReconcil(reconcil,_links.reconcils.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>

@@ -18,7 +18,7 @@ public class IpeMedReconcil {
     @GeneratedValue(strategy=GenerationType.TABLE, generator="GEN_MED_RECONCIL")
     private Long medId;
 	private String drug;
-	private Integer volume;
+	private String volume;
 	private Date date;
 	private String note;
 	
@@ -46,10 +46,10 @@ public class IpeMedReconcil {
 	public void setDrug(String drug) {
 		this.drug = drug;
 	}
-	public Integer getVolume() {
+	public String getVolume() {
 		return volume;
 	}
-	public void setVolume(Integer volume) {
+	public void setVolume(String volume) {
 		this.volume = volume;
 	}
 }

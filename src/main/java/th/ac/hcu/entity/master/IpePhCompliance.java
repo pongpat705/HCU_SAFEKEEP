@@ -20,12 +20,12 @@ public class IpePhCompliance {
 	
 	private String drug;
 	
-	private Integer takeQty;
-	private Integer takePerDay;
+	private String takeQty;
+	private String takePerDay;
 	private String takeTime;
 	private String takePerWeek;
 	
-	private Integer missTime;
+	private String missTime;
 	private String missReason;
 	
 	private String knowsDrug;
@@ -45,16 +45,16 @@ public class IpePhCompliance {
 	public void setDrug(String drug) {
 		this.drug = drug;
 	}
-	public Integer getTakeQty() {
+	public String getTakeQty() {
 		return takeQty;
 	}
-	public void setTakeQty(Integer takeQty) {
+	public void setTakeQty(String takeQty) {
 		this.takeQty = takeQty;
 	}
-	public Integer getTakePerDay() {
+	public String getTakePerDay() {
 		return takePerDay;
 	}
-	public void setTakePerDay(Integer takePerDay) {
+	public void setTakePerDay(String takePerDay) {
 		this.takePerDay = takePerDay;
 	}
 	public String getTakeTime() {
@@ -69,10 +69,10 @@ public class IpePhCompliance {
 	public void setTakePerWeek(String takePerWeek) {
 		this.takePerWeek = takePerWeek;
 	}
-	public Integer getMissTime() {
+	public String getMissTime() {
 		return missTime;
 	}
-	public void setMissTime(Integer missTime) {
+	public void setMissTime(String missTime) {
 		this.missTime = missTime;
 	}
 	public String getMissReason() {

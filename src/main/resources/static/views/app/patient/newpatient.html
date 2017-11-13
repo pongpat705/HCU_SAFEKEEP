@@ -26,80 +26,80 @@
 		          <div class="form-group">
 		            <label class="col-sm-2 text-uppercase control-label">ชื่อ สกุล ผู้รับบริการ <span class="require">*</span></label>
 		            <div class="col-sm-8">
-		            	<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="name" ng-model="patient.name" required>
+		            	<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="name" ng-model="patient.name" required maxlength="150">
 		            </div>
 		          </div>
 		          <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">อายุ</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="age" ng-model="patient.age">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="age" ng-model="patient.age" maxlength="20">
 		          	</div>
 		          </div>  
 		          <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">เบอร์โทรศัพท์</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="mobile" ng-model="patient.mobile">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="mobile" ng-model="patient.mobile" maxlength="10">
 		          	</div>
 		          </div>  
 		          <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">บ้านเลขที่</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="houseNo" ng-model="patient.houseNo">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="houseNo" ng-model="patient.houseNo" maxlength="50">
 		          	</div>
 		          </div>  
 		          <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">หมู่</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="groupNo" ng-model="patient.groupNo" >
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="groupNo" ng-model="patient.groupNo" maxlength="150">
 		          	</div>
 		          </div>  
 		          <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">ตำบล</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="district" ng-model="patient.district" >
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="district" ng-model="patient.district" maxlength="150">
 		          	</div>
 		          </div>  
 		          <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">อำเภอ</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="prefecture" ng-model="patient.prefecture" >
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="prefecture" ng-model="patient.prefecture" maxlength="150">
 		          	</div>
 		          </div>  
 		          <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">จังหวัด</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="province" ng-model="patient.province" >
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="province" ng-model="patient.province" maxlength="150">
 		          	</div>
 		          </div>  
 		          <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">วินิจฉัยโรค</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="diagnose" ng-model="patient.diagnose" >
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="diagnose" ng-model="patient.diagnose" maxlength="300">
 		          	</div>
 		          </div>  
 				  <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">ระยะเวลาที่ป่วย/เริ่มป่วยเมื่อ</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="period" ng-model="patient.period" >
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="period" ng-model="patient.period" maxlength="150">
 		          	</div>
 		          </div>  
 				  <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">ชื่อผู้ดูแลหลัก</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="curator" ng-model="patient.curator" >
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="curator" ng-model="patient.curator" maxlength="150">
 		          	</div>
 		          </div> 
 				  <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">อายุ</label>
 		          	<div class="col-sm-2">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="curatorAge" ng-model="patient.curatorAge" >
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="curatorAge" ng-model="patient.curatorAge" maxlength="50">
 		          	</div>
 		          	<label class="col-sm-6 text-uppercase control-label text-left-imp">ปี</label>
 		          </div> 
 				  <div class="form-group">
 		          	<label class="col-sm-2 text-uppercase control-label">ความสัมพันธ์กับผู้ป่วย</label>
 		          	<div class="col-sm-8">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="curatorRelation" ng-model="patient.curatorRelation" >
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="curatorRelation" ng-model="patient.curatorRelation" maxlength="150">
 		          	</div>
 		          </div> 
 				  <div class="form-group">
@@ -232,7 +232,7 @@
 								<select class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.nCheckByTools"
 									ng-options="r.infoCode as r.infoTh for r in combo.COMBO_SPECIAL_TOOL">
 				          		</select>
-				          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" ng-show="'99'==patient.nCheckByTools" class="form-control" placeholder="" name="nCheckByToolsDesc" ng-model="patient.nCheckByToolsDesc">
+				          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" ng-show="'99'==patient.nCheckByTools" class="form-control" placeholder="" maxlength="200" name="nCheckByToolsDesc" ng-model="patient.nCheckByToolsDesc">
 			          		</div>
 			          	</div>
 	         </div>
@@ -262,20 +262,20 @@
 			<div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">อาชีพก่อนป่วย</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="sFormerJob" ng-model="patient.sFormerJob">
+	          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="sFormerJob" maxlength="100" ng-model="patient.sFormerJob">
 	          	</div>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ระยะเวลาการทำงาน</label>
 	          	<div class="col-sm-6">
-	          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="sWorkDuration" ng-model="patient.sWorkDuration">
+	          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="sWorkDuration" maxlength="50" ng-model="patient.sWorkDuration">
 	          	</div>
 	          	<label class="col-sm-2 text-uppercase center">ปี</label>
 	          </div> 
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">ก่อนป่วยผู้ป่วยมีรายได้ต่อเดือน / ต่อสัปดาห์</label>
 	          	<div class="col-sm-8">
-	          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="sIncome" ng-model="patient.sIncome">
+	          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="sIncome" maxlength="100" ng-model="patient.sIncome">
 	          	</div>
 	          </div> 
 			  <div class="form-group">
@@ -285,8 +285,8 @@
 		          		<select class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.sResidence"
 							ng-options="r.infoCode as r.infoTh for r in combo.COMBO_RESIDENCE">
 		          		</select>
-						<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" ng-show="'02'==patient.sResidence" class="form-control" placeholder="" name="sResidenceCost" ng-model="patient.sResidenceCost">
-		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" ng-show="'03'==patient.sResidence" class="form-control" placeholder="" name="sResidenceRelation" ng-model="patient.sResidenceRelation">
+						<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" ng-show="'02'==patient.sResidence" class="form-control" placeholder="" maxlength="100" name="sResidenceCost" ng-model="patient.sResidenceCost">
+		          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" ng-show="'03'==patient.sResidence" class="form-control" placeholder="" maxlength="100" name="sResidenceRelation" ng-model="patient.sResidenceRelation">
 	          		</div>
 	          	</div>
 	          </div> 
@@ -300,7 +300,7 @@
 			  <div class="form-group">
 	          	<label class="col-sm-2 text-uppercase control-label">สมาชิกในครอบครัว จำนวน</label>
 	          	<div class="col-sm-2">
-	          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" name="sFamilyCount" ng-model="patient.sFamilyCount">
+	          		<input type="text" ng-disabled="!checkPermission('ROLE_PROF')" class="form-control" placeholder="" maxlength="4"  name="sFamilyCount" ng-model="patient.sFamilyCount">
 	          	</div>
 	          	<label class="col-sm-6 text-uppercase control-label text-left-imp">คน /ความสัมพันธ์ / อาชีพ/ รายได้ของบุคคลในครอบครัว</label>
 	          </div> 
@@ -643,7 +643,7 @@
 					    {{param.Q_02.A_04.infoTh}}
 					  </label>
 					   <div class="row">
-					  	<input type="text" placeholder="" name="gAnswer2" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.gAnswer2">
+					  	<input type="text" placeholder="" name="gAnswer2" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="150" ng-model="patient.gAnswer2">
 					   </div>
 	          	</div>
 	          </div> 
@@ -667,7 +667,7 @@
 					    {{param.Q_03.A_04.infoTh}}
 					  </label>
 					  <div class="row">
-					  	<input type="text" placeholder="" name="gAnswer3" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.gAnswer3">
+					  	<input type="text" placeholder="" name="gAnswer3" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="150" ng-model="patient.gAnswer3">
 					  </div>
 	          	</div>
 	          </div> 
@@ -687,7 +687,7 @@
 					    {{param.Q_04.A_03.infoTh}}
 					  </label>
 					  <div class="row">
-					  	<input type="text" placeholder="" name="gAnswer4" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.gAnswer4">
+					  	<input type="text" placeholder="" name="gAnswer4" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="150" ng-model="patient.gAnswer4">
 					  </div>
 	          	</div>
 	          </div> 
@@ -711,7 +711,7 @@
 					    {{param.Q_05.A_04.infoTh}}
 					  </label>
 					  <div class="row">
-					  	<input type="text" placeholder="" name="gAnswer5" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.gAnswer5">
+					  	<input type="text" placeholder="" name="gAnswer5" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="150" ng-model="patient.gAnswer5">
 					  </div>
 	          	</div>
 	          </div> 
@@ -735,7 +735,7 @@
 					    {{param.Q_06.A_04.infoTh}}
 					  </label>
 					  <div class="row">
-					  	<input type="text" placeholder="" name="gAnswer6" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.gAnswer6">
+					  	<input type="text" placeholder="" name="gAnswer6" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="150" ng-model="patient.gAnswer6">
 					  </div>
 	          	</div>
 	          </div> 
@@ -755,7 +755,7 @@
 					    {{param.Q_07.A_03.infoTh}}
 					  </label>
 					  <div class="row">
-					  	<input type="text" placeholder="" name="gAnswer7" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.gAnswer7">
+					  	<input type="text" placeholder="" name="gAnswer7" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="150" ng-model="patient.gAnswer7">
 					  </div>
 	          	</div>
 	          </div> 
@@ -779,7 +779,7 @@
 					    {{param.Q_08.A_04.infoTh}}
 					  </label>
 					   <div class="row">
-					  	<input type="text" placeholder="" name="gAnswer8" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.gAnswer8">
+					  	<input type="text" placeholder="" name="gAnswer8" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="150" ng-model="patient.gAnswer8">
 					  </div>
 	          	</div>
 	          </div> 
@@ -799,7 +799,7 @@
 					    {{param.Q_09.A_03.infoTh}}
 					  </label>
 					  <div class="row">
-					  	<input type="text" placeholder="" name="gAnswer9" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.gAnswer9">
+					  	<input type="text" placeholder="" name="gAnswer9" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="150" ng-model="patient.gAnswer9">
 					  </div>
 	          	</div>
 	          </div> 
@@ -823,61 +823,61 @@
 						<tr>
 							<td>{{param.LAB_CONSTANTS.LAB_GLUCOSE_LABEL_2.infoTh}}</td>
 							<td>{{param.LAB_CONSTANTS.LAB_GLUCOSE_NORMAL.infoTh}}</td>
-							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')"  ng-model="patient.lGlucose"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="50"  ng-model="patient.lGlucose"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>{{param.LAB_CONSTANTS.LAB_CHOLESTEROL_LABEL.infoTh}}</td>
 							<td>{{param.LAB_CONSTANTS.LAB_CHOLESTEROL_NORMAL.infoTh}}</td>
-							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')"  ng-model="patient.lCholesterol"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="50"  ng-model="patient.lCholesterol"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>{{param.LAB_CONSTANTS.LAB_TRIGLYCERIDE_LABEL.infoTh}}</td>
 							<td>{{param.LAB_CONSTANTS.LAB_TRIGLYCERIDE_NORMAL.infoTh}}</td>
-							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')"  ng-model="patient.lTriglyceride"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="50"  ng-model="patient.lTriglyceride"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>{{param.LAB_CONSTANTS.LAB_HDL_C_LABEL.infoTh}}</td>
 							<td>{{param.LAB_CONSTANTS.LAB_HDL_C_NORMAL.infoTh}}</td>
-							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')"  ng-model="patient.lHdlc"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="50"  ng-model="patient.lHdlc"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>{{param.LAB_CONSTANTS.LAB_LDL_C_LABEL.infoTh}}</td>
 							<td>{{param.LAB_CONSTANTS.LAB_LDL_C_NORMAL.infoTh}}</td>
-							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')"  ng-model="patient.lLdlc"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="50"  ng-model="patient.lLdlc"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>{{param.LAB_CONSTANTS.LAB_BUN_LABEL.infoTh}}</td>
 							<td>{{param.LAB_CONSTANTS.LAB_BUN_NORMAL.infoTh}}</td>
-							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')"  ng-model="patient.lBun"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="50"  ng-model="patient.lBun"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>{{param.LAB_CONSTANTS.LAB_CREATININE_LABEL.infoTh}}</td>
 							<td>{{param.LAB_CONSTANTS.LAB_CREATININE_NORMAL.infoTh}}</td>
-							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')"  ng-model="patient.lCreatinine"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="50"  ng-model="patient.lCreatinine"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>{{param.LAB_CONSTANTS.LAB_URIC_LABEL.infoTh}}</td>
 							<td>{{param.LAB_CONSTANTS.LAB_URIC_NORMAL.infoTh}}</td>
-							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')"  ng-model="patient.lUric"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="50"  ng-model="patient.lUric"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>{{param.LAB_CONSTANTS.LAB_ALT_LABEL.infoTh}}</td>
 							<td>{{param.LAB_CONSTANTS.LAB_ALT_NORMAL.infoTh}}</td>
-							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')"  ng-model="patient.lAlt"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="50"  ng-model="patient.lAlt"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>{{param.LAB_CONSTANTS.LAB_AST_LABEL.infoTh}}</td>
 							<td>{{param.LAB_CONSTANTS.LAB_AST_NORMAL.infoTh}}</td>
-							<td><input type="number" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')"  ng-model="patient.lAst"></td>
+							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" maxlength="50"  ng-model="patient.lAst"></td>
 							<td></td>
 						</tr>
 						<tr>
@@ -895,7 +895,7 @@
 						<tr>
 							<td><input type="text" class="form-control" placeholder="" name="record" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="lab.record"></td>
 							<td><input type="text" class="form-control" placeholder="" name="normalValue" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="lab.nomalValue"></td>
-							<td><input type="number" class="form-control" placeholder="" name="result" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="lab.result"></td>
+							<td><input type="text" class="form-control" placeholder="" name="result" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="lab.result"></td>
 							<td><button class="btn btn-md btn-info" ng-if="checkPermission('ROLE_PROF')" ng-click="addMedic(lab, patient._links.medical.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
 						</tr>
 					</table>
