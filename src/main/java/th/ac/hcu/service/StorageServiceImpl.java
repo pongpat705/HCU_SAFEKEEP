@@ -11,8 +11,6 @@ import java.util.Date;
 
 import javax.imageio.ImageIO;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -27,8 +25,6 @@ import th.ac.hcu.repository.master.PatientTransactionRepository;
 @Qualifier("storageService")
 public class StorageServiceImpl implements StorageService {
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());	
-	
 	@Autowired StartUp startUp;
 	
 	@Autowired PatientTransactionRepository transactionRepo;

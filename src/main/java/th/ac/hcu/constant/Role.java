@@ -18,3 +18,4 @@ public enum Role {
 		return roleName;
 	}
 }
+	

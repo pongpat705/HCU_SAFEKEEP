@@ -17,9 +17,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import th.ac.hcu.constant.Constants.PARAMETER_GROUP_NAME;
-import th.ac.hcu.constant.Role;
-import th.ac.hcu.entity.User;
-import th.ac.hcu.entity.UserRole;
 import th.ac.hcu.entity.common.ParameterInfo;
 import th.ac.hcu.repository.UserRepository;
 import th.ac.hcu.repository.UserRoleRepository;
