@@ -196,6 +196,12 @@ angular.module('app').factory('patientServices',
         			headers: { 'Content-Type': undefined},
         			transformRequest: angular.identity
         		  });
+      },
+      addFurther : function(further){
+    	  return $http.post(CONTEXT+'/api/ipePatientProfileFurthers',further);
+      },
+      patientDeleteFurther : function(patienId, furtherId){
+    	  return $http.delete(CONTEXT+'/api/ipePatientProfiles/'+patienId+'/furthers/'+furtherId);
       }
     };
   }]);

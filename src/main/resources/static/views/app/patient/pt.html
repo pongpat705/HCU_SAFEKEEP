@@ -16,7 +16,7 @@
 			<div class="form-group">
 	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>ข้อมูลนี้เป็นของผู้ป่วย </label>
 			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_STUD_PT') && !checkPermission('ROLE_PROF')" ng-model="patient"
-									ng-options="u as u.name for u in patients track by u.patientId"
+									ng-options="u as (u.indexName +' ('+ u.name +')') for u in patients track by u.patientId"
 									ng-change="changePatient(patient);">
 				</select>
 	  		</div>

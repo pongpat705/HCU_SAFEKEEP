@@ -30,6 +30,7 @@ angular
 		$scope.loadMember();
 		$scope.loadUseDrug();
 		$scope.loadLabs();
+		$scope.loadFurthers();
 		
 		$scope.drugList = {};
 		
@@ -241,6 +242,16 @@ angular
 	    });
 	};
 	
+	$scope.loadFurthers = function(){
+		patientServices.genericGet($scope.patient._links.furthers.href).then(function(response){
+			console.log(response);
+			$scope.furthers = response.data._embedded.ipePatientProfileFurthers;
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+	};
+	
 	$scope.addMedic = function(lab, link){
 		patientServices.addLab(lab).then(function(response){
 			var data = response.data._links.self.href;
@@ -316,5 +327,40 @@ angular
 			toastr.error(response.data.message, 'Error');
 		});
 	};
+	
+	$scope.addFurther = function(further, link){
+		patientServices.addFurther(further).then(function(response){
+			var data = response.data._links.self.href;
+			patientServices.patchPatientParent(data, link).then(function(response){
+				toastr.success('saved');
+				$scope.loadFurthers();
+			}).catch(function(response) {
+				console.error('Error',response);
+				toastr.error(response.data.message, 'Error');
+		    });
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+	};
+	
+	$scope.delFurther = function(patientId, furtherId){
+		patientServices.patientDeleteFurther(patientId, furtherId).then(function(response){
+			$scope.loadFurthers();
+		}).catch(function(response) {
+			console.error('Error',response);
+			toastr.error(response.data.message, 'Error');
+	    });
+	};
+	$scope.saveFurther = function(further, link){
+		patientServices.genericPatch(further, link).then(function(xe){
+			toastr.success('saved');
+			$scope.loadFurthers();
+		}).catch(function(xe) {
+			console.error('Error',xe);
+			toastr.error(xe.data.message, 'Error');
+	    });
+	};
+	
   }
 ]);

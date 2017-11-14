@@ -8,7 +8,7 @@
 			<div class="form-group">
 	  			<label class="col-sm-2 text-uppercase control-label"><span class="require">*</span>ข้อมูลนี้เป็นของผู้ป่วย(user id ของผู้ป่วย) </label>
 			  	<select class="form-control m-b-md" ng-disabled="!checkPermission('ROLE_PROF') || (null == mode)" ng-model="patient.indexName"
-									ng-options="u.userName as u.userName for u in userPatients">
+									ng-options="u.userName as (u.userName +' ('+ u.name +')') for u in userPatients">
 				</select>
 	  		</div>
   		</form>
@@ -902,6 +902,45 @@
 					<div class="col-sm-12">
 						<textarea rows="4" cols="105" class="form-control" ng-disabled="!checkPermission('ROLE_PROF')" ng-model="patient.labAdvice" maxlength="300"></textarea>
 					</div>
+  				</div>
+  			</div>
+	        </md-content>
+	      </md-tab>
+	      <md-tab label="บันทึกความก้าวหน้า">
+	        <md-content class="md-padding">
+	          <h1 class="md-display-2">การบันทึกความก้าวหน้า</h1>
+				<div class="form-group">
+  				<div class="col-sm-8">
+  					<table class="table table-fixed-layout">
+						<tr>
+							<th colspan="5">แบบบันทึกความก้าวหน้า</th>
+						</tr>
+						<tr>
+							<th>ลำดับที่</th>
+							<th>วันที่</th>
+							<th>คณะวิชา</th>
+							<th>ความก้าวหน้า</th>
+							<th></th>
+						</tr>
+						
+						<tr ng-repeat="f in furthers">
+							<td>{{$index+1}}</td>
+							<td><md-datepicker ng-model="f.createdDate" ng-disabled="!checkPermission('ROLE_STUD')" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
+							<td><input type="text" class="form-control" placeholder="" name="major" ng-disabled="!checkPermission('ROLE_STUD')" ng-model="f.major"></td>
+							<td><input type="text" class="form-control" placeholder="" name="description" ng-disabled="!checkPermission('ROLE_STUD')" ng-model="f.description"></td>
+							<td>
+								<button class="btn btn-md btn-info" ng-if="checkPermission('ROLE_STUD')" ng-click="saveFurther(f, f._links.self.href)" >Save</button>
+								<button class="btn btn-md btn-danger" ng-if="checkPermission('ROLE_STUD')" ng-click="delFurther(further, f.furtherId)" ><i class="fa fa-trash" aria-hidden="true"></i></button>
+							</td>
+						</tr>
+						<tr ng-if="checkPermission('ROLE_STUD')">
+							<td></td>
+							<td><md-datepicker ng-model="further.createdDate" ng-disabled="!checkPermission('ROLE_STUD')" md-placeholder="Enter date" md-open-on-focus></md-datepicker></td>
+							<td><input type="text" class="form-control" placeholder="" name="major" ng-disabled="!checkPermission('ROLE_STUD')" ng-model="further.major"></td>
+							<td><input type="text" class="form-control" placeholder="" name="description" ng-disabled="!checkPermission('ROLE_STUD')" ng-model="further.description"></td>
+							<td><button class="btn btn-md btn-info" ng-if="checkPermission('ROLE_STUD')" ng-click="addFurther(further, patient._links.furthers.href)" ><i class="fa fa-plus" aria-hidden="true"></i></button></td>
+						</tr>
+					</table>
   				</div>
   			</div>
 	        </md-content>

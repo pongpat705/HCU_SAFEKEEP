@@ -105,16 +105,16 @@ public class IpePatientProfile {
 	private String gAnswer9;
 	
 	//lab
-	private Integer lGlucose;
-	private Integer lCholesterol;
-	private Integer lTriglyceride;
-	private Integer lHdlc;
-	private Integer lLdlc;
-	private Integer lBun;
-	private Integer lCreatinine;
-	private Integer lUric;
-	private Integer lAlt;
-	private Integer lAst;
+	private String lGlucose;
+	private String lCholesterol;
+	private String lTriglyceride;
+	private String lHdlc;
+	private String lLdlc;
+	private String lBun;
+	private String lCreatinine;
+	private String lUric;
+	private String lAlt;
+	private String lAst;
 	@Lob
 	private String labAdvice;
 	@OneToMany(cascade=CascadeType.ALL)
@@ -134,7 +134,10 @@ public class IpePatientProfile {
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	private IpePatientPtStudent ptStudent;
-
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<IpePatientProfileFurther> furthers;
+	
 	public Long getPatientId() {
 		return patientId;
 	}
@@ -647,86 +650,6 @@ public class IpePatientProfile {
 		this.indexName = indexName;
 	}
 
-	public Integer getlGlucose() {
-		return lGlucose;
-	}
-
-	public void setlGlucose(Integer lGlucose) {
-		this.lGlucose = lGlucose;
-	}
-
-	public Integer getlCholesterol() {
-		return lCholesterol;
-	}
-
-	public void setlCholesterol(Integer lCholesterol) {
-		this.lCholesterol = lCholesterol;
-	}
-
-	public Integer getlTriglyceride() {
-		return lTriglyceride;
-	}
-
-	public void setlTriglyceride(Integer lTriglyceride) {
-		this.lTriglyceride = lTriglyceride;
-	}
-
-	public Integer getlHdlc() {
-		return lHdlc;
-	}
-
-	public void setlHdlc(Integer lHdlc) {
-		this.lHdlc = lHdlc;
-	}
-
-	public Integer getlLdlc() {
-		return lLdlc;
-	}
-
-	public void setlLdlc(Integer lLdlc) {
-		this.lLdlc = lLdlc;
-	}
-
-	public Integer getlBun() {
-		return lBun;
-	}
-
-	public void setlBun(Integer lBun) {
-		this.lBun = lBun;
-	}
-
-	public Integer getlCreatinine() {
-		return lCreatinine;
-	}
-
-	public void setlCreatinine(Integer lCreatinine) {
-		this.lCreatinine = lCreatinine;
-	}
-
-	public Integer getlUric() {
-		return lUric;
-	}
-
-	public void setlUric(Integer lUric) {
-		this.lUric = lUric;
-	}
-
-	public Integer getlAlt() {
-		return lAlt;
-	}
-
-	public void setlAlt(Integer lAlt) {
-		this.lAlt = lAlt;
-	}
-
-	public Integer getlAst() {
-		return lAst;
-	}
-
-	public void setlAst(Integer lAst) {
-		this.lAst = lAst;
-	}
-
 	public String getLabAdvice() {
 		return labAdvice;
 	}
@@ -773,6 +696,94 @@ public class IpePatientProfile {
 
 	public void setsFamilyCount(String sFamilyCount) {
 		this.sFamilyCount = sFamilyCount;
+	}
+
+	public List<IpePatientProfileFurther> getFurthers() {
+		return furthers;
+	}
+
+	public void setFurthers(List<IpePatientProfileFurther> furthers) {
+		this.furthers = furthers;
+	}
+
+	public String getlGlucose() {
+		return lGlucose;
+	}
+
+	public void setlGlucose(String lGlucose) {
+		this.lGlucose = lGlucose;
+	}
+
+	public String getlCholesterol() {
+		return lCholesterol;
+	}
+
+	public void setlCholesterol(String lCholesterol) {
+		this.lCholesterol = lCholesterol;
+	}
+
+	public String getlTriglyceride() {
+		return lTriglyceride;
+	}
+
+	public void setlTriglyceride(String lTriglyceride) {
+		this.lTriglyceride = lTriglyceride;
+	}
+
+	public String getlHdlc() {
+		return lHdlc;
+	}
+
+	public void setlHdlc(String lHdlc) {
+		this.lHdlc = lHdlc;
+	}
+
+	public String getlLdlc() {
+		return lLdlc;
+	}
+
+	public void setlLdlc(String lLdlc) {
+		this.lLdlc = lLdlc;
+	}
+
+	public String getlBun() {
+		return lBun;
+	}
+
+	public void setlBun(String lBun) {
+		this.lBun = lBun;
+	}
+
+	public String getlCreatinine() {
+		return lCreatinine;
+	}
+
+	public void setlCreatinine(String lCreatinine) {
+		this.lCreatinine = lCreatinine;
+	}
+
+	public String getlUric() {
+		return lUric;
+	}
+
+	public void setlUric(String lUric) {
+		this.lUric = lUric;
+	}
+
+	public String getlAlt() {
+		return lAlt;
+	}
+
+	public void setlAlt(String lAlt) {
+		this.lAlt = lAlt;
+	}
+
+	public String getlAst() {
+		return lAst;
+	}
+
+	public void setlAst(String lAst) {
+		this.lAst = lAst;
 	}
 
 
