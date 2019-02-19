@@ -3,6 +3,8 @@ package th.ac.hcu;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
@@ -19,8 +21,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @Import(value = { springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration.class })
-public class SafeKeepApplication {
+public class SafeKeepApplication  extends SpringBootServletInitializer{
 	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		return builder.sources(SafeKeepApplication.class);
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(SafeKeepApplication.class, args);
 	}

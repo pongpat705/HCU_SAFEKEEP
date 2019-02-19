@@ -3,11 +3,11 @@
 angular
 	.module('app')
 		.controller('txnCtrl', [	'$scope', '$http', '$localStorage', 
-									'$timeout', '$translate', '$auth', 
+									'$timeout', '$translate', 
 									'$state' , '$stateParams', 'Restangular', 
 									'toastr', '$rootScope', 'patientServices',
   function txnCtrl($scope, $http, $localStorage, 
-		  			$timeout, $translate, $auth, 
+		  			$timeout, $translate, 
 		  			$state, $stateParams, Restangular, 
 		  			toastr, $rootScope, patientServices) {
 	

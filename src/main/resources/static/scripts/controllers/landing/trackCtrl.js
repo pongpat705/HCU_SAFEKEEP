@@ -3,11 +3,11 @@
 angular
 	.module('app')
 		.controller('trackCtrl', [	'$scope', '$http', '$localStorage', 
-									'$timeout', '$translate', '$auth', 
+									'$timeout', '$translate',  
 									'$state' , '$stateParams', 'Restangular', 
 									'toastr', '$rootScope', 'patientServices',
   function trackCtrl($scope, $http, $localStorage, 
-		  			$timeout, $translate, $auth, 
+		  			$timeout, $translate, 
 		  			$state, $stateParams, Restangular, 
 		  			toastr, $rootScope, patientServices) {
 	

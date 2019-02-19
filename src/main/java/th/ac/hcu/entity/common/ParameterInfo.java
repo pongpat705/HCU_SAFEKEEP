@@ -11,7 +11,7 @@ import javax.persistence.TableGenerator;
 
 @Entity
 @Table(name = "PARAMETER_INFO")
-@TableGenerator(name="GEN_PARAMETER_INFO", initialValue=0, allocationSize=50)
+@TableGenerator(name="GEN_PARAMETER_INFO", initialValue=0, allocationSize=1)
 public class ParameterInfo {
 
 	@Id
